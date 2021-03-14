@@ -70,7 +70,7 @@ const Header = ({ siteTitle, handleDarkModeSwitch, isDarkMode }) => {
       <Drawer
         className={classes.drawer}
         variant={
-          initialRender ? "permanent" : isScreenBig ? "permanent" : "temporary"
+          initialRender ? "temporary" : isScreenBig ? "permanent" : "temporary"
         }
         anchor="left"
         open={openDrawer}
