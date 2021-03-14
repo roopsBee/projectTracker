@@ -8,7 +8,6 @@ module.exports = {
     PRESERVE_WEBPACK_CACHE: true,
     FAST_DEV: true,
     DEV_SSR: true,
-    FAST_REFRESH: true,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -52,25 +51,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-theme-material-ui`,
-      options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: "Roboto",
-                variants: ["300", "400", "500", "700"],
-                fontDisplay: "block",
-              },
-            ],
-          },
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout/layout.tsx`),
+      },
+    },
+    "gatsby-plugin-material-ui",
+    {
+      resolve: `gatsby-plugin-google-fonts-v2`,
+      options: {
+        fonts: [
+          {
+            family: "Roboto",
+            weights: ["300", "400", "500", "900"],
+          },
+        ],
+        display: "block",
       },
     },
   ],
