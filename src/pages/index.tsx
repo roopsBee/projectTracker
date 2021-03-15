@@ -10,14 +10,8 @@ const IndexPage = () => (
       <Grid container direction="column" justify="center" alignItems="center">
         <Typography align="center" variant="h3" component="h2">
           <Box letterSpacing={4} fontWeight="bold" fontStyle="italic">
-            MATERIAL-STYLES
+            Page 1
           </Box>
-        </Typography>
-        <Typography align="center">
-          Examples and inspiration for Material-UI
-        </Typography>
-        <Typography align="center">
-          Check out the official Material-UI -{" "}
         </Typography>
       </Grid>
     </Box>

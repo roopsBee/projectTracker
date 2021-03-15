@@ -7,7 +7,7 @@ const DrawerButtons: React.FC<{
 }> = ({ handleDrawerClose }) => {
   return (
     <List dense onClick={handleDrawerClose}>
-      <DrawerLink to="/buttons" text="Buttons" />
+      <DrawerLink to="/page-2" text="Page 2" />
     </List>
   )
 }
