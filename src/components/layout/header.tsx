@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Drawer from "@material-ui/core/Drawer"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import Divider from "@material-ui/core/Divider"
-import { useMediaQuery, Button } from "@material-ui/core"
+import {
+  useMediaQuery,
+  Button,
+  Divider,
+  CssBaseline,
+  Drawer,
+  makeStyles,
+  Theme,
+} from "@material-ui/core"
 import { Link } from "gatsby"
 import { DRAWER_WIDTH } from "../../config"
 import MyAppBar from "./myAppBar"
@@ -36,10 +40,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Header = ({ siteTitle, handleDarkModeSwitch, isDarkMode }) => {
-  const classes = useStyles()
+interface Props {
+  siteTitle: string
+  handleDarkModeSwitch: () => void
+  isDarkMode: boolean
+}
 
-  const [openContactForm, setOpenContactForm] = useState(false)
+const Header: React.FC<Props> = ({
+  siteTitle,
+  handleDarkModeSwitch,
+  isDarkMode,
+}) => {
+  const classes = useStyles()
   const [openDrawer, setOpenDrawer] = useState(false)
   const [initialRender, setInitialRender] = useState(true)
 
@@ -47,7 +59,9 @@ const Header = ({ siteTitle, handleDarkModeSwitch, isDarkMode }) => {
     setInitialRender(false)
   }, [])
 
-  const isScreenBig = useMediaQuery(theme => theme.breakpoints.up("md"))
+  const isScreenBig = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.up("md")
+  )
 
   const handleDrawerOpen = () => {
     setOpenDrawer(true)
@@ -86,7 +100,7 @@ const Header = ({ siteTitle, handleDarkModeSwitch, isDarkMode }) => {
             component={Link}
             to="/"
           >
-            MATERIAL-STYLES
+            MY-SITE
           </Button>
         </div>
         <Divider />

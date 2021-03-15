@@ -1,5 +1,5 @@
 import React from "react"
-import { List, ListItem, ListItemText } from "@material-ui/core"
+import { List } from "@material-ui/core"
 import DrawerLink from "./drawerLink"
 
 const DrawerButtons: React.FC<{
