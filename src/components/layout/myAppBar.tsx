@@ -9,10 +9,12 @@ import {
   Toolbar,
   AppBar,
   makeStyles,
+  Button,
 } from "@material-ui/core"
 import { DRAWER_WIDTH } from "../../config"
 import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
+import AppBarLoginOutButton from "./appBarLoginOutButton"
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -21,10 +23,6 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     background: "linear-gradient(to right,  #663399, #5B72FF)",
-    // [theme.breakpoints.up('md')]: {
-    //   width: `calc(100% - ${DRAWER_WIDTH}px)`,
-    //   marginLeft: DRAWER_WIDTH,
-    // },
   },
   appBarShift: {
     width: `calc(100% - ${DRAWER_WIDTH}px)`,
@@ -82,9 +80,7 @@ const MyAppBar: React.FC<Props> = ({
         >
           <MenuIcon />
         </IconButton>
-        {/* <Typography className={classes.title} variant="h6" color="inherit">
-          {siteTitle}
-        </Typography> */}
+
         <Switch
           className={classes.darkSwitch}
           checked={isDarkMode}
@@ -97,6 +93,7 @@ const MyAppBar: React.FC<Props> = ({
         ) : (
           <Brightness7Icon />
         )}
+        <AppBarLoginOutButton />
       </Toolbar>
     </AppBar>
   )
