@@ -15,6 +15,7 @@ import { DRAWER_WIDTH } from "../../config"
 import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
+import AppBarSignUpButton from "./appBarSignUpButton"
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -94,6 +95,7 @@ const MyAppBar: React.FC<Props> = ({
           <Brightness7Icon />
         )}
         <AppBarLoginOutButton />
+        <AppBarSignUpButton />
       </Toolbar>
     </AppBar>
   )

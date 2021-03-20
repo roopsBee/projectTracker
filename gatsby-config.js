@@ -51,6 +51,19 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyAbbzNirsrLBm1cAdZ7jv9sbYYCvwQC6R4",
+          authDomain: "projecttracker-f799a.firebaseapp.com",
+          projectId: "projecttracker-f799a",
+          storageBucket: "projecttracker-f799a.appspot.com",
+          messagingSenderId: "534366477093",
+          appId: "1:534366477093:web:e69ad3f9c9d6c57d7118cc",
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout/layout.tsx`),
