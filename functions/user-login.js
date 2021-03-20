@@ -19,7 +19,7 @@ const handler = async event => {
     console.log("Admin initialized")
 
     console.log("Veryfying token")
-    const { userIdToken, userName } = JSON.parse(event.body)
+    const { userIdToken } = JSON.parse(event.body)
     const { uid: password, email } = await admin
       .auth()
       .verifyIdToken(userIdToken)

@@ -6,7 +6,7 @@ import signupSchema from "../components/yupSchemas/signupSchema"
 import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
 import * as faunadb from "faunadb"
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks"
+import { useAppDispatch } from "../redux/reduxHooks"
 import { login } from "../redux/userSlice"
 
 interface Values {
@@ -18,7 +18,6 @@ interface Values {
 
 function SignUp() {
   const dispatch = useAppDispatch()
-  const user = useAppSelector(state => state.user)
 
   return (
     <Container maxWidth="xs">
