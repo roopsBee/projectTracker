@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import * as faunadb from "faunadb"
 
-// Define a type for the slice state
 interface UserState {
   secret?: string | null
   userId?: {} | null
@@ -9,7 +7,6 @@ interface UserState {
   userName?: string | null
 }
 
-// Define the initial state using that type
 const initialState: UserState = {
   secret: null,
   userId: null,

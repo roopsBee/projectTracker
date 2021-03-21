@@ -71,15 +71,17 @@ module.exports = {
     },
     "gatsby-plugin-material-ui",
     {
-      resolve: `gatsby-plugin-google-fonts-v2`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: "Roboto",
-            weights: ["300", "400", "500", "900"],
-          },
-        ],
-        display: "block",
+        fonts: {
+          google: [
+            {
+              family: "Roboto",
+              variants: ["300", "400", "500", "700"],
+              fontDisplay: "block",
+            },
+          ],
+        },
       },
     },
   ],
