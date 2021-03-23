@@ -28,21 +28,8 @@ function LogIn() {
         validationSchema={loginSchema}
         onSubmit={async ({ password, email }: Values) => {
           try {
-            await firebase.auth().signInWithEmailAndPassword(email, password)
-            const userIdToken = await firebase
-              .auth()
-              .currentUser?.getIdToken(true)
-            const { data } = await axios.post(
-              "/.netlify/functions/user-login",
-              {
-                userIdToken,
-              }
-            )
-            const { secret } = data
-            const client = new faunadb.Client({ secret })
-            const q = faunadb.query
-            const userId = await client.query(q.CurrentIdentity())
-            dispatch(login({ ...data, secret, userId }))
+            const res = await dispatch(login({ email, password }))
+            console.log(res)
           } catch (error) {
             console.log(error)
           }
