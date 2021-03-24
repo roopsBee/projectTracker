@@ -46,21 +46,12 @@ export const signUp = createAsyncThunk(
     password: string
     userName: string
   }) => {
-    const res = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-    console.log("Created new user", res)
-
-    //get firebase id token
+    await firebase.auth().createUserWithEmailAndPassword(email, password)
     const userIdToken = await firebase.auth().currentUser?.getIdToken(true)
-    console.log("Got user id token")
-
-    // get faunadb secret with user token
     const { data } = await axios.post("/.netlify/functions/user-create-login", {
       userIdToken,
       userName,
     })
-    console.log("Got fauna user data", data)
     const { secret } = data
     const userId = JSON.stringify(data.userId)
 
