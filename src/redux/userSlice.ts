@@ -35,6 +35,39 @@ export const login = createAsyncThunk(
   }
 )
 
+export const signUp = createAsyncThunk(
+  "users/login",
+  async ({
+    email,
+    password,
+    userName,
+  }: {
+    email: string
+    password: string
+    userName: string
+  }) => {
+    const res = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+    console.log("Created new user", res)
+
+    //get firebase id token
+    const userIdToken = await firebase.auth().currentUser?.getIdToken(true)
+    console.log("Got user id token")
+
+    // get faunadb secret with user token
+    const { data } = await axios.post("/.netlify/functions/user-create-login", {
+      userIdToken,
+      userName,
+    })
+    console.log("Got fauna user data", data)
+    const { secret } = data
+    const userId = JSON.stringify(data.userId)
+
+    return { userName, secret, userId, email }
+  }
+)
+
 export const userSlice = createSlice({
   name: "user",
   initialState,

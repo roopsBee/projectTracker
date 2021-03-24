@@ -3,9 +3,6 @@ import userReducer from "./userSlice"
 
 const store = configureStore({
   reducer: { user: userReducer },
-  middleware: getDefaultMiddleware({
-    serializableCheck: false,
-  }),
 })
 
 export type RootState = ReturnType<typeof store.getState>

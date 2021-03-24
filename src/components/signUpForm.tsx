@@ -8,6 +8,7 @@ import axios from "axios"
 import * as faunadb from "faunadb"
 import { useAppDispatch } from "../redux/reduxHooks"
 import { login } from "../redux/userSlice"
+import { signUp } from "../redux/userSlice"
 
 interface Values {
   password: string
@@ -32,32 +33,7 @@ function SignUp() {
         validationSchema={signupSchema}
         onSubmit={async ({ email, password, userName }: Values) => {
           try {
-            const res = await firebase
-              .auth()
-              .createUserWithEmailAndPassword(email, password)
-            console.log("Created new user", res)
-
-            //get firebase id token
-            const userIdToken = await firebase
-              .auth()
-              .currentUser?.getIdToken(true)
-            console.log("Got user id token")
-
-            // get faunadb secret with user token
-            const { data } = await axios.post(
-              "/.netlify/functions/user-create-login",
-              {
-                userIdToken,
-                userName,
-              }
-            )
-            console.log("Got fauna user data", data)
-            const { secret } = data
-            const client = new faunadb.Client({ secret })
-            const q = faunadb.query
-            const userId = await client.query(q.CurrentIdentity())
-
-            dispatch(login({ ...data, secret, userId }))
+            await dispatch(signUp({ email, password, userName }))
           } catch (error) {
             console.log(error)
           }
