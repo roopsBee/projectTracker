@@ -36,7 +36,7 @@ export const login = createAsyncThunk(
 )
 
 export const signUp = createAsyncThunk(
-  "users/login",
+  "users/signUp",
   async ({
     email,
     password,
@@ -66,13 +66,8 @@ export const userSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(login.fulfilled, (state, action) => {
-        const {
-          payload: { email, secret, userId, userName },
-        } = action
-        state.secret = secret
-        state.email = email
-        state.userId = userId
-        state.userName = userName
+        const { payload } = action
+        Object.assign(state, payload)
         state.isLoggingIn = false
         state.isLoggedIn = true
         console.log("fulfilled")
@@ -82,6 +77,21 @@ export const userSlice = createSlice({
         console.log("logging in")
       })
       .addCase(login.rejected, (state, action) => {
+        state.isLoggingIn = false
+        console.log("rejected", action.error)
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        const { payload } = action
+        Object.assign(state, payload)
+        state.isLoggingIn = false
+        state.isLoggedIn = true
+        console.log("fulfilled")
+      })
+      .addCase(signUp.pending, (state, action) => {
+        state.isLoggingIn = true
+        console.log("logging in")
+      })
+      .addCase(signUp.rejected, (state, action) => {
         state.isLoggingIn = false
         console.log("rejected", action.error)
       })
