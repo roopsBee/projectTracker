@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
-import * as faunadb from "faunadb"
 
 interface UserState {
   secret?: string | null
@@ -30,9 +29,8 @@ export const login = createAsyncThunk(
       userIdToken,
     })
     const { secret, userName } = data
-    const client = new faunadb.Client({ secret })
-    const q = faunadb.query
-    const userId = await client.query(q.CurrentIdentity())
+    const userId = JSON.stringify(data.userId)
+
     return { userName, secret, userId, email }
   }
 )
