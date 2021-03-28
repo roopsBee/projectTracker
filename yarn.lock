@@ -8141,6 +8141,13 @@ gatsby-page-utils@^1.0.0:
     lodash "^4.17.20"
     micromatch "^4.0.2"
 
+gatsby-plugin-create-client-paths@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-create-client-paths/-/gatsby-plugin-create-client-paths-3.1.0.tgz#b539161e3eef573260c185c39401ed89cff3321d"
+  integrity sha512-WfxENLomJ1sKugb3uleY5ztDth5Dnou81ksVhKg/lHUwGaSgnsuEnRYN1H1lCj1T5Nx0rvLUclKECKhYwM925Q==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 gatsby-plugin-eslint@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-3.0.0.tgz#af6a70158f1751f03f804430aa8b1feeac7db97c"
