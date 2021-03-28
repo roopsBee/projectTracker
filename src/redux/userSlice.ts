@@ -1,6 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import {
+  createAsyncThunk,
+  createSlice,
+  AsyncThunkPayloadCreator,
+} from "@reduxjs/toolkit"
 import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
+import { navigate } from "gatsby"
+import faunadb from "faunadb"
+import { RootState } from "./store"
 
 interface UserState {
   secret?: string | null
@@ -9,6 +16,7 @@ interface UserState {
   userName?: string | null
   isLoggingIn?: boolean
   isLoggedIn?: boolean
+  isLoggingOut?: boolean
 }
 
 const initialState: UserState = {
@@ -18,7 +26,26 @@ const initialState: UserState = {
   userName: null,
   isLoggingIn: false,
   isLoggedIn: false,
+  isLoggingOut: false,
 }
+
+export const logOut = createAsyncThunk<
+  void,
+  undefined,
+  {
+    state: RootState
+  }
+>("users/logOut", async (arg, { getState }) => {
+  await firebase.auth().signOut()
+  const { secret } = getState().user
+
+  if (secret) {
+    const client = new faunadb.Client({ secret })
+    const q = faunadb.query
+    await client.query(q.Logout(true))
+  }
+  navigate("/")
+})
 
 export const login = createAsyncThunk(
   "users/login",
@@ -94,6 +121,18 @@ export const userSlice = createSlice({
       .addCase(signUp.rejected, (state, action) => {
         state.isLoggingIn = false
         console.log("rejected", action.error)
+      })
+      .addCase(logOut.fulfilled, (state, action) => {
+        Object.assign(state, initialState)
+        console.log("log out fulfilled")
+      })
+      .addCase(logOut.pending, (state, action) => {
+        state.isLoggingOut = true
+        console.log("logging out")
+      })
+      .addCase(logOut.rejected, (state, action) => {
+        state.isLoggingOut = false
+        console.log("log out rejected", action.error)
       })
   },
 })

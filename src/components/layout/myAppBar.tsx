@@ -16,6 +16,7 @@ import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
 import AppBarSignUpButton from "./appBarSignUpButton"
+import AppBarLogOutButton from "./appBarLogOutButton"
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -96,6 +97,7 @@ const MyAppBar: React.FC<Props> = ({
         )}
         <AppBarLoginOutButton />
         <AppBarSignUpButton />
+        <AppBarLogOutButton />
       </Toolbar>
     </AppBar>
   )
