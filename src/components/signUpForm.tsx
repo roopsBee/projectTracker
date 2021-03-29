@@ -3,11 +3,7 @@ import { Formik, Form, Field } from "formik"
 import { Button, Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import signupSchema from "../components/yupSchemas/signupSchema"
-import firebase from "gatsby-plugin-firebase"
-import axios from "axios"
-import * as faunadb from "faunadb"
 import { useAppDispatch } from "../redux/reduxHooks"
-import { login } from "../redux/userSlice"
 import { signUp } from "../redux/userSlice"
 
 interface Values {

@@ -13,7 +13,6 @@ const DrawerButtons: React.FC<{
     <>
       <List dense onClick={handleDrawerClose}>
         {isLoggedIn && <LoggedInDrawerButtons />}
-        <DrawerLink to="/page-2" text="Page 2" />
       </List>
     </>
   )
