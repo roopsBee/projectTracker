@@ -11,7 +11,7 @@ import { RootState } from "./store"
 
 interface UserState {
   secret?: string | null
-  userId?: {} | null
+  userId?: string | null
   email?: string | null
   userName?: string | null
   isLoggingIn?: boolean
