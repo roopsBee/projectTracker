@@ -1,9 +1,11 @@
-import { Button, Popover, Typography } from "@material-ui/core"
+import { Button, Popover } from "@material-ui/core"
 import React, { useState } from "react"
 import LogInForm from "../logInForm"
+import useWindowResize from "../../utils/useWindowResize"
 
 const AppBarLoginOutButton: React.FC = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
+  const [width, height] = useWindowResize()
   const id = isPopoverOpen ? "log-in-popover" : undefined
 
   const onLogInOutClick = () => {
@@ -19,7 +21,14 @@ const AppBarLoginOutButton: React.FC = () => {
       <Button onClick={onLogInOutClick}>LOG IN</Button>
       <Popover
         anchorReference="anchorPosition"
-        anchorPosition={{ top: 0, left: 0 }}
+        anchorPosition={{
+          top: (typeof window !== "undefined" && height! / 2) || 0,
+          left: (typeof window !== "undefined" && width! / 2) || 0,
+        }}
+        transformOrigin={{
+          vertical: "center",
+          horizontal: "center",
+        }}
         id={id}
         open={isPopoverOpen}
         onBackdropClick={onClosePopover}

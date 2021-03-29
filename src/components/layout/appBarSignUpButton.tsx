@@ -1,9 +1,11 @@
-import { Button, Popover, Typography } from "@material-ui/core"
+import { Button, Popover } from "@material-ui/core"
 import React, { useState } from "react"
 import SignUpForm from "../signUpForm"
+import useWindowResize from "../../utils/useWindowResize"
 
 const AppBarSignUpButton: React.FC = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
+  const [width, height] = useWindowResize()
   const id = isPopoverOpen ? "sign-up-popover" : undefined
 
   const onSignUpClick = () => {
@@ -19,7 +21,14 @@ const AppBarSignUpButton: React.FC = () => {
       <Button onClick={onSignUpClick}>Sign Up</Button>
       <Popover
         anchorReference="anchorPosition"
-        anchorPosition={{ top: 100, left: 100 }}
+        anchorPosition={{
+          top: (typeof window !== "undefined" && height! / 2) || 0,
+          left: (typeof window !== "undefined" && width! / 2) || 0,
+        }}
+        transformOrigin={{
+          vertical: "center",
+          horizontal: "center",
+        }}
         id={id}
         open={isPopoverOpen}
         onBackdropClick={onClosePopover}
