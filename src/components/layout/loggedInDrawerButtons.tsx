@@ -1,16 +1,12 @@
 import React from "react"
 import DrawerLink from "./drawerLink"
 import { ListItem, ListItemText } from "@material-ui/core"
+import DrawerNewProject from "./drawerNewProject"
 
 const LoggedInDrawerButtons = () => {
-  const handleCreateProject = () => {
-    console.log("create project")
-  }
   return (
     <>
-      <ListItem dense button onClick={handleCreateProject}>
-        <ListItemText>New Project</ListItemText>
-      </ListItem>
+      <DrawerNewProject />
     </>
   )
 }
