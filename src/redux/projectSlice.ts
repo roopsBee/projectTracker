@@ -14,7 +14,7 @@ interface ProjectState {
   projectId?: string
   taskGroups?: {
     groupId: string
-    groupName: string
+    taskGroupName: string
     tasks?: {
       taskId: string
       taskName: string
