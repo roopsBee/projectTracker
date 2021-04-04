@@ -10,21 +10,21 @@ import faunadb from "faunadb"
 import { RootState } from "./store"
 
 interface ProjectState {
-  name?: string
+  projectName?: string
   projectId?: string
   taskGroups?: {
     groupId: string
     groupName: string
-    tasks: {
+    tasks?: {
       taskId: string
-      name: string
+      taskName: string
       completed: boolean
-      comments: string[]
-      childTasks: {
+      comments: string[] | []
+      childTasks?: {
         taskId: string
-        name: string
+        childTaskName: string
         completed: boolean
-        comments: string[]
+        comments: string[] | []
       }[]
     }[]
   }[]

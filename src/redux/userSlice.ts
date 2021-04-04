@@ -55,8 +55,7 @@ export const login = createAsyncThunk(
     const { data } = await axios.post("/.netlify/functions/user-login", {
       userIdToken,
     })
-    const { secret, userName } = data
-    const userId = JSON.stringify(data.userId)
+    const { secret, userName, userId } = data
 
     return { userName, secret, userId, email }
   }
