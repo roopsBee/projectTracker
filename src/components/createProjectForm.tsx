@@ -4,6 +4,7 @@ import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../redux/reduxHooks"
 import createProjectSchema from "./yupSchemas/createProjectSchema"
+import { createProject } from "../redux/projectSlice"
 
 interface Values {
   projectName: string
@@ -30,7 +31,8 @@ function CreateProjectForm({ closePopover }: { closePopover: () => void }) {
             validationSchema={createProjectSchema}
             onSubmit={async ({ projectName }: Values) => {
               try {
-                console.log("create project")
+                dispatch(createProject(projectName))
+                closePopover()
               } catch (error) {
                 console.log(error)
               }

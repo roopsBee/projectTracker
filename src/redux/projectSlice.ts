@@ -30,17 +30,50 @@ interface ProjectState {
   }[]
 }
 
-const initialState: ProjectState[] = [{}]
+const initialState: ProjectState[] = []
 
-export const getProjectsList = createAsyncThunk("project/getList", async () => {
-  return {}
+type createProjectReturnType = {
+  projectId: string
+  projectName: string
+  taskgroups: []
+}
+
+export const createProject = createAsyncThunk<
+  {},
+  string,
+  {
+    state: RootState
+  }
+>("project/createProject", async (projectName, { getState }) => {
+  const { userId, secret } = getState().user
+
+  const client = new faunadb.Client({ secret: secret! })
+  const q = faunadb.query
+  const data: createProjectReturnType = await client.query(
+    q.Call("projectCreate", [projectName, userId])
+  )
+
+  const { projectId } = data
+  return { projectId, projectName }
 })
 
 export const projectSlice = createSlice({
   name: "project",
   initialState,
   reducers: {},
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder
+      .addCase(createProject.pending, (state, action) => {
+        console.log("creating project...")
+      })
+      .addCase(createProject.fulfilled, (state, { payload }) => {
+        state.push(payload)
+        console.log("fulfilled")
+      })
+      .addCase(createProject.rejected, (state, action) => {
+        console.log("rejected", action.error)
+      })
+  },
 })
 
 export const {} = projectSlice.actions
