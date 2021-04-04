@@ -20,7 +20,9 @@ const handler = async event => {
 
     console.log("Veryfying token")
     const { userIdToken, userName } = JSON.parse(event.body)
-    const { uid, email } = await admin.auth().verifyIdToken(userIdToken)
+    const { uid: password, email } = await admin
+      .auth()
+      .verifyIdToken(userIdToken)
     console.log("Got decoded token")
 
     // fauna init
@@ -32,7 +34,7 @@ const handler = async event => {
     // create user if doesn't exist, and get fauna token
     console.log("logging into fauna")
     const res = await client.query(
-      q.Call(q.Function("createUserAndLogin"), [email, uid, userName])
+      q.Call(q.Function("createUserAndLogin"), [email, password, userName])
     )
     console.log("logged into fauna", res)
 

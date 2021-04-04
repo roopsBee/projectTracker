@@ -78,8 +78,7 @@ export const signUp = createAsyncThunk(
       userIdToken,
       userName,
     })
-    const { secret } = data
-    const userId = JSON.stringify(data.userId)
+    const { secret, userId } = data
 
     return { userName, secret, userId, email }
   }
