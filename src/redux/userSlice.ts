@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  AsyncThunkPayloadCreator,
-} from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
 import { navigate } from "gatsby"
@@ -29,6 +25,19 @@ const initialState: UserState = {
   isLoggingOut: false,
 }
 
+export const siteLoadAuth = createAsyncThunk("users/siteLoadAuth", async () => {
+  const userStr = localStorage.getItem("user")
+  if (userStr) {
+    const user = JSON.parse(userStr)
+    console.log({ user })
+    const { userName, secret, email, userId } = user
+    if (userName && secret && email && userId) {
+      return { ...user, isLoggedIn: true }
+    }
+    return initialState
+  }
+})
+
 export const logOut = createAsyncThunk<
   void,
   undefined,
@@ -44,6 +53,7 @@ export const logOut = createAsyncThunk<
     const q = faunadb.query
     await client.query(q.Logout(true))
   }
+  localStorage.removeItem("user")
   navigate("/")
 })
 
@@ -55,9 +65,12 @@ export const login = createAsyncThunk(
     const { data } = await axios.post("/.netlify/functions/user-login", {
       userIdToken,
     })
-    const { secret, userName, userId } = data
 
-    return { userName, secret, userId, email }
+    const { secret, userName, userId } = data
+    const user = { userName, secret, userId, email }
+    localStorage.setItem("user", JSON.stringify(user))
+
+    return user
   }
 )
 
@@ -78,9 +91,12 @@ export const signUp = createAsyncThunk(
       userIdToken,
       userName,
     })
-    const { secret, userId } = data
 
-    return { userName, secret, userId, email }
+    const { secret, userId } = data
+    const user = { userName, secret, userId, email }
+    localStorage.setItem("user", JSON.stringify(user))
+
+    return user
   }
 )
 
@@ -131,6 +147,19 @@ export const userSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         state.isLoggingOut = false
         console.log("log out rejected", action.error)
+      })
+      .addCase(siteLoadAuth.fulfilled, (state, { payload }) => {
+        Object.assign(state, payload)
+        state.isLoggingIn = false
+        console.log("auth fulfilled")
+      })
+      .addCase(siteLoadAuth.pending, (state, action) => {
+        state.isLoggingIn = true
+        console.log("checking auth")
+      })
+      .addCase(siteLoadAuth.rejected, (state, action) => {
+        state.isLoggingIn = false
+        console.log("auth rejected", action.error)
       })
   },
 })
