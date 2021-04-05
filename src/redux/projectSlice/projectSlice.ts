@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import createProject from "./createProjectThunk"
 
-interface ProjectState {
+type Projects = {
   projectName?: string
   projectId?: string
   taskGroups?: {
@@ -20,9 +20,14 @@ interface ProjectState {
       }[]
     }[]
   }[]
+}[]
+
+interface ProjectState {
+  isLoading: boolean
+  projects?: Projects
 }
 
-const initialState: ProjectState[] = []
+const initialState: ProjectState = { isLoading: false, projects: [] }
 
 export const projectSlice = createSlice({
   name: "project",
@@ -31,13 +36,16 @@ export const projectSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(createProject.pending, (state, action) => {
+        state.isLoading = true
         console.log("creating project...")
       })
       .addCase(createProject.fulfilled, (state, { payload }) => {
-        state.push(payload)
+        state.projects?.push(payload)
+        state.isLoading = false
         console.log("fulfilled")
       })
       .addCase(createProject.rejected, (state, action) => {
+        state.isLoading = false
         console.log("rejected", action.error)
       })
   },
