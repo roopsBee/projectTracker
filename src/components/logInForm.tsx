@@ -26,7 +26,6 @@ function LogIn() {
         onSubmit={async ({ password, email }: Values) => {
           try {
             const res = await dispatch(login({ email, password }))
-            console.log(res)
           } catch (error) {
             console.log(error)
           }

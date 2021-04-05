@@ -1,13 +1,5 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  AsyncThunkPayloadCreator,
-} from "@reduxjs/toolkit"
-import firebase from "gatsby-plugin-firebase"
-import axios from "axios"
-import { navigate } from "gatsby"
-import faunadb from "faunadb"
-import { RootState } from "./store"
+import { createSlice } from "@reduxjs/toolkit"
+import createProject from "./createProjectThunk"
 
 interface ProjectState {
   projectName?: string
@@ -31,31 +23,6 @@ interface ProjectState {
 }
 
 const initialState: ProjectState[] = []
-
-type createProjectReturnType = {
-  projectId: string
-  projectName: string
-  taskgroups: []
-}
-
-export const createProject = createAsyncThunk<
-  {},
-  string,
-  {
-    state: RootState
-  }
->("project/createProject", async (projectName, { getState }) => {
-  const { userId, secret } = getState().user
-
-  const client = new faunadb.Client({ secret: secret! })
-  const q = faunadb.query
-  const data: createProjectReturnType = await client.query(
-    q.Call("projectCreate", [projectName, userId])
-  )
-
-  const { projectId } = data
-  return { projectId, projectName }
-})
 
 export const projectSlice = createSlice({
   name: "project",
