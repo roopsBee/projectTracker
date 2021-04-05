@@ -4,7 +4,7 @@ import { Button, Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import signupSchema from "../components/yupSchemas/signupSchema"
 import { useAppDispatch } from "../redux/reduxHooks"
-import { signUp } from "../redux/userSlice/userSlice"
+import signUpThunk from "../redux/userSlice/signUpThunk"
 
 interface Values {
   password: string
@@ -29,7 +29,7 @@ function SignUp() {
         validationSchema={signupSchema}
         onSubmit={async ({ email, password, userName }: Values) => {
           try {
-            await dispatch(signUp({ email, password, userName }))
+            await dispatch(signUpThunk({ email, password, userName }))
           } catch (error) {
             console.log(error)
           }

@@ -1,9 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import firebase from "gatsby-plugin-firebase"
-import axios from "axios"
+import { createSlice } from "@reduxjs/toolkit"
 import siteLoadAuth from "./siteLoadAuthThunk"
 import logOut from "./logOutThunk"
 import login from "./loginThunk"
+import signUp from "./signUpThunk"
 
 interface UserState {
   secret?: string | null
@@ -24,32 +23,6 @@ export const initialState: UserState = {
   isLoggedIn: false,
   isLoggingOut: false,
 }
-
-export const signUp = createAsyncThunk(
-  "users/signUp",
-  async ({
-    email,
-    password,
-    userName,
-  }: {
-    email: string
-    password: string
-    userName: string
-  }) => {
-    await firebase.auth().createUserWithEmailAndPassword(email, password)
-    const userIdToken = await firebase.auth().currentUser?.getIdToken(true)
-    const { data } = await axios.post("/.netlify/functions/user-create-login", {
-      userIdToken,
-      userName,
-    })
-
-    const { secret, userId } = data
-    const user = { userName, secret, userId, email }
-    localStorage.setItem("user", JSON.stringify(user))
-
-    return user
-  }
-)
 
 export const userSlice = createSlice({
   name: "user",
