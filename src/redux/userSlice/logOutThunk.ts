@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk } from "@reduxjs/toolkit"
 import firebase from "gatsby-plugin-firebase"
 import { navigate } from "gatsby"
-import faunadb from "faunadb"
 import { RootState } from "../store"
+import faunaClient from "../../utils/faunaClient"
 
 const logOut = createAsyncThunk<
   void,
@@ -15,8 +15,7 @@ const logOut = createAsyncThunk<
   const { secret } = getState().user
 
   if (secret) {
-    const client = new faunadb.Client({ secret })
-    const q = faunadb.query
+    const { client, q } = faunaClient(secret)
     await client.query(q.Logout(true))
   }
   localStorage.removeItem("user")
