@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import createProject from "./createProjectThunk"
+import getProjectList from "./getProjectListThunk"
 
 type Projects = {
   projectName?: string
@@ -47,6 +48,19 @@ export const projectSlice = createSlice({
       .addCase(createProject.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action.error)
+      })
+      .addCase(getProjectList.pending, (state, action) => {
+        state.isLoading = true
+        console.log("fetching project list...")
+      })
+      .addCase(getProjectList.fulfilled, (state, { payload }) => {
+        state.projects = payload
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(getProjectList.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action.error, action.payload)
       })
   },
 })
