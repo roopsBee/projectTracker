@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-
-import faunadb from "faunadb"
-import { RootState } from "../store"
+import faunaClient from "../../utils/faunaClient"
 
 type GetProjectListReturnType = {
   projectId: string
@@ -10,19 +8,13 @@ type GetProjectListReturnType = {
 
 const getProjectList = createAsyncThunk<
   {}[] | undefined,
-  { userId: string; secret: string },
-  { state: RootState }
+  { userId: string; secret: string }
 >("project/getProjectList", async ({ userId, secret }, { rejectWithValue }) => {
   if (userId && secret) {
-    const client = new faunadb.Client({ secret })
-    const q = faunadb.query
-    console.log({ userId, secret })
-
+    const { client, q } = faunaClient(secret)
     const data: GetProjectListReturnType = await client.query(
       q.Call("projectsGetList", userId)
     )
-    console.log(data)
-
     return data
   } else {
     return rejectWithValue({ userId, secret })
