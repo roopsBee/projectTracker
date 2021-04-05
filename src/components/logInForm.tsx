@@ -4,7 +4,7 @@ import { Button, Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import loginSchema from "../components/yupSchemas/loginSchema"
 import { useAppDispatch } from "../redux/reduxHooks"
-import { login } from "../redux/userSlice"
+import { login } from "../redux/userSlice/userSlice"
 
 interface Values {
   password: string

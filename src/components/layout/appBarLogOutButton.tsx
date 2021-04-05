@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core"
 import React from "react"
-import { logOut } from "../../redux/userSlice"
+import { logOut } from "../../redux/userSlice/userSlice"
 import { useAppDispatch } from "../../redux/reduxHooks"
 
 const AppBarLogOutButton: React.FC = () => {

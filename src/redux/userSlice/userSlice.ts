@@ -3,7 +3,8 @@ import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
 import { navigate } from "gatsby"
 import faunadb from "faunadb"
-import { RootState } from "./store"
+import { RootState } from "../store"
+import siteLoadAuth from "./siteLoadAuthThunk"
 
 interface UserState {
   secret?: string | null
@@ -15,7 +16,7 @@ interface UserState {
   isLoggingOut?: boolean
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   secret: null,
   userId: null,
   email: null,
@@ -24,19 +25,6 @@ const initialState: UserState = {
   isLoggedIn: false,
   isLoggingOut: false,
 }
-
-export const siteLoadAuth = createAsyncThunk("users/siteLoadAuth", async () => {
-  const userStr = localStorage.getItem("user")
-  if (userStr) {
-    const user = JSON.parse(userStr)
-    console.log({ user })
-    const { userName, secret, email, userId } = user
-    if (userName && secret && email && userId) {
-      return { ...user, isLoggedIn: true }
-    }
-    return initialState
-  }
-})
 
 export const logOut = createAsyncThunk<
   void,

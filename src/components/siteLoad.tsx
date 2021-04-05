@@ -1,12 +1,12 @@
 import React, { useEffect } from "react"
 import firebase from "gatsby-plugin-firebase"
 import { useAppDispatch } from "../redux/reduxHooks"
-import { siteLoadAuth } from "../redux/userSlice"
+import siteLoadAuthThunk from "../redux/userSlice/siteLoadAuthThunk"
 
 const SiteLoad: React.FC = ({ children }) => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(siteLoadAuth())
+    dispatch(siteLoadAuthThunk())
   }, [])
 
   return <>{children}</>
