@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
-import siteLoadAuth from "./siteLoadAuthThunk"
 import logOut from "./logOutThunk"
 import login from "./loginThunk"
 import signUp from "./signUpThunk"
+import siteLoadAuth from "./siteLoadAuthThunk"
 
 interface UserState {
   secret?: string | null
