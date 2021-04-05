@@ -47,7 +47,7 @@ export const projectSlice = createSlice({
       })
       .addCase(createProject.rejected, (state, action) => {
         state.isLoading = false
-        console.log("rejected", action.error)
+        console.log("rejected", action)
       })
       .addCase(getProjectList.pending, (state, action) => {
         state.isLoading = true
@@ -60,7 +60,7 @@ export const projectSlice = createSlice({
       })
       .addCase(getProjectList.rejected, (state, action) => {
         state.isLoading = false
-        console.log("rejected", action.error, action.payload)
+        console.log("rejected", action)
       })
   },
 })
