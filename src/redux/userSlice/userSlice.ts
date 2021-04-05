@@ -5,6 +5,7 @@ import { navigate } from "gatsby"
 import faunadb from "faunadb"
 import { RootState } from "../store"
 import siteLoadAuth from "./siteLoadAuthThunk"
+import logOut from "./logOutThunk"
 
 interface UserState {
   secret?: string | null
@@ -25,25 +26,6 @@ export const initialState: UserState = {
   isLoggedIn: false,
   isLoggingOut: false,
 }
-
-export const logOut = createAsyncThunk<
-  void,
-  undefined,
-  {
-    state: RootState
-  }
->("users/logOut", async (arg, { getState }) => {
-  await firebase.auth().signOut()
-  const { secret } = getState().user
-
-  if (secret) {
-    const client = new faunadb.Client({ secret })
-    const q = faunadb.query
-    await client.query(q.Logout(true))
-  }
-  localStorage.removeItem("user")
-  navigate("/")
-})
 
 export const login = createAsyncThunk(
   "users/login",
