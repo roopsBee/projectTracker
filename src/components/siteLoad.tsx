@@ -1,13 +1,6 @@
-import React, { useEffect } from "react"
-import { useAppDispatch } from "../redux/reduxHooks"
-import siteLoadAuthThunk from "../redux/userSlice/siteLoadAuthThunk"
+import React from "react"
 
 const SiteLoad: React.FC = ({ children }) => {
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(siteLoadAuthThunk())
-  }, [])
-
   return <>{children}</>
 }
 

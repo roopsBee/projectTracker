@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit"
 import logOut from "./logOutThunk"
 import login from "./loginThunk"
 import signUp from "./signUpThunk"
-import siteLoadAuth from "./siteLoadAuthThunk"
 
 interface UserState {
   secret?: string | null
@@ -71,19 +70,6 @@ export const userSlice = createSlice({
       .addCase(logOut.rejected, (state, action) => {
         state.isLoggingOut = false
         console.log("log out rejected", action.error)
-      })
-      .addCase(siteLoadAuth.fulfilled, (state, { payload }) => {
-        Object.assign(state, payload)
-        state.isLoggingIn = false
-        console.log("auth fulfilled")
-      })
-      .addCase(siteLoadAuth.pending, (state, action) => {
-        state.isLoggingIn = true
-        console.log("checking auth")
-      })
-      .addCase(siteLoadAuth.rejected, (state, action) => {
-        state.isLoggingIn = false
-        console.log("auth rejected", action.error)
       })
   },
 })
