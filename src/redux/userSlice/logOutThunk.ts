@@ -3,6 +3,7 @@ import firebase from "gatsby-plugin-firebase"
 import { navigate } from "gatsby"
 import { RootState } from "../store"
 import faunaClient from "../../utils/faunaClient"
+import { logOut as projectLogout } from "../projectSlice/projectSlice"
 
 const logOut = createAsyncThunk<
   void,
@@ -10,7 +11,7 @@ const logOut = createAsyncThunk<
   {
     state: RootState
   }
->("users/logOut", async (arg, { getState }) => {
+>("users/logOut", async (arg, { getState, dispatch }) => {
   await firebase.auth().signOut()
   const { secret } = getState().user
 
@@ -18,7 +19,7 @@ const logOut = createAsyncThunk<
     const { client, q } = faunaClient(secret)
     await client.query(q.Logout(true))
   }
-  localStorage.removeItem("user")
+  dispatch(projectLogout())
   navigate("/")
 })
 

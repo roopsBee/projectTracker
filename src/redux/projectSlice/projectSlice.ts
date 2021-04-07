@@ -33,7 +33,11 @@ const initialState: ProjectState = { isLoading: false, projects: [] }
 export const projectSlice = createSlice({
   name: "project",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut(state) {
+      Object.assign(state, initialState)
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(createProject.pending, (state, action) => {
@@ -65,6 +69,6 @@ export const projectSlice = createSlice({
   },
 })
 
-export const {} = projectSlice.actions
+export const { logOut } = projectSlice.actions
 
 export default projectSlice.reducer
