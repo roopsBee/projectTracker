@@ -7,9 +7,9 @@ interface Props {
   text: string | undefined
 }
 
-const DrawerLink: React.FC<Props> = ({ to, text }) => {
+const DrawerLink: React.FC<Props> = ({ to, text, ...props }) => {
   return (
-    <ListItem to={to} button dense component={Link}>
+    <ListItem {...props} to={to} button dense component={Link}>
       <ListItemText>{text}</ListItemText>
     </ListItem>
   )
