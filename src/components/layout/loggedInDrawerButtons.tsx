@@ -7,7 +7,6 @@ import { useAppSelector } from "../../redux/reduxHooks"
 const LoggedInDrawerButtons = () => {
   const projectsList = useAppSelector(state => state.projectState.projects)
   const url = typeof window !== "undefined" ? window.location.pathname : ""
-  console.log(url)
 
   return (
     <>
