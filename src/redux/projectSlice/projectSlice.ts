@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import createProject from "./createProjectThunk"
 import getProjectList from "./getProjectListThunk"
 
-type Projects = {
+export type ProjectType = {
   projectName?: string
   projectId?: string
   taskGroups?: {
@@ -21,11 +21,11 @@ type Projects = {
       }[]
     }[]
   }[]
-}[]
+}
 
 interface ProjectState {
   isLoading: boolean
-  projects?: Projects
+  projects?: ProjectType[]
 }
 
 const initialState: ProjectState = { isLoading: false, projects: [] }

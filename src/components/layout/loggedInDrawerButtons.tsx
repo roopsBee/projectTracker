@@ -10,14 +10,13 @@ const LoggedInDrawerButtons = () => {
 
   return (
     <>
-      <DrawerLink to="page-2" text="Page 2" />
       <DrawerNewProject />
       {url === "/" &&
         projectsList?.map(project => {
           return (
             <DrawerLink
               key={project.projectId}
-              to="#"
+              to={`/app/project/${project.projectId}`}
               text={project.projectName}
             />
           )

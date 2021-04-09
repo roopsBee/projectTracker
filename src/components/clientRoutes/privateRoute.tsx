@@ -4,7 +4,7 @@ import { RouteComponentProps } from "@reach/router"
 import { useAppSelector } from "../../redux/reduxHooks"
 
 interface Props extends RouteComponentProps {
-  component: React.FC
+  component: React.FC<any>
   location?: WindowLocation
 }
 

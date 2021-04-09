@@ -2,12 +2,12 @@ import React from "react"
 import { Router } from "@reach/router"
 import Route from "../components/clientRoutes/Route"
 import PrivateRoute from "../components/clientRoutes/PrivateRoute"
-import Dashboard from "../components/clientRoutes/dashboard"
+import projectPage from "../components/clientRoutes/projectPage"
 
 const App = () => {
   return (
     <Router>
-      <PrivateRoute path="/app" component={Dashboard} />
+      <PrivateRoute path="/app/project/:projectId" component={projectPage} />
     </Router>
   )
 }
