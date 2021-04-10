@@ -3,6 +3,7 @@ import DrawerLink from "./drawerLink"
 import { ListItem, ListItemText } from "@material-ui/core"
 import DrawerNewProject from "./drawerNewProject"
 import { useAppSelector } from "../../redux/reduxHooks"
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 
 const LoggedInDrawerButtons = () => {
   const projectsList = useAppSelector(state => state.projectState.projects)
@@ -10,6 +11,9 @@ const LoggedInDrawerButtons = () => {
 
   return (
     <>
+      {url.indexOf("project") > -1 && (
+        <DrawerLink to="/" text="Projects" Icon={NavigateBeforeIcon} />
+      )}
       <DrawerNewProject />
       {url === "/" &&
         projectsList?.map(project => {
