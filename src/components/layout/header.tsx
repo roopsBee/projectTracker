@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import { DRAWER_WIDTH } from "../../config"
-import MyAppBar from "./myAppBar"
+import MyAppBar from "./appBar/myAppBar"
 import DrawerButtons from "./DrawerButtons"
 
 const useStyles = makeStyles(theme => ({

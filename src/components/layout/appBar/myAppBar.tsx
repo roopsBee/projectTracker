@@ -9,15 +9,14 @@ import {
   Toolbar,
   AppBar,
   makeStyles,
-  Button,
 } from "@material-ui/core"
-import { DRAWER_WIDTH } from "../../config"
+import { DRAWER_WIDTH } from "../../../config"
 import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
 import AppBarSignUpButton from "./appBarSignUpButton"
 import AppBarLogOutButton from "./appBarLogOutButton"
-import { useAppSelector } from "../../redux/reduxHooks"
+import { useAppSelector } from "../../../redux/reduxHooks"
 
 const useStyles = makeStyles(theme => ({
   appBar: {
