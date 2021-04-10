@@ -1,8 +1,7 @@
 import React from "react"
 import DrawerLink from "./drawerLink"
-import { ListItem, ListItemText } from "@material-ui/core"
 import DrawerNewProject from "./drawerNewProject"
-import { useAppSelector } from "../../redux/reduxHooks"
+import { useAppSelector } from "../../../redux/reduxHooks"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 
 const LoggedInDrawerButtons = () => {

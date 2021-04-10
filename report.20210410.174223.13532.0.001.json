@@ -1,0 +1,652 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210410.174223.13532.0.001.json",
+    "dumpEventTime": "2021-04-10T17:42:23Z",
+    "dumpEventTimeStamp": "1618072943067",
+    "processId": 13532,
+    "cwd": "C:\\Users\\Roops\\Desktop\\code\\projectTracker",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Roops\\Desktop\\code\\projectTracker\\.cache\\tmp-6980-Vmst2yMgt7sg"
+    ],
+    "nodejsVersion": "v12.14.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.0",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.0/node-v12.14.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.19042",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 198765,
+        "nice": 0,
+        "sys": 938625,
+        "idle": 289601312,
+        "irq": 95578
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 205812,
+        "nice": 0,
+        "sys": 491890,
+        "idle": 290039468,
+        "irq": 8828
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 4492875,
+        "nice": 0,
+        "sys": 4537312,
+        "idle": 281706984,
+        "irq": 520531
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 2808734,
+        "nice": 0,
+        "sys": 2355093,
+        "idle": 285573343,
+        "irq": 49859
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 1881093,
+        "nice": 0,
+        "sys": 1206093,
+        "idle": 287649968,
+        "irq": 10484
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 589984,
+        "nice": 0,
+        "sys": 847421,
+        "idle": 289299750,
+        "irq": 5156
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 14585656,
+        "nice": 0,
+        "sys": 22276000,
+        "idle": 253875500,
+        "irq": 1551828
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 17184093,
+        "nice": 0,
+        "sys": 14748359,
+        "idle": 258804703,
+        "irq": 156125
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 14698625,
+        "nice": 0,
+        "sys": 10598812,
+        "idle": 265439718,
+        "irq": 89000
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 14211015,
+        "nice": 0,
+        "sys": 9473593,
+        "idle": 267052546,
+        "irq": 85234
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 8189359,
+        "nice": 0,
+        "sys": 4386250,
+        "idle": 278161546,
+        "irq": 33671
+      },
+      {
+        "model": "AMD Ryzen 5 3600 6-Core Processor              ",
+        "speed": 3593,
+        "user": 6207671,
+        "nice": 0,
+        "sys": 4240390,
+        "idle": 280289093,
+        "irq": 33375
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "2a02:c7d:2a35:9700:d105:bab:9c43:dd81",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "fd69:d95a:6446:0:d105:bab:9c43:dd81",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "2a02:c7d:2a35:9700:9d00:b680:96f3:9b70",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "fd69:d95a:6446:0:9d00:b680:96f3:9b70",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "fe80::d105:bab:9c43:dd81",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "Ethernet 2",
+        "internal": false,
+        "mac": "a8:a1:59:0e:05:89",
+        "address": "192.168.0.28",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "vEthernet (Default Switch)",
+        "internal": false,
+        "mac": "00:15:5d:04:27:d9",
+        "address": "fe80::2536:e465:d3da:9d14",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 43
+      },
+      {
+        "name": "vEthernet (Default Switch)",
+        "internal": false,
+        "mac": "00:15:5d:04:27:d9",
+        "address": "172.25.96.1",
+        "netmask": "255.255.240.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "BatDesk"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6c4a41729",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff6c4a45b4c",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28316"
+    },
+    {
+      "pc": "0x00007ff6c4a44b08",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24152"
+    },
+    {
+      "pc": "0x00007ff6c4b3369b",
+      "symbol": "v8::base::CPU::has_sse+37723"
+    },
+    {
+      "pc": "0x00007ff6c53382de",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff6c5320321",
+      "symbol": "v8::SharedArrayBuffer::Externalize+833"
+    },
+    {
+      "pc": "0x00007ff6c51edbec",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff6c51f8f90",
+      "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
+    },
+    {
+      "pc": "0x00007ff6c51f5ac4",
+      "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
+    },
+    {
+      "pc": "0x00007ff6c51eb353",
+      "symbol": "v8::internal::Heap::CollectGarbage+1283"
+    },
+    {
+      "pc": "0x00007ff6c51ea744",
+      "symbol": "v8::internal::Heap::CollectAllAvailableGarbage+196"
+    },
+    {
+      "pc": "0x00007ff6c51e9b9f",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2479"
+    },
+    {
+      "pc": "0x00007ff6c5203c2e",
+      "symbol": "v8::internal::Factory::AllocateRawFixedArray+94"
+    },
+    {
+      "pc": "0x00007ff6c520afc4",
+      "symbol": "v8::internal::Factory::NewFixedArrayWithFiller+52"
+    },
+    {
+      "pc": "0x00007ff6c520af81",
+      "symbol": "v8::internal::Factory::NewUninitializedFixedArray+65"
+    },
+    {
+      "pc": "0x00007ff6c50ebdaf",
+      "symbol": "v8::Object::GetIsolate+6767"
+    },
+    {
+      "pc": "0x00007ff6c4f9f13a",
+      "symbol": "v8::internal::OrderedHashMap::ValueAt+61274"
+    },
+    {
+      "pc": "0x00007ff6c576404d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
+    },
+    {
+      "pc": "0x000002cedf77e133",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2155257856,
+    "totalCommittedMemory": 2155257856,
+    "usedMemory": 2132267288,
+    "availableMemory": 44881992,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      },
+      "old_space": {
+        "memorySize": 1321316352,
+        "committedMemory": 1321316352,
+        "capacity": 1305741560,
+        "used": 1305741560,
+        "available": 0
+      },
+      "code_space": {
+        "memorySize": 5406720,
+        "committedMemory": 5406720,
+        "capacity": 4553984,
+        "used": 4553984,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 8130560,
+        "committedMemory": 8130560,
+        "capacity": 5525760,
+        "used": 5525760,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 817090560,
+        "committedMemory": 817090560,
+        "capacity": 815546168,
+        "used": 815546168,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 954368,
+        "committedMemory": 954368,
+        "capacity": 867520,
+        "used": 867520,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 588.875,
+    "kernelCpuSeconds": 111.562,
+    "cpuConsumptionPercent": 0.165699,
+    "maxRss": 2317713408,
+    "pageFaults": {
+      "IORequired": 7875885,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 56115,
+      "writes": 75551
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\Roops\\AppData\\Roaming",
+    "BRANCH": "main",
+    "CACHED_COMMIT_REF": "2e55e431ae58e5c731877326e6b1721c2f6fbc44",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_14220_DHLBQCGPZYWBKLNM",
+    "COLORTERM": "truecolor",
+    "COMMIT_REF": "33fdd9607d2240a9bf529e8da8eda7d104b1a6d3",
+    "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "BATDESK",
+    "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+    "CONTEXT": "dev",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "EXEPATH": "C:\\Program Files\\Git\\bin",
+    "FORCE_COLOR": "true",
+    "GATSBY_BUILD_STAGE": "develop",
+    "gatsby_executing_command": "develop",
+    "GATSBY_EXPERIMENTAL_DEV_SSR": "true",
+    "GATSBY_EXPERIMENTAL_FAST_DEV": "true",
+    "GATSBY_EXPERIMENTAL_LAZY_IMAGES": "true",
+    "GATSBY_EXPERIMENTAL_PRESERVE_FILE_DOWNLOAD_CACHE": "true",
+    "GATSBY_EXPERIMENTAL_PRESERVE_WEBPACK_CACHE": "true",
+    "GATSBY_EXPERIMENTAL_QUERY_ON_DEMAND": "true",
+    "GATSBY_FAUNA_SERVER_KEY": "fnAEEnuj3DACAa2KOejf09jQMsPce242h0yv-suz",
+    "GATSBY_FB_ADMIN_EMAIL": "firebase-adminsdk-xk43v@projecttracker-f799a.iam.gserviceaccount.com",
+    "GATSBY_FB_ADMIN_ID": "projecttracker-f799a",
+    "GATSBY_FB_ADMIN_KEY": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCbd1A7XhOg7xYD\n2Q+e4vdkiOkpFj2c3l6/JKeMsXuoHdZSwAFhikhLqv4LzL2E7csK+lWh6CXBWG54\n38BO71E8oGhK3PM61XTZWBxCVWj+ZVAQJWWfXgXwgmsDbJLKmX+fIa0uZDsmdMUc\n5UIUz78oO/BrA264TC8UhTOIl4gkmjDxc3bt3o9TiumKK8D7tB5lvKg7RTokJ+OE\nTdRSjErMb4oRRjgfPMMHRui4/rvm03cGRfHYeOL7OFViJJSfTMmb2ZLQq9W0oS/D\nzbbUaaY6rAaxncjPddlc1U+UByod3IooptFwNqzc7+aRGSD5ZDuxPnSAY488pO8c\nhWj7QZRtAgMBAAECggEARFY4argqKaIei7d0gdNjiooR71EK6TLn895BVftIDzh6\nVqp2kPEPYU961yX6on1CNIOgc4hPXEMqYDB+YFQa4erinRGtSs28TLNJzLCtc7GF\n9Wry1hAmzTcOohUuGydI7WKItO0zAO7wHAj8OJiu/pkGT4vVNearBTqd0etF2UxM\nUwJQAxDUjh8fXGAd/t0Cpq4qtoat44FXVVZq/ca226yAtSpa7OKo5vOBDP0inroQ\ndFdcIFxoSOugxBByjaOxp3XvfT1qvurvgDFVUkgEVO2so/8jq6W8HZQBlRH/BcFG\nzXyUJtfivkdR5IM+NKVHwooUHIYFxZGgLqOJ+Ae40wKBgQDKXXMrx9rQ9NZOY2+a\nHQuvlrnF2i4o4cYlqXSwcUf2KcUtgHbSVlfg7+JxbH1aifTqTP9mz+fLs7Vv5ulk\ngOxgv2IREhwVe5d/07IFs9NZlSGvVmDOn3YnOo6VC+j66yAyzIYL6wawBtzAkpv7\ny23Uc62FkmDj1ftGVb7CSLN8owKBgQDEq7/SPkfjpkkHoBOvjMXFkQrX2fUV/oR2\ngMNEcpCltovFRlFgU4T6CQczjnpIjp+mH1XHiANlzFb36jRxJ38Yx0jto6CNErno\npFsleCS9xfH69OuNdSw5YDpbawOAaQ1fethzjj4XAXemTMmJZz/8JmVVnh1PEZaI\nfBh+3OArrwKBgQC+bXfef//6WBt+wnWXubNwdU61z11WnTbf4/lpu//ytlXVPqkR\nv6yMgFA/Wc8QLvfor7I7JnPCrYaUGeAQ8nz9gbsfw0HoOVhUMnq4gQLmrr53B7qr\nVUVTHvhja0S/MhknlGyjtHOjm6GKGaxtIn5kyMJGCnvgilEdW7zZiJ5WLwKBgQC/\nU4ZM9iHhqYcqT+RWx9Aunye5TWRMfUpILoPINtvZGnlm9T19REL9K4NB+L2lkHpn\nldxRPFRx2BRTIhjaa94NMPIVnTU3iJwrYpj5HqQ/qi36QgJVn0PinWaoQLcrWQeV\nd2DTKfHlV5wawGDftv5cQs4aOLOylB2psW/zGtVKKQKBgCefYtoPVaevjg17fw62\njptFRfCeb+GjrUjOiRPZb7USGTVa5MZmKfrzl+v4Oy0PHZtN0hE8tBXA3eqlZQeF\nY+4fjc7G9Riw7U+XVBegdiSgyKGL2QfoVk1UULC6rw/0ODhrlOO4MJK5q9A7zCDr\nh4Uz44ZxVvGF8MtxWhzusQB7\n-----END PRIVATE KEY-----\n",
+    "GATSBY_LOGGER": "yurnalist",
+    "gatsby_log_level": "normal",
+    "GATSBY_QUERY_ON_DEMAND_LOADING_INDICATOR": "true",
+    "GATSBY_TELEMETRY_DISABLED": "1",
+    "GIT_ASKPASS": "c:\\Users\\Roops\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "HEAD": "main",
+    "HOME": "C:\\Users\\Roops",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\Roops",
+    "INIT_CWD": "C:\\Users\\Roops\\Desktop\\code\\projectTracker",
+    "INTERNAL_GATSBY_TELEMETRY_SESSION_ID": "6db74a4b-c756-4af0-931f-b6e9f1831440",
+    "LANG": "en_GB.UTF-8",
+    "LANGUAGE": "en_US:en",
+    "LC_ALL": "en_US.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\Roops\\AppData\\Local",
+    "LOGONSERVER": "\\\\BATDESK",
+    "MSYSTEM": "MINGW64",
+    "NETLIFY_DEV": "true",
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"develop\"],\"original\":[\"develop\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.22.5 npm/? node/v12.14.0 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_execpath": "C:\\Program Files (x86)\\Yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "develop",
+    "npm_lifecycle_script": "gatsby develop",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_author_email": "mathews.kyle@gmail.com",
+    "npm_package_author_name": "Kyle Mathews",
+    "npm_package_bugs_url": "https://github.com/gatsbyjs/gatsby/issues",
+    "npm_package_dependencies_axios": "^0.21.1",
+    "npm_package_dependencies_clsx": "^1.1.1",
+    "npm_package_dependencies_faunadb": "^4.1.1",
+    "npm_package_dependencies_firebase": "^8.3.0",
+    "npm_package_dependencies_firebase_admin": "^9.5.0",
+    "npm_package_dependencies_formik": "^2.2.6",
+    "npm_package_dependencies_formik_material_ui": "^3.0.1",
+    "npm_package_dependencies_gatsby": "^3.0.1",
+    "npm_package_dependencies_gatsby_plugin_create_client_paths": "^3.1.0",
+    "npm_package_dependencies_gatsby_plugin_firebase": "^0.2.0-beta.4",
+    "npm_package_dependencies_gatsby_plugin_gatsby_cloud": "^2.0.0",
+    "npm_package_dependencies_gatsby_plugin_image": "^1.0.0",
+    "npm_package_dependencies_gatsby_plugin_layout": "^2.0.0",
+    "npm_package_dependencies_gatsby_plugin_manifest": "^3.0.0",
+    "npm_package_dependencies_gatsby_plugin_material_ui": "^2.1.10",
+    "npm_package_dependencies_gatsby_plugin_offline": "^4.0.0",
+    "npm_package_dependencies_gatsby_plugin_react_helmet": "^4.0.0",
+    "npm_package_dependencies_gatsby_plugin_sharp": "^3.0.0",
+    "npm_package_dependencies_gatsby_plugin_typescript": "^3.0.0",
+    "npm_package_dependencies_gatsby_plugin_webfonts": "^2.0.0",
+    "npm_package_dependencies_gatsby_source_filesystem": "^3.0.0",
+    "npm_package_dependencies_gatsby_transformer_sharp": "^3.0.0",
+    "npm_package_dependencies_netlify_cli": "^3.13.4",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_package_dependencies_react": "^17.0.1",
+    "npm_package_dependencies_react_dom": "^17.0.1",
+    "npm_package_dependencies_react_helmet": "^6.1.0",
+    "npm_package_dependencies_react_redux": "^7.2.2",
+    "npm_package_dependencies_redux": "^4.0.5",
+    "npm_package_dependencies_yup": "^0.32.9",
+    "npm_package_dependencies__emotion_react": "^11.1.5",
+    "npm_package_dependencies__emotion_styled": "^11.1.5",
+    "npm_package_dependencies__material_ui_core": "^4.11.3",
+    "npm_package_dependencies__material_ui_icons": "^4.11.2",
+    "npm_package_dependencies__reduxjs_toolkit": "^1.5.0",
+    "npm_package_description": "A simple starter to get up and developing quickly with Gatsby",
+    "npm_package_devDependencies_babel_preset_gatsby": "^1.0.0",
+    "npm_package_devDependencies_eslint": "^7.21.0",
+    "npm_package_devDependencies_eslint_config_prettier": "^8.1.0",
+    "npm_package_devDependencies_eslint_loader": "^4.0.2",
+    "npm_package_devDependencies_eslint_plugin_prettier": "^3.3.1",
+    "npm_package_devDependencies_eslint_plugin_react": "^7.22.0",
+    "npm_package_devDependencies_gatsby_plugin_eslint": "^3.0.0",
+    "npm_package_devDependencies_prettier": "2.2.1",
+    "npm_package_devDependencies_typescript": "^4.2.3",
+    "npm_package_devDependencies__typescript_eslint_eslint_plugin": "^4.17.0",
+    "npm_package_devDependencies__typescript_eslint_parser": "^4.17.0",
+    "npm_package_devDependencies__types_react_helmet": "^6.1.0",
+    "npm_package_devDependencies__types_react_redux": "^7.1.16",
+    "npm_package_keywords_0": "gatsby",
+    "npm_package_license": "0BSD",
+    "npm_package_name": "gatsby-starter-default",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_repository_type": "git",
+    "npm_package_repository_url": "https://github.com/gatsbyjs/gatsby-starter-default",
+    "npm_package_scripts_build": "gatsby build",
+    "npm_package_scripts_cd": "gatsby clean && gatsby develop",
+    "npm_package_scripts_clean": "gatsby clean",
+    "npm_package_scripts_develop": "gatsby develop",
+    "npm_package_scripts_format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "npm_package_scripts_serve": "gatsby serve",
+    "npm_package_scripts_start": "npm run develop",
+    "npm_package_scripts_test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "npm_package_version": "0.1.0",
+    "NUMBER_OF_PROCESSORS": "12",
+    "OneDrive": "C:\\Users\\Roops\\OneDrive",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "PATH": "C:\\Users\\Roops\\AppData\\Local\\Temp\\yarn--1617650225103-0.140757096603906;C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\.bin;C:\\Users\\Roops\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\Roops\\bin;C:\\Program Files (x86)\\Python38-32\\Scripts;C:\\Program Files (x86)\\Python38-32;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files (x86)\\AMD\\ATI.ACE\\Core-Static;C:\\Program Files\\nodejs;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\mongodb\\bin;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\Yarn\\bin;C:\\Users\\Roops\\AppData\\Local\\Microsoft\\WindowsApps;C:\\flutter\\bin;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.2.4\\bin;C:\\Users\\Roops\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Roops\\AppData\\Roaming\\npm;C:\\Program Files\\heroku\\bin;C:\\Users\\Roops\\AppData\\Local\\Yarn\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.PY;.PYW",
+    "PLINK_PROTOCOL": "ssh",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+    "PROCESSOR_LEVEL": "23",
+    "PROCESSOR_REVISION": "7100",
+    "ProgramData": "C:\\ProgramData",
+    "PROGRAMFILES": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PULL_REQUEST": "false",
+    "PWD": "C:/Users/Roops/Desktop/code/projectTracker",
+    "PyCharm Community Edition": "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.2.4\\bin;",
+    "REPOSITORY_URL": "https://github.com/roopsBee/projectTracker",
+    "SESSIONNAME": "Console",
+    "SHLVL": "2",
+    "SITE_ID": "d371b03f-f699-4080-bd6c-90160e342d22",
+    "SITE_NAME": "roopsbee-project-tracker",
+    "SYSTEMDRIVE": "C:",
+    "SYSTEMROOT": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\Roops\\AppData\\Local\\Temp",
+    "TERM": "cygwin",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.55.0",
+    "TMP": "C:\\Users\\Roops\\AppData\\Local\\Temp",
+    "URL": "http://roopsbee-project-tracker.netlify.app",
+    "USERDOMAIN": "BATDESK",
+    "USERDOMAIN_ROAMINGPROFILE": "BATDESK",
+    "USERNAME": "Roops",
+    "USERPROFILE": "C:\\Users\\Roops",
+    "VIPSHOME": "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release",
+    "VIPS_MIN_STACK_SIZE": "2m",
+    "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\Roops\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
+    "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\Roops\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-5c107a6a7e-sock",
+    "WINDIR": "C:\\WINDOWS",
+    "YARN_WRAP_OUTPUT": "false",
+    "_": "C:/Program Files/nodejs/node"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\Program Files\\Avast Software\\Avast\\aswhook.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll",
+    "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release\\sharp.node",
+    "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release\\libglib-2.0-0.dll",
+    "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release\\libvips-cpp.dll",
+    "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release\\libvips-42.dll",
+    "C:\\WINDOWS\\System32\\ole32.dll",
+    "C:\\WINDOWS\\System32\\SHELL32.dll",
+    "\\\\?\\C:\\Users\\Roops\\Desktop\\code\\projectTracker\\node_modules\\sharp\\build\\Release\\libgobject-2.0-0.dll",
+    "C:\\WINDOWS\\SYSTEM32\\ntmarta.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll"
+  ]
+}

@@ -1,7 +1,6 @@
 import React from "react"
 import { List } from "@material-ui/core"
-import DrawerLink from "./drawerLink"
-import { useAppSelector } from "../../redux/reduxHooks"
+import { useAppSelector } from "../../../redux/reduxHooks"
 import LoggedInDrawerButtons from "./loggedInDrawerButtons"
 
 const DrawerButtons: React.FC<{

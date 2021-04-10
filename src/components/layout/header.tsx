@@ -11,7 +11,7 @@ import {
 import { Link } from "gatsby"
 import { DRAWER_WIDTH } from "../../config"
 import MyAppBar from "./appBar/myAppBar"
-import DrawerButtons from "./DrawerButtons"
+import DrawerButtons from "./drawer/DrawerButtons"
 
 const useStyles = makeStyles(theme => ({
   root: {
