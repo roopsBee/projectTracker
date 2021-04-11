@@ -3,6 +3,8 @@ import { useAppSelector, useAppDispatch } from "../../redux/reduxHooks"
 import getProjectThunk from "../../redux/projectSlice/getProjectThunk"
 import { Container, Typography } from "@material-ui/core"
 
+import GroupList from "../groupList"
+
 interface Props {
   projectId: string
 }
@@ -21,7 +23,7 @@ const ProjectPage: React.FC<Props> = ({ projectId }) => {
   return (
     <Container>
       <Typography>{project?.projectName}</Typography>
-      <Typography>{JSON.stringify(project)}</Typography>
+      {project?.taskGroups && <GroupList taskGroups={project?.taskGroups} />}
     </Container>
   )
 }
