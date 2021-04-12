@@ -13,36 +13,21 @@ import {
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
 import TaskList from "./taskList"
+import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 
 interface Props {
-  group: {
-    groupId: string
-    taskGroupName: string
-    tasks?: {
-      taskId: string
-      taskName: string
-      completed: boolean
-      comments: string[] | []
-      childTasks?: {
-        taskId: string
-        childTaskName: string
-        completed: boolean
-        comments: string[] | []
-      }[]
-    }[]
-  }
+  group: TaskGroupType
 }
 
 const Group: React.FC<Props> = ({ group }) => {
   const [openTasks, setOpenTasks] = useState(false)
   const handleExpandClick = () => {
     setOpenTasks(!openTasks)
-    console.log(openTasks)
   }
   return (
     <>
       <List>
-        <ListItem>
+        <ListItem key={group.groupId}>
           <ListItemText>{group.taskGroupName}</ListItemText>
           <ListItemIcon>
             <IconButton onClick={handleExpandClick}>

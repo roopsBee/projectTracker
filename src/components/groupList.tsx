@@ -1,23 +1,9 @@
 import React from "react"
 import Group from "./group"
+import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 
 interface Props {
-  taskGroups: {
-    groupId: string
-    taskGroupName: string
-    tasks?: {
-      taskId: string
-      taskName: string
-      completed: boolean
-      comments: string[] | []
-      childTasks?: {
-        taskId: string
-        childTaskName: string
-        completed: boolean
-        comments: string[] | []
-      }[]
-    }[]
-  }[]
+  taskGroups: TaskGroupType[]
 }
 
 const GroupList: React.FC<Props> = ({ taskGroups }) => {

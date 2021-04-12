@@ -6,22 +6,28 @@ import getProject from "./getProjectThunk"
 export type ProjectType = {
   projectName?: string
   projectId?: string
-  taskGroups?: {
-    groupId: string
-    taskGroupName: string
-    tasks?: {
-      taskId: string
-      taskName: string
-      completed: boolean
-      comments: string[] | []
-      childTasks?: {
-        taskId: string
-        childTaskName: string
-        completed: boolean
-        comments: string[] | []
-      }[]
-    }[]
-  }[]
+  taskGroups?: TaskGroupType[]
+}
+
+export type TaskGroupType = {
+  groupId: string
+  taskGroupName: string
+  tasks?: TaskType[]
+}
+
+export type TaskType = {
+  taskId: string
+  taskName: string
+  completed: boolean
+  comments: string[] | []
+  childTasks: ChildTaskType[]
+}
+
+export type ChildTaskType = {
+  childTaskId: string
+  childTaskName: string
+  completed: boolean
+  comments: string[] | []
 }
 
 interface ProjectState {

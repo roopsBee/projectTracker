@@ -1,19 +1,9 @@
 import React from "react"
 import Task from "./task"
+import { TaskType } from "../redux/projectSlice/projectSlice"
 
 interface Props {
-  tasks: {
-    taskId: string
-    taskName: string
-    completed: boolean
-    comments: string[] | []
-    childTasks?: {
-      taskId: string
-      childTaskName: string
-      completed: boolean
-      comments: string[] | []
-    }[]
-  }[]
+  tasks: TaskType[]
 }
 
 const TaskList: React.FC<Props> = ({ tasks }) => {

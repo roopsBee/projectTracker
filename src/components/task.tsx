@@ -1,22 +1,49 @@
-import { ListItem } from "@material-ui/core"
-import React from "react"
+import {
+  Container,
+  Typography,
+  List,
+  ListSubheader,
+  ListItem,
+  ListItemText,
+  Collapse,
+  ListItemIcon,
+  IconButton,
+} from "@material-ui/core"
+import React, { useState } from "react"
+import ChildTask from "./childTask"
+import ChildTaskList from "./childTaskList"
+import ExpandLess from "@material-ui/icons/ExpandLess"
+import ExpandMore from "@material-ui/icons/ExpandMore"
+import { TaskType } from "../redux/projectSlice/projectSlice"
+
 interface Props {
-  task?: {
-    taskId: string
-    taskName: string
-    completed: boolean
-    comments: string[] | []
-    childTasks?: {
-      taskId: string
-      childTaskName: string
-      completed: boolean
-      comments: string[] | []
-    }[]
-  }
+  task?: TaskType
 }
 
 const Task: React.FC<Props> = ({ task }) => {
-  return <ListItem>{task?.taskName}</ListItem>
+  const [openChildTasks, setOpenChildTasks] = useState(false)
+  const handleExpandClick = () => {
+    setOpenChildTasks(!openChildTasks)
+  }
+
+  return (
+    <>
+      <ListItem key={task?.taskId}>
+        <ListItemText>{task?.taskName}</ListItemText>
+        {task?.childTasks && task?.childTasks?.length > 0 && (
+          <ListItemIcon>
+            <IconButton onClick={handleExpandClick}>
+              <ExpandMore />
+            </IconButton>
+          </ListItemIcon>
+        )}
+      </ListItem>
+
+      <Collapse in={openChildTasks}>
+        {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
+      </Collapse>
+    </>
+  )
 }
 
 export default Task
