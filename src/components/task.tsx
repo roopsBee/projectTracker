@@ -30,12 +30,12 @@ const Task: React.FC<Props> = ({ task }) => {
   return (
     <>
       <Box paddingLeft={2}>
-        <ListItem key={task?.taskId}>
+        <ListItem dense key={task?.taskId}>
           <ListItemText>{task?.taskName}</ListItemText>
           {task?.childTasks && task?.childTasks?.length > 0 && (
             <ListItemIcon>
               <IconButton onClick={handleExpandClick}>
-                <ExpandMore />
+                {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
               </IconButton>
             </ListItemIcon>
           )}
