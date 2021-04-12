@@ -8,6 +8,7 @@ import {
   Collapse,
   ListItemIcon,
   IconButton,
+  Box,
 } from "@material-ui/core"
 import React, { useState } from "react"
 import ChildTask from "./childTask"
@@ -28,20 +29,22 @@ const Task: React.FC<Props> = ({ task }) => {
 
   return (
     <>
-      <ListItem key={task?.taskId}>
-        <ListItemText>{task?.taskName}</ListItemText>
-        {task?.childTasks && task?.childTasks?.length > 0 && (
-          <ListItemIcon>
-            <IconButton onClick={handleExpandClick}>
-              <ExpandMore />
-            </IconButton>
-          </ListItemIcon>
-        )}
-      </ListItem>
+      <Box paddingLeft={2}>
+        <ListItem key={task?.taskId}>
+          <ListItemText>{task?.taskName}</ListItemText>
+          {task?.childTasks && task?.childTasks?.length > 0 && (
+            <ListItemIcon>
+              <IconButton onClick={handleExpandClick}>
+                <ExpandMore />
+              </IconButton>
+            </ListItemIcon>
+          )}
+        </ListItem>
 
-      <Collapse in={openChildTasks}>
-        {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
-      </Collapse>
+        <Collapse in={openChildTasks}>
+          {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
+        </Collapse>
+      </Box>
     </>
   )
 }
