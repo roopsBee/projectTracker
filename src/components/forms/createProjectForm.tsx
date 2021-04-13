@@ -2,9 +2,9 @@ import React from "react"
 import { Formik, Form, Field } from "formik"
 import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
-import { useAppDispatch } from "../redux/reduxHooks"
-import createProjectSchema from "./yupSchemas/createProjectSchema"
-import createProject from "../redux/projectSlice/createProjectThunk"
+import { useAppDispatch } from "../../redux/reduxHooks"
+import createProjectSchema from "../yupSchemas/createProjectSchema"
+import createProject from "../../redux/projectSlice/createProjectThunk"
 
 interface Values {
   projectName: string

@@ -1,6 +1,6 @@
 import { Button, Popover } from "@material-ui/core"
 import React, { useState } from "react"
-import SignUpForm from "../../signUpForm"
+import SignUpForm from "../../forms/signUpForm"
 import useWindowResize from "../../../utils/useWindowResize"
 
 const AppBarSignUpButton: React.FC = () => {

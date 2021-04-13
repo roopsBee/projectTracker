@@ -1,6 +1,6 @@
 import { Button, Popover } from "@material-ui/core"
 import React, { useState } from "react"
-import LogInForm from "../../logInForm"
+import LogInForm from "../../forms/logInForm"
 import useWindowResize from "../../../utils/useWindowResize"
 
 const AppBarLoginOutButton: React.FC = () => {

@@ -1,7 +1,7 @@
 import { Popover, ListItem, ListItemText } from "@material-ui/core"
 import React, { useState } from "react"
 import useWindowResize from "../../../utils/useWindowResize"
-import CreateProjectForm from "../../createProjectForm"
+import CreateProjectForm from "../../forms/createProjectForm"
 
 const AppBarSignUpButton: React.FC = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
