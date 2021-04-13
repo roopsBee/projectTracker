@@ -1,4 +1,4 @@
-import { ListItem, Box } from "@material-ui/core"
+import { ListItem, Box, Divider } from "@material-ui/core"
 import React from "react"
 interface Props {
   childTask: {
@@ -11,11 +11,16 @@ interface Props {
 
 const ChildTask: React.FC<Props> = ({ childTask }) => {
   return (
-    <Box paddingLeft={2}>
-      <ListItem key={childTask.childTaskId}>
-        {childTask?.childTaskName}
-      </ListItem>
-    </Box>
+    <>
+      <Divider />
+      <Box paddingLeft={4}>
+        <Box marginBottom={0} height={59} clone>
+          <ListItem key={childTask.childTaskId}>
+            {childTask?.childTaskName}
+          </ListItem>
+        </Box>
+      </Box>
+    </>
   )
 }
 

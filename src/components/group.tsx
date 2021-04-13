@@ -29,23 +29,24 @@ const Group: React.FC<Props> = ({ group }) => {
   const handleExpandClick = () => {
     setOpenTasks(!openTasks)
   }
-  const theme = useTheme()
+  const isTasks = group?.tasks && group?.tasks?.length > 0
 
   return (
     <>
-      <Box marginY={1}>
-        <List
-          disablePadding
-          css={{ backgroundColor: theme.palette.background.paper }}
-        >
-          <ListItem dense key={group.groupId}>
-            <ListItemText>{group.taskGroupName}</ListItemText>
-            <ListItemIcon>
-              <IconButton onClick={handleExpandClick}>
-                {!openTasks ? <ExpandMore /> : <ExpandLess />}
-              </IconButton>
-            </ListItemIcon>
-          </ListItem>
+      <Box marginY={1} bgcolor="background.paper">
+        <List disablePadding>
+          <Box margin={0} height={59} clone>
+            <ListItem dense key={group.groupId}>
+              <ListItemText>{group.taskGroupName}</ListItemText>
+              {isTasks && (
+                <ListItemIcon>
+                  <IconButton onClick={handleExpandClick}>
+                    {!openTasks ? <ExpandMore /> : <ExpandLess />}
+                  </IconButton>
+                </ListItemIcon>
+              )}
+            </ListItem>
+          </Box>
           <Collapse in={openTasks}>
             {group?.tasks && <TaskList tasks={group?.tasks} />}
           </Collapse>

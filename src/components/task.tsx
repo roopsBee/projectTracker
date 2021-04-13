@@ -1,3 +1,6 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
+
 import {
   Container,
   Typography,
@@ -9,6 +12,7 @@ import {
   ListItemIcon,
   IconButton,
   Box,
+  Divider,
 } from "@material-ui/core"
 import React, { useState } from "react"
 import ChildTask from "./childTask"
@@ -27,24 +31,28 @@ const Task: React.FC<Props> = ({ task }) => {
     setOpenChildTasks(!openChildTasks)
   }
 
+  const isChildTasks = task?.childTasks && task?.childTasks?.length > 0
+
   return (
     <>
+      <Divider />
       <Box paddingLeft={2}>
-        <ListItem dense key={task?.taskId}>
-          <ListItemText>{task?.taskName}</ListItemText>
-          {task?.childTasks && task?.childTasks?.length > 0 && (
-            <ListItemIcon>
-              <IconButton onClick={handleExpandClick}>
-                {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
-              </IconButton>
-            </ListItemIcon>
-          )}
-        </ListItem>
-
-        <Collapse in={openChildTasks}>
-          {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
-        </Collapse>
+        <Box marginBottom={0} height={59} clone>
+          <ListItem dense key={task?.taskId}>
+            <ListItemText>{task?.taskName}</ListItemText>
+            {isChildTasks && (
+              <ListItemIcon>
+                <IconButton onClick={handleExpandClick}>
+                  {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
+                </IconButton>
+              </ListItemIcon>
+            )}
+          </ListItem>
+        </Box>
       </Box>
+      <Collapse in={openChildTasks}>
+        {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
+      </Collapse>
     </>
   )
 }
