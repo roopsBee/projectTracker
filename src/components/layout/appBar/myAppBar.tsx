@@ -19,21 +19,6 @@ import AppBarLogOutButton from "./appBarLogOutButton"
 import { useAppSelector } from "../../../redux/reduxHooks"
 
 const useStyles = makeStyles(theme => ({
-  appBar: {
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    background: "linear-gradient(to right,  #663399, #5B72FF)",
-  },
-  appBarShift: {
-    width: `calc(100% - ${DRAWER_WIDTH}px)`,
-    marginLeft: DRAWER_WIDTH,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
@@ -68,11 +53,7 @@ const MyAppBar: React.FC<Props> = ({
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn)
 
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}
-    >
+    <AppBar position="fixed" elevation={0}>
       <Toolbar>
         <IconButton
           color="inherit"
