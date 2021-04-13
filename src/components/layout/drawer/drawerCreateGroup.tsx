@@ -1,12 +1,18 @@
-import { Popover, ListItem, ListItemText } from "@material-ui/core"
+import {
+  Popover,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core"
+import AddIcon from "@material-ui/icons/Add"
 import React, { useState } from "react"
 import useWindowResize from "../../../utils/useWindowResize"
-import CreateProjectForm from "../../forms/createProjectForm"
+import CreateGroupForm from "../../forms/createGroupForm"
 
-const DrawerNewProject: React.FC = () => {
+const DrawerCreateGroup: React.FC = () => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
   const [width, height] = useWindowResize()
-  const id = isPopoverOpen ? "create-project-popover" : undefined
+  const id = isPopoverOpen ? "create-group-popover" : undefined
 
   const closePopover = () => {
     setPopoverOpen(false)
@@ -19,7 +25,10 @@ const DrawerNewProject: React.FC = () => {
   return (
     <>
       <ListItem dense button onClick={handleClick}>
-        <ListItemText>New Project</ListItemText>
+        <ListItemIcon>
+          <AddIcon />
+        </ListItemIcon>
+        <ListItemText>Create Group</ListItemText>
       </ListItem>
       <Popover
         anchorReference="anchorPosition"
@@ -34,10 +43,10 @@ const DrawerNewProject: React.FC = () => {
         id={id}
         open={isPopoverOpen}
       >
-        <CreateProjectForm closePopover={closePopover} />
+        <CreateGroupForm closePopover={closePopover} />
       </Popover>
     </>
   )
 }
 
-export default DrawerNewProject
+export default DrawerCreateGroup

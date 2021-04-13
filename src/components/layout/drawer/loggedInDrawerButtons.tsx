@@ -4,6 +4,7 @@ import DrawerNewProject from "./drawerNewProject"
 import { useAppSelector } from "../../../redux/reduxHooks"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
 import DrawerProjectList from "./drawerProjectList"
+import DrawerCreateGroup from "./drawerCreateGroup"
 
 const LoggedInDrawerButtons = () => {
   const projectsList = useAppSelector(state => state.projectState.projects)
@@ -12,10 +13,17 @@ const LoggedInDrawerButtons = () => {
   return (
     <>
       {url.indexOf("project") > -1 && (
-        <DrawerLink to="/" text="Projects" Icon={NavigateBeforeIcon} />
+        <>
+          <DrawerLink to="/" text="Projects" Icon={NavigateBeforeIcon} />
+          <DrawerCreateGroup />
+        </>
       )}
-      {url === "/" && <DrawerNewProject />}
-      {url === "/" && <DrawerProjectList />}
+      {url === "/" && (
+        <>
+          <DrawerNewProject />
+          <DrawerProjectList />
+        </>
+      )}
     </>
   )
 }
