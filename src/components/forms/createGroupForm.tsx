@@ -4,12 +4,17 @@ import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createGroupSchema from "./yupSchemas/createGroupSchema"
+import createGroupThunk from "../../redux/projectSlice/createGroupThunk"
 
 interface Values {
-  groupName: string
+  taskGroupName: string
 }
 
 function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
+  const url = typeof window !== "undefined" ? window.location.pathname : ""
+  const urlArr = url.split("/")
+  const projectId = urlArr[3]
+
   const dispatch = useAppDispatch()
 
   return (
@@ -25,13 +30,13 @@ function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
         <Grid item>
           <Formik
             initialValues={{
-              groupName: "",
+              taskGroupName: "",
             }}
             validationSchema={createGroupSchema}
-            onSubmit={async ({ groupName }: Values) => {
+            onSubmit={async ({ taskGroupName }: Values) => {
               try {
                 console.log("createGroup")
-
+                await dispatch(createGroupThunk({ taskGroupName, projectId }))
                 closePopover()
               } catch (error) {
                 console.log(error)
@@ -45,7 +50,7 @@ function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
                     <Field
                       component={TextField}
                       fullWidth
-                      name="groupName"
+                      name="taskGroupName"
                       label="Group Name"
                       placeholder="Name..."
                     />

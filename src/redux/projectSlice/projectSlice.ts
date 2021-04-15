@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import createProject from "./createProjectThunk"
 import getProjectList from "./getProjectListThunk"
 import getProject from "./getProjectThunk"
+import createGroup from "./createGroupThunk"
 
 export type ProjectType = {
   projectName?: string
@@ -47,6 +48,7 @@ export const projectSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      // create project
       .addCase(createProject.pending, (state, action) => {
         state.isLoading = true
         console.log("creating project...")
@@ -60,6 +62,7 @@ export const projectSlice = createSlice({
         state.isLoading = false
         console.log("rejected", action)
       })
+      // get project list
       .addCase(getProjectList.pending, (state, action) => {
         state.isLoading = true
         console.log("fetching project list...")
@@ -73,6 +76,7 @@ export const projectSlice = createSlice({
         state.isLoading = false
         console.log("rejected", action)
       })
+      // get project
       .addCase(getProject.pending, (state, action) => {
         state.isLoading = true
         console.log("fetching project...")
@@ -86,6 +90,24 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(getProject.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      // create group
+      .addCase(createGroup.pending, (state, action) => {
+        state.isLoading = true
+        console.log("Creating group...")
+      })
+      .addCase(createGroup.fulfilled, (state, { payload }) => {
+        const { groupId, projectId, taskGroupName, tasks } = payload
+        const project = state.projects?.find(
+          project => project.projectId === projectId
+        )
+        project?.taskGroups?.push({ groupId, tasks, taskGroupName })
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(createGroup.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })
