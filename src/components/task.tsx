@@ -1,11 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react"
-
 import {
-  Container,
-  Typography,
-  List,
-  ListSubheader,
   ListItem,
   ListItemText,
   Collapse,
@@ -13,9 +8,10 @@ import {
   IconButton,
   Box,
   Divider,
+  Badge,
 } from "@material-ui/core"
+import ListIcon from "@material-ui/icons/FormatListBulleted"
 import React, { useState } from "react"
-import ChildTask from "./childTask"
 import ChildTaskList from "./childTaskList"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
@@ -41,11 +37,16 @@ const Task: React.FC<Props> = ({ task }) => {
           <ListItem dense key={task?.taskId}>
             <ListItemText>{task?.taskName}</ListItemText>
             {isChildTasks && (
-              <ListItemIcon>
-                <IconButton onClick={handleExpandClick}>
-                  {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
-                </IconButton>
-              </ListItemIcon>
+              <>
+                <Badge badgeContent={task?.childTasks.length} color="secondary">
+                  <ListIcon />
+                </Badge>
+                <ListItemIcon>
+                  <IconButton onClick={handleExpandClick}>
+                    {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
+                  </IconButton>
+                </ListItemIcon>
+              </>
             )}
           </ListItem>
         </Box>

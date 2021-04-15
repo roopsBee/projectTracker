@@ -1,20 +1,18 @@
 /** @jsx jsx */
 import React, { useState } from "react"
 import {
-  Container,
-  Typography,
   List,
-  ListSubheader,
   ListItem,
   ListItemText,
   Collapse,
   ListItemIcon,
   IconButton,
-  useTheme,
   Box,
+  Badge,
 } from "@material-ui/core"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
+import ListIcon from "@material-ui/icons/FormatListBulleted"
 import { css, jsx } from "@emotion/react"
 
 import TaskList from "./taskList"
@@ -38,12 +36,18 @@ const Group: React.FC<Props> = ({ group }) => {
           <Box margin={0} height={59} clone>
             <ListItem dense key={group.groupId}>
               <ListItemText>{group.taskGroupName}</ListItemText>
+
               {isTasks && (
-                <ListItemIcon>
-                  <IconButton onClick={handleExpandClick}>
-                    {!openTasks ? <ExpandMore /> : <ExpandLess />}
-                  </IconButton>
-                </ListItemIcon>
+                <>
+                  <Badge badgeContent={group.tasks?.length} color="primary">
+                    <ListIcon />
+                  </Badge>
+                  <ListItemIcon>
+                    <IconButton onClick={handleExpandClick}>
+                      {!openTasks ? <ExpandMore /> : <ExpandLess />}
+                    </IconButton>
+                  </ListItemIcon>
+                </>
               )}
             </ListItem>
           </Box>
