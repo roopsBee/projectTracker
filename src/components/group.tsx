@@ -9,14 +9,15 @@ import {
   IconButton,
   Box,
   Badge,
+  Button,
 } from "@material-ui/core"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
 import ListIcon from "@material-ui/icons/FormatListBulleted"
 import { css, jsx } from "@emotion/react"
-
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
+import AddTaskButton from "./addTaskButton"
 
 interface Props {
   group: TaskGroupType
@@ -27,6 +28,7 @@ const Group: React.FC<Props> = ({ group }) => {
   const handleExpandClick = () => {
     setOpenTasks(!openTasks)
   }
+
   const isTasks = group?.tasks && group?.tasks?.length > 0
 
   return (
@@ -35,13 +37,15 @@ const Group: React.FC<Props> = ({ group }) => {
         <List disablePadding>
           <Box margin={0} height={59} clone>
             <ListItem dense key={group.groupId}>
+              <ListItemIcon>
+                <Badge badgeContent={group.tasks?.length} color="primary">
+                  <ListIcon />
+                </Badge>
+              </ListItemIcon>
               <ListItemText>{group.taskGroupName}</ListItemText>
-
+              <AddTaskButton groupId={group.groupId} />
               {isTasks && (
                 <>
-                  <Badge badgeContent={group.tasks?.length} color="primary">
-                    <ListIcon />
-                  </Badge>
                   <ListItemIcon>
                     <IconButton onClick={handleExpandClick}>
                       {!openTasks ? <ExpandMore /> : <ExpandLess />}
