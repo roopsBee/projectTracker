@@ -2,7 +2,7 @@ import React from "react"
 import { Formik, Form, Field } from "formik"
 import { Button, Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
-import signupSchema from "../yupSchemas/signupSchema"
+import signupSchema from "./yupSchemas/signupSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import signUpThunk from "../../redux/userSlice/signUpThunk"
 

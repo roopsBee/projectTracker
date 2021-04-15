@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik"
 import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
-import createGroupSchema from "../yupSchemas/createGroupSchema"
+import createGroupSchema from "./yupSchemas/createGroupSchema"
 
 interface Values {
   groupName: string
