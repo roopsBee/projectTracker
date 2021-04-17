@@ -4,6 +4,8 @@ import getProjectList from "./getProjectListThunk"
 import getProject from "./getProjectThunk"
 import createGroup from "./createGroupThunk"
 import createTask from "./createTaskThunk"
+import groupBuilder from "./groupBuilder"
+import taskBuilder from "./taskBuilder"
 
 export type ProjectType = {
   projectName?: string
@@ -32,7 +34,7 @@ export type ChildTaskType = {
   comments: string[] | []
 }
 
-interface ProjectState {
+export interface ProjectState {
   isLoading: boolean
   projects?: ProjectType[]
 }
@@ -94,60 +96,8 @@ export const projectSlice = createSlice({
         state.isLoading = false
         console.log("rejected", action)
       })
-      // create group
-      .addCase(createGroup.pending, (state, action) => {
-        state.isLoading = true
-        console.log("Creating group...")
-      })
-      .addCase(createGroup.fulfilled, (state, { payload }) => {
-        const { groupId, projectId, taskGroupName, tasks } = payload
-        const project = state.projects?.find(
-          project => project.projectId === projectId
-        )
-        project?.taskGroups?.push({ groupId, tasks, taskGroupName })
-        state.isLoading = false
-        console.log("fulfilled")
-      })
-      .addCase(createGroup.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
-      })
-
-      // create task
-      .addCase(createTask.pending, (state, action) => {
-        state.isLoading = true
-        console.log("Creating group...")
-      })
-      .addCase(createTask.fulfilled, (state, { payload }) => {
-        const {
-          projectId,
-          childTasks,
-          comments,
-          completed,
-          taskId,
-          taskName,
-          groupId,
-        } = payload
-
-        const group = state.projects
-          ?.find(project => project.projectId === projectId)
-          ?.taskGroups?.find(group => group.groupId === groupId)
-
-        group?.tasks?.push({
-          taskId,
-          childTasks,
-          comments,
-          taskName,
-          completed,
-        })
-
-        state.isLoading = false
-        console.log("fulfilled")
-      })
-      .addCase(createTask.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
-      })
+    taskBuilder(builder)
+    groupBuilder(builder)
   },
 })
 
