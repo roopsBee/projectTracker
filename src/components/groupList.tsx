@@ -10,7 +10,7 @@ const GroupList: React.FC<Props> = ({ taskGroups }) => {
   return (
     <>
       {taskGroups?.map(group => (
-        <Group group={group} />
+        <Group key={group.groupId} group={group} />
       ))}
     </>
   )

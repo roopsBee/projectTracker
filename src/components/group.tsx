@@ -53,7 +53,9 @@ const Group: React.FC<Props> = ({ group }) => {
             </ListItem>
           </Box>
           <Collapse in={openTasks}>
-            {group?.tasks && <TaskList tasks={group?.tasks} />}
+            {group?.tasks && (
+              <TaskList groupId={group.groupId} tasks={group?.tasks} />
+            )}
           </Collapse>
         </List>
       </Box>

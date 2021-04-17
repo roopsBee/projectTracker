@@ -5,15 +5,16 @@ import useWindowResize from "../utils/useWindowResize"
 import CreateTaskForm from "./forms/createTaskForm"
 import CreateChildTaskForm from "./forms/createChildTaskForm"
 
-type Props = group | task
+type Props = task | childTask
 
-interface group {
+interface task {
   type: "task"
   groupId: string
 }
-interface task {
+interface childTask {
   type: "childTask"
   taskId: string
+  groupId: string
 }
 
 const AddTaskButton: React.FC<Props> = props => {
@@ -53,6 +54,7 @@ const AddTaskButton: React.FC<Props> = props => {
         )}
         {props.type === "childTask" && (
           <CreateChildTaskForm
+            groupId={props.groupId}
             taskId={props.taskId}
             closePopover={closePopover}
           />

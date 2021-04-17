@@ -4,6 +4,7 @@ import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createChildTaskSchema from "./yupSchemas/createChildTaskSchema"
+import createChildTaskThunk from "../../redux/projectSlice/createChildTaskThunk"
 
 interface Values {
   childTaskName: string
@@ -12,9 +13,11 @@ interface Values {
 function CreateTaskForm({
   closePopover,
   taskId,
+  groupId,
 }: {
   closePopover: () => void
   taskId: string
+  groupId: string
 }) {
   const url = typeof window !== "undefined" ? window.location.pathname : ""
   const urlArr = url.split("/")
@@ -40,7 +43,14 @@ function CreateTaskForm({
             validationSchema={createChildTaskSchema}
             onSubmit={async ({ childTaskName }: Values) => {
               try {
-                console.log("createChildTask")
+                dispatch(
+                  createChildTaskThunk({
+                    childTaskName,
+                    groupId,
+                    taskId,
+                    projectId,
+                  })
+                )
                 closePopover()
               } catch (error) {
                 console.log(error)

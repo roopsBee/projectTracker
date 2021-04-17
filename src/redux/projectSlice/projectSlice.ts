@@ -6,6 +6,7 @@ import createGroup from "./createGroupThunk"
 import createTask from "./createTaskThunk"
 import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
+import createChildTask from "./createChildTaskThunk"
 
 export type ProjectType = {
   projectName?: string
@@ -93,6 +94,40 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(getProject.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      .addCase(createChildTask.pending, (state, action) => {
+        state.isLoading = true
+        console.log("Creating child task...")
+      })
+      .addCase(createChildTask.fulfilled, (state, { payload }) => {
+        const {
+          projectId,
+          childTaskId,
+          comments,
+          completed,
+          taskId,
+          childTaskName,
+          groupId,
+        } = payload
+
+        const task = state.projects
+          ?.find(project => project.projectId === projectId)
+          ?.taskGroups?.find(group => group.groupId === groupId)
+          ?.tasks?.find(task => task.taskId === taskId)
+
+        task?.childTasks.push({
+          childTaskName,
+          childTaskId,
+          completed,
+          comments,
+        })
+
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(createChildTask.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })

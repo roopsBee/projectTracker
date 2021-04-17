@@ -20,9 +20,10 @@ import AddTaskButton from "./addTaskButton"
 
 interface Props {
   task: TaskType
+  groupId: string
 }
 
-const Task: React.FC<Props> = ({ task }) => {
+const Task: React.FC<Props> = ({ task, groupId }) => {
   const [openChildTasks, setOpenChildTasks] = useState(false)
   const handleExpandClick = () => {
     setOpenChildTasks(!openChildTasks)
@@ -37,7 +38,11 @@ const Task: React.FC<Props> = ({ task }) => {
         <Box marginBottom={0} height={59} clone>
           <ListItem dense key={task?.taskId}>
             <ListItemText>{task?.taskName}</ListItemText>
-            <AddTaskButton type="childTask" taskId={task.taskId} />
+            <AddTaskButton
+              type="childTask"
+              taskId={task.taskId}
+              groupId={groupId}
+            />
             {isChildTasks && (
               <>
                 <ListItemIcon>

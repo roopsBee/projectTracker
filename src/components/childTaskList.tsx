@@ -15,7 +15,7 @@ const ChildTaskList: React.FC<Props> = ({ childTasks }) => {
   return (
     <>
       {childTasks?.map(childTask => (
-        <ChildTask childTask={childTask} />
+        <ChildTask key={childTask.childTaskId} childTask={childTask} />
       ))}
     </>
   )
