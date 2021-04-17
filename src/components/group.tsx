@@ -37,18 +37,15 @@ const Group: React.FC<Props> = ({ group }) => {
         <List disablePadding>
           <Box margin={0} height={59} clone>
             <ListItem dense key={group.groupId}>
-              <ListItemIcon>
-                <Badge badgeContent={group.tasks?.length} color="primary">
-                  <ListIcon />
-                </Badge>
-              </ListItemIcon>
               <ListItemText>{group.taskGroupName}</ListItemText>
               <AddTaskButton type="task" groupId={group.groupId} />
               {isTasks && (
                 <>
                   <ListItemIcon>
                     <IconButton onClick={handleExpandClick}>
-                      {!openTasks ? <ExpandMore /> : <ExpandLess />}
+                      <Badge badgeContent={group.tasks?.length} color="primary">
+                        {!openTasks ? <ExpandMore /> : <ExpandLess />}
+                      </Badge>
                     </IconButton>
                   </ListItemIcon>
                 </>

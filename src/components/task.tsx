@@ -36,20 +36,18 @@ const Task: React.FC<Props> = ({ task }) => {
       <Box paddingLeft={2}>
         <Box marginBottom={0} height={59} clone>
           <ListItem dense key={task?.taskId}>
-            {isChildTasks && (
-              <ListItemIcon>
-                <Badge badgeContent={task?.childTasks.length} color="primary">
-                  <ListIcon />
-                </Badge>
-              </ListItemIcon>
-            )}
             <ListItemText>{task?.taskName}</ListItemText>
             <AddTaskButton type="childTask" taskId={task.taskId} />
             {isChildTasks && (
               <>
                 <ListItemIcon>
                   <IconButton onClick={handleExpandClick}>
-                    {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
+                    <Badge
+                      badgeContent={task?.childTasks.length}
+                      color="primary"
+                    >
+                      {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
+                    </Badge>
                   </IconButton>
                 </ListItemIcon>
               </>
