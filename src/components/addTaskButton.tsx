@@ -3,8 +3,20 @@ import React, { useState } from "react"
 import AddCircleSharpIcon from "@material-ui/icons/AddCircleSharp"
 import useWindowResize from "../utils/useWindowResize"
 import CreateTaskForm from "./forms/createTaskForm"
+import CreateChildTaskForm from "./forms/createChildTaskForm"
 
-const AddTaskButton = ({ groupId }: { groupId: string }) => {
+type Props = group | task
+
+interface group {
+  type: "task"
+  groupId: string
+}
+interface task {
+  type: "childTask"
+  taskId: string
+}
+
+const AddTaskButton: React.FC<Props> = props => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
   const [width, height] = useWindowResize()
   const id = isPopoverOpen ? "add-task-popover" : undefined
@@ -16,7 +28,6 @@ const AddTaskButton = ({ groupId }: { groupId: string }) => {
   const handleClick = () => {
     setPopoverOpen(true)
   }
-
   return (
     <>
       <ListItemIcon>
@@ -37,7 +48,15 @@ const AddTaskButton = ({ groupId }: { groupId: string }) => {
         id={id}
         open={isPopoverOpen}
       >
-        <CreateTaskForm groupId={groupId} closePopover={closePopover} />
+        {props.type === "task" && (
+          <CreateTaskForm groupId={props.groupId} closePopover={closePopover} />
+        )}
+        {props.type === "childTask" && (
+          <CreateChildTaskForm
+            taskId={props.taskId}
+            closePopover={closePopover}
+          />
+        )}
       </Popover>
     </>
   )

@@ -16,9 +16,10 @@ import ChildTaskList from "./childTaskList"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
 import { TaskType } from "../redux/projectSlice/projectSlice"
+import AddTaskButton from "./addTaskButton"
 
 interface Props {
-  task?: TaskType
+  task: TaskType
 }
 
 const Task: React.FC<Props> = ({ task }) => {
@@ -42,8 +43,8 @@ const Task: React.FC<Props> = ({ task }) => {
                 </Badge>
               </ListItemIcon>
             )}
-
             <ListItemText>{task?.taskName}</ListItemText>
+            <AddTaskButton type="childTask" taskId={task.taskId} />
             {isChildTasks && (
               <>
                 <ListItemIcon>

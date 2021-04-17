@@ -43,7 +43,7 @@ const Group: React.FC<Props> = ({ group }) => {
                 </Badge>
               </ListItemIcon>
               <ListItemText>{group.taskGroupName}</ListItemText>
-              <AddTaskButton groupId={group.groupId} />
+              <AddTaskButton type="task" groupId={group.groupId} />
               {isTasks && (
                 <>
                   <ListItemIcon>
