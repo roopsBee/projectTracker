@@ -3,7 +3,7 @@ import logOut from "./logOutThunk"
 import login from "./loginThunk"
 import signUp from "./signUpThunk"
 
-interface UserState {
+export interface UserState {
   secret?: string | null
   userId?: string | null
   email?: string | null
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
         state.isLoggedIn = true
         console.log("fulfilled")
       })
-      .addCase(login.pending, (state, action) => {
+      .addCase(login.pending, state => {
         state.isLoggingIn = true
         console.log("logging in")
       })
@@ -51,7 +51,7 @@ export const userSlice = createSlice({
         state.isLoggedIn = true
         console.log("fulfilled")
       })
-      .addCase(signUp.pending, (state, action) => {
+      .addCase(signUp.pending, state => {
         state.isLoggingIn = true
         console.log("logging in")
       })
@@ -59,11 +59,11 @@ export const userSlice = createSlice({
         state.isLoggingIn = false
         console.log("rejected", action.error)
       })
-      .addCase(logOut.fulfilled, (state, action) => {
+      .addCase(logOut.fulfilled, state => {
         Object.assign(state, initialState)
         console.log("log out fulfilled")
       })
-      .addCase(logOut.pending, (state, action) => {
+      .addCase(logOut.pending, state => {
         state.isLoggingOut = true
         console.log("logging out")
       })
@@ -73,7 +73,5 @@ export const userSlice = createSlice({
       })
   },
 })
-
-export const {} = userSlice.actions
 
 export default userSlice.reducer

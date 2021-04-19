@@ -1,6 +1,5 @@
 import React from "react"
 import DrawerLink from "./drawerLink"
-import DrawerNewProject from "./drawerNewProject"
 import { useAppSelector } from "../../../redux/reduxHooks"
 
 const DrawerProjectList = () => {

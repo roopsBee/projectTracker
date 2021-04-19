@@ -2,11 +2,14 @@ import { createSlice } from "@reduxjs/toolkit"
 import createProject from "./createProjectThunk"
 import getProjectList from "./getProjectListThunk"
 import getProject from "./getProjectThunk"
-import createGroup from "./createGroupThunk"
-import createTask from "./createTaskThunk"
 import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
 import createChildTask from "./createChildTaskThunk"
+
+export interface ProjectState {
+  isLoading: boolean
+  projects?: ProjectType[]
+}
 
 export type ProjectType = {
   projectName?: string
@@ -35,11 +38,6 @@ export type ChildTaskType = {
   comments: string[] | []
 }
 
-export interface ProjectState {
-  isLoading: boolean
-  projects?: ProjectType[]
-}
-
 const initialState: ProjectState = { isLoading: false, projects: [] }
 
 export const projectSlice = createSlice({
@@ -53,7 +51,7 @@ export const projectSlice = createSlice({
   extraReducers: builder => {
     builder
       // create project
-      .addCase(createProject.pending, (state, action) => {
+      .addCase(createProject.pending, state => {
         state.isLoading = true
         console.log("creating project...")
       })
@@ -67,7 +65,7 @@ export const projectSlice = createSlice({
         console.log("rejected", action)
       })
       // get project list
-      .addCase(getProjectList.pending, (state, action) => {
+      .addCase(getProjectList.pending, state => {
         state.isLoading = true
         console.log("fetching project list...")
       })
@@ -81,7 +79,7 @@ export const projectSlice = createSlice({
         console.log("rejected", action)
       })
       // get project
-      .addCase(getProject.pending, (state, action) => {
+      .addCase(getProject.pending, state => {
         state.isLoading = true
         console.log("fetching project...")
       })
@@ -97,7 +95,7 @@ export const projectSlice = createSlice({
         state.isLoading = false
         console.log("rejected", action)
       })
-      .addCase(createChildTask.pending, (state, action) => {
+      .addCase(createChildTask.pending, state => {
         state.isLoading = true
         console.log("Creating child task...")
       })

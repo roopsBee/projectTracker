@@ -3,9 +3,10 @@ import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
 import { AppDispatch } from "../store"
 import getProjectListThunk from "../projectSlice/getProjectListThunk"
+import { UserState } from "./userSlice"
 
 const login = createAsyncThunk<
-  {},
+  UserState,
   { email: string; password: string },
   { dispatch: AppDispatch }
 >("users/login", async ({ email, password }, { dispatch }) => {

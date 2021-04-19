@@ -5,7 +5,7 @@ import createGroup from "./createGroupThunk"
 const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create group
   builder
-    .addCase(createGroup.pending, (state, action) => {
+    .addCase(createGroup.pending, state => {
       state.isLoading = true
       console.log("Creating group...")
     })

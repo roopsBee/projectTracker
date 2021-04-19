@@ -22,8 +22,8 @@ const AppBarSignUpButton: React.FC = () => {
       <Popover
         anchorReference="anchorPosition"
         anchorPosition={{
-          top: (typeof window !== "undefined" && height! / 2) || 0,
-          left: (typeof window !== "undefined" && width! / 2) || 0,
+          top: (typeof window !== "undefined" && height && height / 2) || 0,
+          left: (typeof window !== "undefined" && width && width / 2) || 0,
         }}
         transformOrigin={{
           vertical: "center",

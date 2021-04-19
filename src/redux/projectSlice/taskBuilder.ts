@@ -5,7 +5,7 @@ import createTask from "./createTaskThunk"
 const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task
   builder
-    .addCase(createTask.pending, (state, action) => {
+    .addCase(createTask.pending, state => {
       state.isLoading = true
       console.log("Creating group...")
     })

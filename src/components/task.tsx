@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/react"
 import {
   ListItem,
   ListItemText,
@@ -10,7 +8,6 @@ import {
   Divider,
   Badge,
 } from "@material-ui/core"
-import ListIcon from "@material-ui/icons/FormatListBulleted"
 import React, { useState } from "react"
 import ChildTaskList from "./childTaskList"
 import ExpandLess from "@material-ui/icons/ExpandLess"

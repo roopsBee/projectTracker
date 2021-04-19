@@ -1,6 +1,4 @@
 import React from "react"
-
-// @ts-ignore
 import clsx from "clsx"
 import MenuIcon from "@material-ui/icons/Menu"
 import {
@@ -10,7 +8,6 @@ import {
   AppBar,
   makeStyles,
 } from "@material-ui/core"
-import { DRAWER_WIDTH } from "../../../config"
 import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
@@ -45,7 +42,6 @@ interface Props {
 const MyAppBar: React.FC<Props> = ({
   drawerOpen,
   handleDrawerOpen,
-  siteTitle,
   handleDarkModeSwitch,
   isDarkMode,
 }) => {

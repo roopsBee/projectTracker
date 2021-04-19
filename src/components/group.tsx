@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import React, { useState } from "react"
 import {
   List,
@@ -9,12 +8,9 @@ import {
   IconButton,
   Box,
   Badge,
-  Button,
 } from "@material-ui/core"
 import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
-import ListIcon from "@material-ui/icons/FormatListBulleted"
-import { css, jsx } from "@emotion/react"
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 import AddTaskButton from "./addTaskButton"

@@ -7,7 +7,7 @@ type GetProjectListReturnType = {
 }[]
 
 const getProjectList = createAsyncThunk<
-  {}[] | undefined,
+  GetProjectListReturnType | undefined,
   { userId: string; secret: string }
 >("project/getProjectList", async ({ userId, secret }, { rejectWithValue }) => {
   if (userId && secret) {

@@ -5,10 +5,14 @@ import faunaClient from "../../utils/faunaClient"
 type ProjectCreateReturnType = {
   projectId: string
   projectName: string
-  taskgroups: []
+  taskgroups?: []
 }
 
-const createProject = createAsyncThunk<{}, string, { state: RootState }>(
+const createProject = createAsyncThunk<
+  ProjectCreateReturnType,
+  string,
+  { state: RootState }
+>(
   "project/createProject",
   async (projectName, { getState, rejectWithValue }) => {
     const { userId, secret } = getState().user
