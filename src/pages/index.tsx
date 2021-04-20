@@ -9,9 +9,9 @@ const IndexPage = () => {
       <SEO title="Home" />
       <Box height="100%" clone>
         <Grid container direction="column" justify="center" alignItems="center">
-          <Typography align="center" variant="h3" component="h2">
+          <Typography align="center" variant="h3" component="h1">
             <Box letterSpacing={4} fontWeight="bold" fontStyle="italic">
-              <Typography>Index</Typography>
+              Project Tracker
             </Box>
           </Typography>
         </Grid>
