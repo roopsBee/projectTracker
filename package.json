@@ -32,6 +32,7 @@
     "gatsby-plugin-webfonts": "^2.0.0",
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-transformer-sharp": "^3.0.0",
+    "material-ui-popup-state": "^1.8.2",
     "netlify-cli": "^3.13.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -42,6 +43,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.2.0",
     "@types/react-helmet": "^6.1.0",
     "@types/react-redux": "^7.1.16",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
