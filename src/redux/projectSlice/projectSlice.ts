@@ -27,7 +27,7 @@ export type TaskType = {
   taskId: string
   taskName: string
   completed: boolean
-  comments: string[] | []
+  comments: CommentType[] | []
   childTasks: ChildTaskType[]
 }
 
@@ -35,7 +35,12 @@ export type ChildTaskType = {
   childTaskId: string
   childTaskName: string
   completed: boolean
-  comments: string[] | []
+  comments: CommentType[] | []
+}
+
+export type CommentType = {
+  text?: string
+  created?: string
 }
 
 const initialState: ProjectState = { isLoading: false, projects: [] }

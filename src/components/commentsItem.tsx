@@ -6,6 +6,7 @@ import {
   IconButton,
   Typography,
   Popover,
+  Grid,
 } from "@material-ui/core"
 import React from "react"
 import CommentIcon from "@material-ui/icons/Comment"
@@ -37,6 +38,8 @@ const CommentsItem: React.FC<Props> = props => {
     popupId: props.type === "task" ? props.task.taskId : props.task.childTaskId,
   })
 
+  const isComment = props.task.comments[props.task.comments.length - 1]
+
   return (
     <>
       <ListItem css={{ marginBottom: 0, paddingTop: 0 }}>
@@ -45,9 +48,18 @@ const CommentsItem: React.FC<Props> = props => {
             <CommentIcon />
           </IconButton>
         </ListItemIcon>
-        <Typography variant="body2">
-          {props.task.comments[props.task.comments.length - 1]}
-        </Typography>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="caption" css={{ fontStyle: "italic" }}>
+              {isComment && isComment.created}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body2">
+              {isComment && isComment.text}
+            </Typography>
+          </Grid>
+        </Grid>
       </ListItem>
       <Popover
         {...bindPopover(popupState)}
@@ -57,11 +69,21 @@ const CommentsItem: React.FC<Props> = props => {
           left: (typeof window !== "undefined" && width && width / 2) || 0,
         }}
         transformOrigin={{
-          vertical: "top",
+          vertical: "center",
           horizontal: "center",
         }}
       >
-        <CommentsPopover />
+        <CommentsPopover
+          comments={props.task.comments}
+          taskId={
+            props.type === "task" ? props.task.taskId : props.task.childTaskId
+          }
+          taskName={
+            props.type === "task"
+              ? props.task.taskName
+              : props.task.childTaskName
+          }
+        />
       </Popover>
     </>
   )

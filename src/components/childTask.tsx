@@ -1,12 +1,8 @@
 import { ListItem, Box, Divider, ListItemText } from "@material-ui/core"
 import React from "react"
+import { ChildTaskType } from "../redux/projectSlice/projectSlice"
 interface Props {
-  childTask: {
-    childTaskId: string
-    childTaskName: string
-    completed: boolean
-    comments: string[] | []
-  }
+  childTask: ChildTaskType
 }
 
 const ChildTask: React.FC<Props> = ({ childTask }) => {
