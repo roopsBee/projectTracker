@@ -5,6 +5,7 @@ import getProject from "./getProjectThunk"
 import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
 import createChildTask from "./createChildTaskThunk"
+import createComment from "./createCommentThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -20,14 +21,14 @@ export type ProjectType = {
 export type TaskGroupType = {
   groupId: string
   taskGroupName: string
-  tasks?: TaskType[]
+  tasks: TaskType[]
 }
 
 export type TaskType = {
   taskId: string
   taskName: string
   completed: boolean
-  comments: CommentType[] | []
+  comments: CommentType[]
   childTasks: ChildTaskType[]
 }
 
@@ -35,11 +36,11 @@ export type ChildTaskType = {
   childTaskId: string
   childTaskName: string
   completed: boolean
-  comments: CommentType[] | []
+  comments: CommentType[]
 }
 
 export type CommentType = {
-  text?: string
+  text: string
   created?: string
 }
 
@@ -131,6 +132,37 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createChildTask.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      .addCase(createComment.pending, state => {
+        state.isLoading = true
+        console.log("Adding comment...")
+      })
+      .addCase(createComment.fulfilled, (state, { payload }) => {
+        const { comment, taskId, projectId } = payload
+
+        state.projects
+          ?.find(project => project.projectId === projectId)
+          ?.taskGroups?.find(group =>
+            group.tasks.find(task => {
+              if (task.taskId === taskId) {
+                task.comments.push(comment)
+                return true
+              }
+              task.childTasks.find(childTask => {
+                if (childTask.childTaskId === taskId) {
+                  childTask.comments.push(comment)
+                  return true
+                }
+              })
+            })
+          )
+
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(createComment.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })

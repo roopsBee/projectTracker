@@ -10,13 +10,21 @@ import {
 } from "@material-ui/core"
 import React from "react"
 import { CommentType } from "../redux/projectSlice/projectSlice"
+import CreateCommentForm from "./forms/createCommentForm"
+
 interface Props {
   comments: CommentType[]
   taskId: string
   taskName: string
+  closePopover: () => void
 }
 
-const CommentsPopover: React.FC<Props> = ({ comments, taskId, taskName }) => {
+const CommentsPopover: React.FC<Props> = ({
+  comments,
+  taskId,
+  taskName,
+  closePopover,
+}) => {
   return (
     <Container maxWidth="lg">
       <Typography align="center" variant="h5" css={{ paddingTop: 8 }}>
@@ -41,6 +49,7 @@ const CommentsPopover: React.FC<Props> = ({ comments, taskId, taskName }) => {
           </>
         ))}
       </List>
+      <CreateCommentForm taskId={taskId} closePopover={closePopover} />
     </Container>
   )
 }

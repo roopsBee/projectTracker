@@ -24,7 +24,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
         ?.find(project => project.projectId === projectId)
         ?.taskGroups?.find(group => group.groupId === groupId)
 
-      group?.tasks?.push({
+      group?.tasks.push({
         taskId,
         childTasks,
         comments,
