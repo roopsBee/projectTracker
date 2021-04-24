@@ -1,6 +1,8 @@
 import { ListItem, Box, Divider, ListItemText } from "@material-ui/core"
 import React from "react"
 import { ChildTaskType } from "../redux/projectSlice/projectSlice"
+import CommentsItem from "./commentsItem"
+
 interface Props {
   childTask: ChildTaskType
 }
@@ -17,6 +19,7 @@ const ChildTask: React.FC<Props> = ({ childTask }) => {
             </ListItemText>
           </ListItem>
         </Box>
+        <CommentsItem type="childTask" task={childTask} />
       </Box>
     </>
   )

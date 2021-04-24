@@ -62,6 +62,7 @@ const CommentsItem: React.FC<Props> = props => {
         </Grid>
       </ListItem>
       <Popover
+        css={{ "& .MuiPopover-paper": { minWidth: "70%" } }}
         anchorReference="anchorPosition"
         anchorPosition={{
           top: (typeof window !== "undefined" && height && height / 2) || 0,

@@ -26,7 +26,7 @@ function CreateTaskForm({
   const dispatch = useAppDispatch()
 
   return (
-    <Container>
+    <Container disableGutters>
       <Formik
         initialValues={{
           text: "",
