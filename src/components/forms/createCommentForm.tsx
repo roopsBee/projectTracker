@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
 import React from "react"
-import { Formik, Form, Field, ErrorMessage } from "formik"
-import { Button, Container, Grid, TextareaAutosize } from "@material-ui/core"
+import { Formik, Form, Field } from "formik"
+import { Button, Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createCommentSchema from "./yupSchemas/createCommentSchema"
