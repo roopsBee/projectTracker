@@ -18,6 +18,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore"
 import { TaskType } from "../redux/projectSlice/projectSlice"
 import AddTaskButton from "./addTaskButton"
 import CommentsItem from "./commentsItem"
+import TaskDoneCheckBox from "./taskDoneCheckBox"
 
 interface Props {
   task: TaskType
@@ -63,6 +64,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
           </ListItem>
         </Box>
         <CommentsItem type="task" task={task} />
+        <TaskDoneCheckBox task={task} type="task" />
       </Box>
       <Collapse in={openChildTasks}>
         {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}

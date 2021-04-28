@@ -6,6 +6,7 @@ import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
 import createChildTask from "./createChildTaskThunk"
 import createComment from "./createCommentThunk"
+import toggleTaskDone from "./toggleTaskDoneThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -163,6 +164,38 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createComment.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      //toggle task
+      .addCase(toggleTaskDone.pending, state => {
+        state.isLoading = true
+        console.log("Toggling task completion...")
+      })
+      .addCase(toggleTaskDone.fulfilled, (state, { payload }) => {
+        const { completed, taskId, projectId } = payload
+
+        state.projects
+          ?.find(project => project.projectId === projectId)
+          ?.taskGroups?.find(group =>
+            group.tasks.find(task => {
+              if (task.taskId === taskId) {
+                task.completed = completed
+                return true
+              }
+              task.childTasks.find(childTask => {
+                if (childTask.childTaskId === taskId) {
+                  childTask.completed = completed
+                  return true
+                }
+              })
+            })
+          )
+
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(toggleTaskDone.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })
