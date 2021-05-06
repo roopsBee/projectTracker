@@ -13,7 +13,8 @@ import ExpandLess from "@material-ui/icons/ExpandLess"
 import ExpandMore from "@material-ui/icons/ExpandMore"
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
-import AddTaskButton from "./addTaskButton"
+import MenuItemButton from "./menuItemButton"
+import AddTaskMenuItem from "./addTaskMenuItem"
 
 interface Props {
   group: TaskGroupType
@@ -33,8 +34,17 @@ const Group: React.FC<Props> = ({ group }) => {
         <List disablePadding>
           <Box margin={0} height={59} clone>
             <ListItem dense key={group.groupId}>
+              <MenuItemButton>
+                {handleClose => (
+                  <AddTaskMenuItem
+                    handleClose={handleClose}
+                    type="task"
+                    groupId={group.groupId}
+                  />
+                )}
+              </MenuItemButton>
               <ListItemText>{group.taskGroupName}</ListItemText>
-              <AddTaskButton type="task" groupId={group.groupId} />
+              {/* <AddTaskButton type="task" groupId={group.groupId} /> */}
               {isTasks && (
                 <>
                   <ListItemIcon>
