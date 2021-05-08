@@ -32,7 +32,7 @@ const AddTaskButton: React.FC<Props> = props => {
   return (
     <>
       <MenuItem dense onClick={handleClick}>
-        Add Task
+        {props.type === "task" ? "Add Task" : "Add Sub-Task"}
       </MenuItem>
       <Popover
         anchorReference="anchorPosition"
