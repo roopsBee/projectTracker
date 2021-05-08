@@ -10,12 +10,12 @@ import {
 } from "@material-ui/core"
 import React, { useState } from "react"
 import ChildTaskList from "./childTaskList"
-
 import { TaskType } from "../redux/projectSlice/projectSlice"
-import AddTaskButton from "./addTaskButton"
 import CommentsItem from "./commentsItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
 import ExpandIconButton from "./expandIconButton"
+import MenuItemButton from "./menuItemButton"
+import AddTaskMenuItem from "./addTaskMenuItem"
 
 interface Props {
   task: TaskType
@@ -36,14 +36,21 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
       <Box paddingLeft={2}>
         <Box marginBottom={0} height={59} clone>
           <ListItem dense key={task?.taskId}>
+            <MenuItemButton>
+              {handleClose => (
+                <div>
+                  <AddTaskMenuItem
+                    handleClose={handleClose}
+                    type="childTask"
+                    groupId={groupId}
+                    taskId={task.taskId}
+                  />
+                </div>
+              )}
+            </MenuItemButton>
             <ListItemText>
               <Typography variant="subtitle1">{task?.taskName}</Typography>
             </ListItemText>
-            <AddTaskButton
-              type="childTask"
-              taskId={task.taskId}
-              groupId={groupId}
-            />
             {isChildTasks && (
               <ExpandIconButton
                 handleClick={handleExpandClick}
