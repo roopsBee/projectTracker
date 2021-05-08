@@ -4,21 +4,18 @@ import {
   ListItem,
   ListItemText,
   Collapse,
-  ListItemIcon,
-  IconButton,
   Box,
   Divider,
-  Badge,
   Typography,
 } from "@material-ui/core"
 import React, { useState } from "react"
 import ChildTaskList from "./childTaskList"
-import ExpandLess from "@material-ui/icons/ExpandLess"
-import ExpandMore from "@material-ui/icons/ExpandMore"
+
 import { TaskType } from "../redux/projectSlice/projectSlice"
 import AddTaskButton from "./addTaskButton"
 import CommentsItem from "./commentsItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
+import ExpandIconButton from "./expandIconButton"
 
 interface Props {
   task: TaskType
@@ -48,18 +45,11 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
               groupId={groupId}
             />
             {isChildTasks && (
-              <>
-                <ListItemIcon>
-                  <IconButton onClick={handleExpandClick}>
-                    <Badge
-                      badgeContent={task?.childTasks.length}
-                      color="primary"
-                    >
-                      {!openChildTasks ? <ExpandMore /> : <ExpandLess />}
-                    </Badge>
-                  </IconButton>
-                </ListItemIcon>
-              </>
+              <ExpandIconButton
+                handleClick={handleExpandClick}
+                open={openChildTasks}
+                badgeContent={task.childTasks.length}
+              />
             )}
           </ListItem>
         </Box>

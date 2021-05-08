@@ -1,20 +1,10 @@
 import React, { useState } from "react"
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
-  ListItemIcon,
-  IconButton,
-  Box,
-  Badge,
-} from "@material-ui/core"
-import ExpandLess from "@material-ui/icons/ExpandLess"
-import ExpandMore from "@material-ui/icons/ExpandMore"
+import { List, ListItem, ListItemText, Collapse, Box } from "@material-ui/core"
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 import MenuItemButton from "./menuItemButton"
 import AddTaskMenuItem from "./addTaskMenuItem"
+import ExpandIconButton from "./expandIconButton"
 
 interface Props {
   group: TaskGroupType
@@ -44,17 +34,12 @@ const Group: React.FC<Props> = ({ group }) => {
                 )}
               </MenuItemButton>
               <ListItemText>{group.taskGroupName}</ListItemText>
-              {/* <AddTaskButton type="task" groupId={group.groupId} /> */}
               {isTasks && (
-                <>
-                  <ListItemIcon>
-                    <IconButton onClick={handleExpandClick}>
-                      <Badge badgeContent={group.tasks?.length} color="primary">
-                        {!openTasks ? <ExpandMore /> : <ExpandLess />}
-                      </Badge>
-                    </IconButton>
-                  </ListItemIcon>
-                </>
+                <ExpandIconButton
+                  handleClick={handleExpandClick}
+                  open={openTasks}
+                  badgeContent={group.tasks?.length}
+                />
               )}
             </ListItem>
           </Box>
