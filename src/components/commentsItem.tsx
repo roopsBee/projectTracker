@@ -1,44 +1,15 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import {
-  ListItem,
-  ListItemIcon,
-  IconButton,
-  Typography,
-  Popover,
-  Grid,
-} from "@material-ui/core"
-import React, { useState } from "react"
-import CommentIcon from "@material-ui/icons/Comment"
-import { TaskType, ChildTaskType } from "../redux/projectSlice/projectSlice"
-import useWindowResize from "../utils/useWindowResize"
-import CommentsPopover from "./commentsPopover"
+import { ListItem, Typography, Grid } from "@material-ui/core"
+import React from "react"
+import { CommentType } from "../redux/projectSlice/projectSlice"
 
-type Props = task | childTask
-
-interface task {
-  type: "task"
-  task: TaskType
-}
-interface childTask {
-  type: "childTask"
-  task: ChildTaskType
+interface Props {
+  comments: CommentType[]
 }
 
-const CommentsItem: React.FC<Props> = props => {
-  const [isPopoverOpen, setPopoverOpen] = useState(false)
-  const [width, height] = useWindowResize()
-  const id = isPopoverOpen ? "add-task-popover" : undefined
-
-  const isComment = props.task.comments[props.task.comments.length - 1]
-
-  const closePopover = () => {
-    setPopoverOpen(false)
-  }
-
-  const handleClick = () => {
-    setPopoverOpen(true)
-  }
+const CommentsItem: React.FC<Props> = ({ comments }) => {
+  const isComment = comments && comments[comments.length - 1]
 
   return (
     <>
@@ -56,33 +27,6 @@ const CommentsItem: React.FC<Props> = props => {
           </Grid>
         </Grid>
       </ListItem>
-      <Popover
-        css={{ "& .MuiPopover-paper": { minWidth: "70%" } }}
-        anchorReference="anchorPosition"
-        anchorPosition={{
-          top: (typeof window !== "undefined" && height && height / 2) || 0,
-          left: (typeof window !== "undefined" && width && width / 2) || 0,
-        }}
-        transformOrigin={{
-          vertical: "center",
-          horizontal: "center",
-        }}
-        id={id}
-        open={isPopoverOpen}
-      >
-        <CommentsPopover
-          closePopover={closePopover}
-          comments={props.task.comments}
-          taskId={
-            props.type === "task" ? props.task.taskId : props.task.childTaskId
-          }
-          taskName={
-            props.type === "task"
-              ? props.task.taskName
-              : props.task.childTaskName
-          }
-        />
-      </Popover>
     </>
   )
 }

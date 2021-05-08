@@ -66,7 +66,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
             )}
           </ListItem>
         </Box>
-        <CommentsItem type="task" task={task} />
+        <CommentsItem comments={task.comments} />
         <TaskDoneCheckBox task={task} type="task" />
       </Box>
       <Collapse in={openChildTasks}>
