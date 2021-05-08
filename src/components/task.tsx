@@ -16,6 +16,7 @@ import TaskDoneCheckBox from "./taskDoneCheckBox"
 import ExpandIconButton from "./expandIconButton"
 import MenuItemButton from "./menuItemButton"
 import AddTaskMenuItem from "./addTaskMenuItem"
+import CommentsMenuItem from "./commentsMenuItem"
 
 interface Props {
   task: TaskType
@@ -44,6 +45,11 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
                     type="childTask"
                     groupId={groupId}
                     taskId={task.taskId}
+                  />
+                  <CommentsMenuItem
+                    type="task"
+                    handleClose={handleClose}
+                    task={task}
                   />
                 </div>
               )}

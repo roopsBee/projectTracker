@@ -1,20 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import {
-  ListItem,
-  ListItemIcon,
-  IconButton,
-  Typography,
-  Popover,
-  Grid,
-} from "@material-ui/core"
+import { Popover, MenuItem } from "@material-ui/core"
 import React, { useState } from "react"
-import CommentIcon from "@material-ui/icons/Comment"
 import { TaskType, ChildTaskType } from "../redux/projectSlice/projectSlice"
 import useWindowResize from "../utils/useWindowResize"
 import CommentsPopover from "./commentsPopover"
 
-type Props = task | childTask
+type Props = (task | childTask) & { handleClose: () => void }
 
 interface task {
   type: "task"
@@ -25,12 +17,10 @@ interface childTask {
   task: ChildTaskType
 }
 
-const CommentsItem: React.FC<Props> = props => {
+const CommentsMenuItem: React.FC<Props> = props => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
   const [width, height] = useWindowResize()
   const id = isPopoverOpen ? "add-task-popover" : undefined
-
-  const isComment = props.task.comments[props.task.comments.length - 1]
 
   const closePopover = () => {
     setPopoverOpen(false)
@@ -38,24 +28,14 @@ const CommentsItem: React.FC<Props> = props => {
 
   const handleClick = () => {
     setPopoverOpen(true)
+    props.handleClose()
   }
 
   return (
     <>
-      <ListItem css={{ marginBottom: 0, paddingTop: 0 }}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography variant="caption" css={{ fontStyle: "italic" }}>
-              {isComment && isComment.created}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body2">
-              {isComment && isComment.text}
-            </Typography>
-          </Grid>
-        </Grid>
-      </ListItem>
+      <MenuItem dense onClick={handleClick}>
+        Comments
+      </MenuItem>
       <Popover
         css={{ "& .MuiPopover-paper": { minWidth: "70%" } }}
         anchorReference="anchorPosition"
@@ -87,4 +67,4 @@ const CommentsItem: React.FC<Props> = props => {
   )
 }
 
-export default CommentsItem
+export default CommentsMenuItem
