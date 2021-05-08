@@ -5,6 +5,7 @@ import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 import MenuItemButton from "./menuItemButton"
 import AddTaskMenuItem from "./addTaskMenuItem"
 import ExpandIconButton from "./expandIconButton"
+import EditGroupNameMenuItem from "./editGroupNameMenuItem"
 
 interface Props {
   group: TaskGroupType
@@ -26,11 +27,17 @@ const Group: React.FC<Props> = ({ group }) => {
             <ListItem dense key={group.groupId}>
               <MenuItemButton>
                 {handleClose => (
-                  <AddTaskMenuItem
-                    handleClose={handleClose}
-                    type="task"
-                    groupId={group.groupId}
-                  />
+                  <div>
+                    <AddTaskMenuItem
+                      handleClose={handleClose}
+                      type="task"
+                      groupId={group.groupId}
+                    />
+                    <EditGroupNameMenuItem
+                      handleClose={handleClose}
+                      group={group}
+                    />
+                  </div>
                 )}
               </MenuItemButton>
               <ListItemText>{group.taskGroupName}</ListItemText>
