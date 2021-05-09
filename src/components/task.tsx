@@ -17,6 +17,7 @@ import ExpandIconButton from "./expandIconButton"
 import MenuItemButton from "./menuItemButton"
 import AddTaskMenuItem from "./addTaskMenuItem"
 import CommentsMenuItem from "./commentsMenuItem"
+import EditTaskNameMenuItem from "./editTaskNameMenuItem"
 
 interface Props {
   task: TaskType
@@ -51,6 +52,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
                     handleClose={handleClose}
                     task={task}
                   />
+                  <EditTaskNameMenuItem handleClose={handleClose} task={task} />
                 </div>
               )}
             </MenuItemButton>
