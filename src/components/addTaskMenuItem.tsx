@@ -1,8 +1,7 @@
-import { Popover, MenuItem } from "@material-ui/core"
 import React, { useState } from "react"
-import useWindowResize from "../utils/useWindowResize"
 import CreateTaskForm from "./forms/createTaskForm"
 import CreateChildTaskForm from "./forms/createChildTaskForm"
+import MenuItemPopover from "./menuItemPopover"
 
 type Props = (task | childTask) & { handleClose: () => void }
 
@@ -18,8 +17,6 @@ interface childTask {
 
 const AddTaskButton: React.FC<Props> = props => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
-  const [width, height] = useWindowResize()
-  const id = isPopoverOpen ? "add-task-popover" : undefined
 
   const closePopover = () => {
     setPopoverOpen(false)
@@ -29,23 +26,14 @@ const AddTaskButton: React.FC<Props> = props => {
     setPopoverOpen(true)
     props.handleClose()
   }
+
   return (
     <>
-      <MenuItem dense onClick={handleClick}>
-        {props.type === "task" ? "Add Task" : "Add Sub-Task"}
-      </MenuItem>
-      <Popover
-        anchorReference="anchorPosition"
-        anchorPosition={{
-          top: (typeof window !== "undefined" && height && height / 2) || 0,
-          left: (typeof window !== "undefined" && width && width / 2) || 0,
-        }}
-        transformOrigin={{
-          vertical: "center",
-          horizontal: "center",
-        }}
-        id={id}
+      <MenuItemPopover
+        title={props.type === "task" ? "Create Task" : "Create Sub-Task"}
+        popoverId="create-task-popover"
         open={isPopoverOpen}
+        onClick={handleClick}
       >
         {props.type === "task" && (
           <CreateTaskForm groupId={props.groupId} closePopover={closePopover} />
@@ -57,7 +45,7 @@ const AddTaskButton: React.FC<Props> = props => {
             closePopover={closePopover}
           />
         )}
-      </Popover>
+      </MenuItemPopover>
     </>
   )
 }
