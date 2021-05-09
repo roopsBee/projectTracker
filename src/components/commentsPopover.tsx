@@ -32,9 +32,9 @@ const CommentsPopover: React.FC<Props> = ({
       </Typography>
       <List>
         {comments.map((comment, i) => (
-          <>
+          <div key={i}>
             <Divider />
-            <ListItem key={i} css={{ margin: 0 }}>
+            <ListItem css={{ margin: 0 }}>
               <Grid container>
                 <Grid item xs={12}>
                   <Typography variant="caption" css={{ fontStyle: "italic" }}>
@@ -46,7 +46,7 @@ const CommentsPopover: React.FC<Props> = ({
                 </Grid>
               </Grid>
             </ListItem>
-          </>
+          </div>
         ))}
       </List>
       <CreateCommentForm taskId={taskId} closePopover={closePopover} />

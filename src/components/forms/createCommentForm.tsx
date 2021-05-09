@@ -52,7 +52,6 @@ function CreateTaskForm({
                 <Field
                   component={TextField}
                   variant="outlined"
-                  dense
                   multiline
                   css={{ width: "100%" }}
                   fullWidth
