@@ -13,6 +13,7 @@ import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
 import AppBarSignUpButton from "./appBarSignUpButton"
 import { useAppSelector } from "../../../redux/reduxHooks"
+import useIsMounted from "../../../utils/useIsMounted"
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -46,6 +47,7 @@ const MyAppBar: React.FC<Props> = ({
 }) => {
   const classes = useStyles()
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn)
+  const isMounted = useIsMounted()
 
   return (
     <AppBar position="fixed" elevation={0}>
@@ -72,7 +74,7 @@ const MyAppBar: React.FC<Props> = ({
           <Brightness7Icon />
         )}
         <AppBarLoginOutButton />
-        {!isLoggedIn && <AppBarSignUpButton />}
+        {isMounted && !isLoggedIn && <AppBarSignUpButton />}
       </Toolbar>
     </AppBar>
   )

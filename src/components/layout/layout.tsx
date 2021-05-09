@@ -9,7 +9,6 @@ import {
   useMediaQuery,
 } from "@material-ui/core"
 import { Toolbar } from "@material-ui/core"
-
 import Header from "./header"
 import Footer from "./footer"
 import theme from "./theme"

@@ -9,7 +9,7 @@ const AppBarLoginOutButton: React.FC = () => {
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn)
   const dispatch = useAppDispatch()
   const [isPopoverOpen, setPopoverOpen] = useState(false)
-  const [isClient, setClient] = useState(false)
+  const [isMounted, setMounted] = useState(false)
   const [width, height] = useWindowResize()
   const id = isPopoverOpen ? "log-in-popover" : undefined
 
@@ -22,12 +22,12 @@ const AppBarLoginOutButton: React.FC = () => {
   }
 
   useEffect(() => {
-    setClient(true)
+    setMounted(true)
   }, [])
 
   return (
     <>
-      {isClient && (
+      {isMounted && (
         <Button onClick={onLogInOutClick}>
           {isLoggedIn ? "LOG OUT" : "LOG IN"}
         </Button>

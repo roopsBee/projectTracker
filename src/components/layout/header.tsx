@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import {
   useMediaQuery,
   Button,
@@ -12,6 +12,7 @@ import { Link } from "gatsby"
 import { DRAWER_WIDTH } from "../../config"
 import MyAppBar from "./appBar/myAppBar"
 import DrawerButtons from "./drawer/DrawerButtons"
+import useIsMounted from "../../utils/useIsMounted"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,11 +54,7 @@ const Header: React.FC<Props> = ({
 }) => {
   const classes = useStyles()
   const [openDrawer, setOpenDrawer] = useState(false)
-  const [initialRender, setInitialRender] = useState(true)
-
-  useEffect(() => {
-    setInitialRender(false)
-  }, [])
+  const isMounted = useIsMounted()
 
   const isScreenBig = useMediaQuery((theme: Theme) =>
     theme.breakpoints.up("md")
@@ -72,7 +69,7 @@ const Header: React.FC<Props> = ({
   }
 
   return (
-    <div className={classes.root}>
+    <header className={classes.root}>
       <CssBaseline />
       <MyAppBar
         handleDrawerOpen={handleDrawerOpen}
@@ -84,7 +81,7 @@ const Header: React.FC<Props> = ({
       <Drawer
         className={classes.drawer}
         variant={
-          initialRender ? "temporary" : isScreenBig ? "permanent" : "temporary"
+          !isMounted ? "temporary" : isScreenBig ? "permanent" : "temporary"
         }
         anchor="left"
         open={openDrawer}
@@ -106,7 +103,7 @@ const Header: React.FC<Props> = ({
         <Divider />
         <DrawerButtons handleDrawerClose={handleDrawerClose} />
       </Drawer>
-    </div>
+    </header>
   )
 }
 
