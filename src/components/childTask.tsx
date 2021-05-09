@@ -4,6 +4,7 @@ import { ChildTaskType } from "../redux/projectSlice/projectSlice"
 import CommentsItem from "./commentsItem"
 import MenuItemButton from "./menuItemButton"
 import CommentsMenuItem from "./commentsMenuItem"
+import TaskDoneCheckBox from "./taskDoneCheckBox"
 
 interface Props {
   childTask: ChildTaskType
@@ -33,6 +34,7 @@ const ChildTask: React.FC<Props> = ({ childTask }) => {
           </ListItem>
         </Box>
         <CommentsItem comments={childTask.comments} />
+        <TaskDoneCheckBox task={childTask} type="childTask" />
       </Box>
     </>
   )
