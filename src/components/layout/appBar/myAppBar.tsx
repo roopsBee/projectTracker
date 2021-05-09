@@ -12,7 +12,6 @@ import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
 import AppBarLoginOutButton from "./appBarLoginOutButton"
 import AppBarSignUpButton from "./appBarSignUpButton"
-import AppBarLogOutButton from "./appBarLogOutButton"
 import { useAppSelector } from "../../../redux/reduxHooks"
 
 const useStyles = makeStyles(theme => ({
@@ -60,7 +59,6 @@ const MyAppBar: React.FC<Props> = ({
         >
           <MenuIcon />
         </IconButton>
-
         <Switch
           className={classes.darkSwitch}
           checked={isDarkMode}
@@ -73,13 +71,8 @@ const MyAppBar: React.FC<Props> = ({
         ) : (
           <Brightness7Icon />
         )}
-        {!isLoggedIn && (
-          <>
-            <AppBarLoginOutButton />
-            <AppBarSignUpButton />
-          </>
-        )}
-        {isLoggedIn && <AppBarLogOutButton />}
+        <AppBarLoginOutButton />
+        {!isLoggedIn && <AppBarSignUpButton />}
       </Toolbar>
     </AppBar>
   )
