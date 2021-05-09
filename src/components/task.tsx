@@ -36,7 +36,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
       <Divider />
       <Box paddingLeft={2}>
         <Box marginBottom={0} height={59} clone>
-          <ListItem dense key={task?.taskId}>
+          <ListItem dense key={task?.taskId} disableGutters>
             <MenuItemButton>
               {handleClose => (
                 <div>

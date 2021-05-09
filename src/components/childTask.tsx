@@ -15,7 +15,7 @@ const ChildTask: React.FC<Props> = ({ childTask }) => {
       <Divider />
       <Box paddingLeft={4}>
         <Box marginBottom={0} height={59} clone>
-          <ListItem key={childTask.childTaskId}>
+          <ListItem key={childTask.childTaskId} disableGutters>
             <MenuItemButton>
               {handleClose => (
                 <div>
