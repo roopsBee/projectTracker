@@ -1,10 +1,11 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
+import { Button, Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createTaskSchema from "./yupSchemas/createTaskSchema"
 import createTaskThunk from "../../redux/projectSlice/thunks/createTaskThunk"
+import FormHeader from "./formHeader"
 
 interface Values {
   taskName: string
@@ -26,13 +27,7 @@ function CreateTaskForm({
   return (
     <Container maxWidth="xs">
       <Grid container>
-        <Grid item xs={12}>
-          <Box pt={1}>
-            <Typography variant="h4" align="center">
-              Create Task
-            </Typography>
-          </Box>
-        </Grid>
+        <FormHeader title="Create Task" />
         <Grid item>
           <Formik
             initialValues={{
