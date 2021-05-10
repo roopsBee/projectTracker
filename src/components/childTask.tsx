@@ -5,12 +5,14 @@ import CommentsItem from "./commentsItem"
 import MenuItemButton from "./menuItems/menuItemButton"
 import CommentsMenuItem from "./menuItems/commentsMenuItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
+import EditChildTaskNameMenuItem from "./menuItems/editChildTaskNameMenuItem"
 
 interface Props {
   childTask: ChildTaskType
+  groupId: string
 }
 
-const ChildTask: React.FC<Props> = ({ childTask }) => {
+const ChildTask: React.FC<Props> = ({ childTask, groupId }) => {
   return (
     <>
       <Divider />
@@ -24,6 +26,11 @@ const ChildTask: React.FC<Props> = ({ childTask }) => {
                     type="childTask"
                     handleClose={handleClose}
                     task={childTask}
+                  />
+                  <EditChildTaskNameMenuItem
+                    childTask={childTask}
+                    handleClose={handleClose}
+                    groupId={groupId}
                   />
                 </div>
               )}

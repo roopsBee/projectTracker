@@ -6,6 +6,7 @@ import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
 import createChildTask from "./thunks/createChildTaskThunk"
 import createComment from "./thunks/createCommentThunk"
+import childTaskNameChange from "./thunks/childTaskNameChangeThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -165,6 +166,37 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createComment.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      // edit child task name
+      .addCase(childTaskNameChange.pending, state => {
+        state.isLoading = true
+        console.log("Changing child task name...")
+      })
+      .addCase(childTaskNameChange.fulfilled, (state, { payload }) => {
+        const {
+          taskId,
+          groupId,
+          childTaskName,
+          projectId,
+          childTaskId,
+        } = payload
+        state.projects
+          ?.find(project => project.projectId === projectId)
+          ?.taskGroups?.find(group => group.groupId === groupId)
+          ?.tasks.find(task => task.taskId === taskId)
+          ?.childTasks.find(childTask => {
+            if (childTask.childTaskId === childTaskId) {
+              childTask.childTaskName = childTaskName
+              return true
+            }
+          })
+
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(childTaskNameChange.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })

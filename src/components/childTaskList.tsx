@@ -4,13 +4,18 @@ import ChildTask from "./childTask"
 
 interface Props {
   childTasks: ChildTaskType[]
+  groupId: string
 }
 
-const ChildTaskList: React.FC<Props> = ({ childTasks }) => {
+const ChildTaskList: React.FC<Props> = ({ childTasks, groupId }) => {
   return (
     <>
       {childTasks?.map(childTask => (
-        <ChildTask key={childTask.childTaskId} childTask={childTask} />
+        <ChildTask
+          groupId={groupId}
+          key={childTask.childTaskId}
+          childTask={childTask}
+        />
       ))}
     </>
   )

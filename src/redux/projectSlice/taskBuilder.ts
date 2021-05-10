@@ -37,12 +37,11 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       state.isLoading = false
       console.log("fulfilled")
     })
-    // edit task name
-
     .addCase(createTask.rejected, (state, action) => {
       state.isLoading = false
       console.log("rejected", action)
     })
+    // edit task name
     .addCase(taskNameChange.pending, state => {
       state.isLoading = true
       console.log("Changing task name...")

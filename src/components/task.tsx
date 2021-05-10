@@ -72,7 +72,9 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
         <TaskDoneCheckBox task={task} type="task" />
       </Box>
       <Collapse in={openChildTasks}>
-        {task?.childTasks && <ChildTaskList childTasks={task?.childTasks} />}
+        {task?.childTasks && (
+          <ChildTaskList groupId={groupId} childTasks={task?.childTasks} />
+        )}
       </Collapse>
     </>
   )
