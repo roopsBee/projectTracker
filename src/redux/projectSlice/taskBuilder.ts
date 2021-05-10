@@ -1,6 +1,8 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit"
 import { ProjectState } from "./projectSlice"
 import createTask from "./thunks/createTaskThunk"
+import taskNameChange from "./thunks/taskNameChangeThunk"
+import toggleTaskDone from "./thunks/toggleTaskDoneThunk"
 
 const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task
@@ -35,7 +37,63 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       state.isLoading = false
       console.log("fulfilled")
     })
+    // edit task name
+
     .addCase(createTask.rejected, (state, action) => {
+      state.isLoading = false
+      console.log("rejected", action)
+    })
+    .addCase(taskNameChange.pending, state => {
+      state.isLoading = true
+      console.log("Changing task name...")
+    })
+    .addCase(taskNameChange.fulfilled, (state, { payload }) => {
+      const { taskId, groupId, taskName, projectId } = payload
+      state.projects
+        ?.find(project => project.projectId === projectId)
+        ?.taskGroups?.find(group => group.groupId === groupId)
+        ?.tasks.find(task => {
+          if (task.taskId === taskId) {
+            task.taskName = taskName
+            return true
+          }
+        })
+      state.isLoading = false
+      console.log("fulfilled")
+    })
+    .addCase(taskNameChange.rejected, (state, action) => {
+      state.isLoading = false
+      console.log("rejected", action)
+    })
+    //toggle task
+    .addCase(toggleTaskDone.pending, state => {
+      state.isLoading = true
+      console.log("Toggling task completion...")
+    })
+    .addCase(toggleTaskDone.fulfilled, (state, { payload }) => {
+      const { completed, taskId, projectId } = payload
+
+      state.projects
+        ?.find(project => project.projectId === projectId)
+        ?.taskGroups?.find(group =>
+          group.tasks.find(task => {
+            if (task.taskId === taskId) {
+              task.completed = completed
+              return true
+            }
+            task.childTasks.find(childTask => {
+              if (childTask.childTaskId === taskId) {
+                childTask.completed = completed
+                return true
+              }
+            })
+          })
+        )
+
+      state.isLoading = false
+      console.log("fulfilled")
+    })
+    .addCase(toggleTaskDone.rejected, (state, action) => {
       state.isLoading = false
       console.log("rejected", action)
     })
