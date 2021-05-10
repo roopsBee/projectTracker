@@ -1,11 +1,12 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
+import { Button, Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import { TaskType } from "../../redux/projectSlice/projectSlice"
 import taskNameChangeThunk from "../../redux/projectSlice/thunks/taskNameChangeThunk"
 import taskNameChangeschema from "./yupSchemas/taskNameChangeschema"
+import FormHeader from "./formHeader"
 
 interface Values {
   taskName: string
@@ -27,13 +28,7 @@ function TaskChangeNameForm({
   return (
     <Container maxWidth="xs">
       <Grid container>
-        <Grid item xs={12}>
-          <Box pt={1}>
-            <Typography variant="h4" align="center">
-              Change Task Name
-            </Typography>
-          </Box>
-        </Grid>
+        <FormHeader title="Change Task Name" />
         <Grid item>
           <Formik
             initialValues={{

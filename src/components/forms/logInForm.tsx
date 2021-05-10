@@ -5,6 +5,7 @@ import { TextField } from "formik-material-ui"
 import loginSchema from "./yupSchemas/loginSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import loginThunk from "../../redux/userSlice/loginThunk"
+import FormHeader from "./formHeader"
 
 interface Values {
   password: string
@@ -16,7 +17,7 @@ function LogIn() {
 
   return (
     <Container maxWidth="xs">
-      <h1>Log In</h1>
+      <FormHeader title="Login" />
       <Formik
         initialValues={{
           password: "",

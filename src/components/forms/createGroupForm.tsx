@@ -1,10 +1,11 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
+import { Button, Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createGroupSchema from "./yupSchemas/createGroupSchema"
 import createGroupThunk from "../../redux/projectSlice/thunks/createGroupThunk"
+import FormHeader from "./formHeader"
 
 interface Values {
   taskGroupName: string
@@ -20,13 +21,7 @@ function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
   return (
     <Container maxWidth="xs">
       <Grid container>
-        <Grid item xs={12}>
-          <Box pt={1}>
-            <Typography variant="h4" align="center">
-              Create Group
-            </Typography>
-          </Box>
-        </Grid>
+        <FormHeader title="Create Group" />
         <Grid item>
           <Formik
             initialValues={{

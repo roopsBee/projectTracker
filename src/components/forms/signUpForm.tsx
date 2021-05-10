@@ -5,6 +5,7 @@ import { TextField } from "formik-material-ui"
 import signupSchema from "./yupSchemas/signupSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import signUpThunk from "../../redux/userSlice/signUpThunk"
+import FormHeader from "./formHeader"
 
 interface Values {
   password: string
@@ -18,7 +19,7 @@ function SignUp() {
 
   return (
     <Container maxWidth="xs">
-      <h1>Signup</h1>
+      <FormHeader title="Sign Up" />
       <Formik
         initialValues={{
           password: "",
