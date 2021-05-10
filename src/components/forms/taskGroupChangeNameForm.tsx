@@ -39,7 +39,6 @@ function TaskGroupChangeNameForm({
             validationSchema={taskGroupChangeNameSchema}
             onSubmit={async ({ taskGroupName: newName }: Values) => {
               try {
-                console.log("change group name")
                 await dispatch(taskGroupChangeNameThunk({ newName, groupId }))
                 closePopover()
               } catch (error) {

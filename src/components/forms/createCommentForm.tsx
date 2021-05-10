@@ -36,7 +36,7 @@ function CreateTaskForm({
         validateOnChange={false}
         onSubmit={async ({ text }: Values) => {
           try {
-            dispatch(
+            await dispatch(
               createCommentThunk({ taskId, commentText: text, projectId })
             )
             closePopover()

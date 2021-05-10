@@ -43,7 +43,7 @@ function CreateTaskForm({
             validationSchema={createChildTaskSchema}
             onSubmit={async ({ childTaskName }: Values) => {
               try {
-                dispatch(
+                await dispatch(
                   createChildTaskThunk({
                     childTaskName,
                     groupId,

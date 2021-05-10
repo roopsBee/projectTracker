@@ -35,7 +35,6 @@ function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
             validationSchema={createGroupSchema}
             onSubmit={async ({ taskGroupName }: Values) => {
               try {
-                console.log("createGroup")
                 await dispatch(createGroupThunk({ taskGroupName, projectId }))
                 closePopover()
               } catch (error) {

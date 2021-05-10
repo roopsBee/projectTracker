@@ -41,8 +41,9 @@ function CreateTaskForm({
             validationSchema={createTaskSchema}
             onSubmit={async ({ taskName }: Values) => {
               try {
-                console.log("createTask")
-                dispatch(createTaskThunk({ taskName, groupId, projectId }))
+                await dispatch(
+                  createTaskThunk({ taskName, groupId, projectId })
+                )
                 closePopover()
               } catch (error) {
                 console.log(error)

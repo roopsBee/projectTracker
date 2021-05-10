@@ -31,7 +31,7 @@ function CreateProjectForm({ closePopover }: { closePopover: () => void }) {
             validationSchema={createProjectSchema}
             onSubmit={async ({ projectName }: Values) => {
               try {
-                dispatch(createProject(projectName))
+                await dispatch(createProject(projectName))
                 closePopover()
               } catch (error) {
                 console.log(error)
