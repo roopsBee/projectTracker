@@ -1,7 +1,7 @@
 import React from "react"
 import { MenuItem, Popover } from "@material-ui/core"
 
-import useWindowResize from "../utils/useWindowResize"
+import useWindowResize from "../../utils/useWindowResize"
 
 interface Props {
   title: string

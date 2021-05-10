@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { List, ListItem, ListItemText, Collapse, Box } from "@material-ui/core"
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
-import MenuItemButton from "./menuItemButton"
-import AddTaskMenuItem from "./addTaskMenuItem"
+import MenuItemButton from "./menuItems/menuItemButton"
+import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
 import ExpandIconButton from "./expandIconButton"
-import EditGroupNameMenuItem from "./editGroupNameMenuItem"
+import EditGroupNameMenuItem from "./menuItems/editGroupNameMenuItem"
 
 interface Props {
   group: TaskGroupType

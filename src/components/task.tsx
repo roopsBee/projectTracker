@@ -14,10 +14,10 @@ import { TaskType } from "../redux/projectSlice/projectSlice"
 import CommentsItem from "./commentsItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
 import ExpandIconButton from "./expandIconButton"
-import MenuItemButton from "./menuItemButton"
-import AddTaskMenuItem from "./addTaskMenuItem"
-import CommentsMenuItem from "./commentsMenuItem"
-import EditTaskNameMenuItem from "./editTaskNameMenuItem"
+import MenuItemButton from "./menuItems/menuItemButton"
+import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
+import CommentsMenuItem from "./menuItems/commentsMenuItem"
+import EditTaskNameMenuItem from "./menuItems/editTaskNameMenuItem"
 
 interface Props {
   task: TaskType

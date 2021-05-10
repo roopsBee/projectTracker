@@ -2,8 +2,8 @@ import { ListItem, Box, Divider, ListItemText } from "@material-ui/core"
 import React from "react"
 import { ChildTaskType } from "../redux/projectSlice/projectSlice"
 import CommentsItem from "./commentsItem"
-import MenuItemButton from "./menuItemButton"
-import CommentsMenuItem from "./commentsMenuItem"
+import MenuItemButton from "./menuItems/menuItemButton"
+import CommentsMenuItem from "./menuItems/commentsMenuItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
 
 interface Props {

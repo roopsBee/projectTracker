@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import TaskGroupChangeNameForm from "./forms/taskGroupChangeNameForm"
-import { TaskGroupType } from "../redux/projectSlice/projectSlice"
+import TaskGroupChangeNameForm from "../forms/taskGroupChangeNameForm"
+import { TaskGroupType } from "../../redux/projectSlice/projectSlice"
 import MenuItemPopover from "./menuItemPopover"
 
 interface Props {

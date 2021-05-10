@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import CreateTaskForm from "./forms/createTaskForm"
-import CreateChildTaskForm from "./forms/createChildTaskForm"
+import CreateTaskForm from "../forms/createTaskForm"
+import CreateChildTaskForm from "../forms/createChildTaskForm"
 import MenuItemPopover from "./menuItemPopover"
 
 type Props = (task | childTask) & { handleClose: () => void }
