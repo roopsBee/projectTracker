@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { RootState } from "../store"
-import faunaClient from "../../utils/faunaClient"
-import { CommentType } from "./projectSlice"
+import { RootState } from "../../store"
+import faunaClient from "../../../utils/faunaClient"
+import { CommentType } from "../projectSlice"
 import dayjs from "dayjs"
 
 type CommentCreateReturnType = {

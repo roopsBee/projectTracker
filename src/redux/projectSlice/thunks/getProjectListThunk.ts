@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import faunaClient from "../../utils/faunaClient"
+import faunaClient from "../../../utils/faunaClient"
 
 type GetProjectListReturnType = {
   projectId: string

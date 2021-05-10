@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { RootState } from "../store"
-import faunaClient from "../../utils/faunaClient"
-import { TaskType } from "./projectSlice"
+import { RootState } from "../../store"
+import faunaClient from "../../../utils/faunaClient"
+import { TaskType } from "../projectSlice"
 
 type TaskCreateReturnType = {
   taskId: string

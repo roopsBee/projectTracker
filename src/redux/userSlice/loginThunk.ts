@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import firebase from "gatsby-plugin-firebase"
 import axios from "axios"
 import { AppDispatch } from "../store"
-import getProjectListThunk from "../projectSlice/getProjectListThunk"
+import getProjectListThunk from "../projectSlice/thunks/getProjectListThunk"
 import { UserState } from "./userSlice"
 
 const login = createAsyncThunk<

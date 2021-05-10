@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
-import createProject from "./createProjectThunk"
-import getProjectList from "./getProjectListThunk"
-import getProject from "./getProjectThunk"
+import createProject from "./thunks/createProjectThunk"
+import getProjectList from "./thunks/getProjectListThunk"
+import getProject from "./thunks/getProjectThunk"
 import groupBuilder from "./groupBuilder"
 import taskBuilder from "./taskBuilder"
-import createChildTask from "./createChildTaskThunk"
-import createComment from "./createCommentThunk"
-import toggleTaskDone from "./toggleTaskDoneThunk"
-import groupChangeName from "./taskGroupChangeNameThunk"
-import taskNameChange from "./taskNameChangeThunk"
+import createChildTask from "./thunks/createChildTaskThunk"
+import createComment from "./thunks/createCommentThunk"
+import toggleTaskDone from "./thunks/toggleTaskDoneThunk"
+import groupChangeName from "./thunks/taskGroupChangeNameThunk"
+import taskNameChange from "./thunks/taskNameChangeThunk"
 
 export interface ProjectState {
   isLoading: boolean

@@ -6,7 +6,7 @@ import { Button, Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createCommentSchema from "./yupSchemas/createCommentSchema"
-import createCommentThunk from "../../redux/projectSlice/createCommentThunk"
+import createCommentThunk from "../../redux/projectSlice/thunks/createCommentThunk"
 
 interface Values {
   text: string

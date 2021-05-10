@@ -4,7 +4,7 @@ import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import { TaskType } from "../../redux/projectSlice/projectSlice"
-import taskNameChangeThunk from "../../redux/projectSlice/taskNameChangeThunk"
+import taskNameChangeThunk from "../../redux/projectSlice/thunks/taskNameChangeThunk"
 import taskNameChangeschema from "./yupSchemas/taskNameChangeschema"
 
 interface Values {

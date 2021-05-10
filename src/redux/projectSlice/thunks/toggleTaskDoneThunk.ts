@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { RootState } from "../store"
-import faunaClient from "../../utils/faunaClient"
+import { RootState } from "../../store"
+import faunaClient from "../../../utils/faunaClient"
 
 type ToggleTaskDoneReturnType = {
   taskId: string

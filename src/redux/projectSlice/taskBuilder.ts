@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit"
 import { ProjectState } from "./projectSlice"
-import createTask from "./createTaskThunk"
+import createTask from "./thunks/createTaskThunk"
 
 const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task

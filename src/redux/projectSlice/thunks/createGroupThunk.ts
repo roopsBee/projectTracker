@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { RootState } from "../store"
-import faunaClient from "../../utils/faunaClient"
-import { TaskGroupType } from "./projectSlice"
+import { RootState } from "../../store"
+import faunaClient from "../../../utils/faunaClient"
+import { TaskGroupType } from "../projectSlice"
 
 type GroupCreateReturnType = {
   groupId: string

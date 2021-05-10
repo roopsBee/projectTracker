@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import faunaClient from "../../utils/faunaClient"
-import { RootState } from "../store"
-import { ProjectType } from "./projectSlice"
+import faunaClient from "../../../utils/faunaClient"
+import { RootState } from "../../store"
+import { ProjectType } from "../projectSlice"
 
 const getProject = createAsyncThunk<
   ProjectType,

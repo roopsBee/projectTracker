@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit"
 import { ProjectState } from "./projectSlice"
-import createGroup from "./createGroupThunk"
+import createGroup from "./thunks/createGroupThunk"
 
 const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create group

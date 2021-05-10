@@ -4,7 +4,7 @@ import { Button, Container, Typography, Grid, Box } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createChildTaskSchema from "./yupSchemas/createChildTaskSchema"
-import createChildTaskThunk from "../../redux/projectSlice/createChildTaskThunk"
+import createChildTaskThunk from "../../redux/projectSlice/thunks/createChildTaskThunk"
 
 interface Values {
   childTaskName: string
