@@ -7,6 +7,7 @@ import { ChildTaskType } from "../../redux/projectSlice/projectSlice"
 import childTaskNameChangeSchema from "./yupSchemas/childTaskNameChangeSchema"
 import childTaskNameChangeThunk from "../../redux/projectSlice/thunks/childTaskNameChangeThunk"
 import FormHeader from "./formHeader"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   childTaskName: string
@@ -21,9 +22,7 @@ function ChildTaskChangeNameForm({
   childTask: ChildTaskType
   groupId: string
 }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
   const { childTaskId, childTaskName } = childTask
 
