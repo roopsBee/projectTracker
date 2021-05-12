@@ -35,9 +35,7 @@ const GroupDeleteMenuItem: React.FC<Props> = ({ groupId, handleClose }) => {
   }
 
   const handleConfirm = async () => {
-    projectId
-      ? await dispatch(groupDeleteThunk({ groupId, projectId }))
-      : console.log("ProjectId not found")
+    await dispatch(groupDeleteThunk({ groupId, projectId }))
   }
 
   return (
