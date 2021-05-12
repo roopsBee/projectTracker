@@ -7,6 +7,7 @@ import { TaskType } from "../../redux/projectSlice/projectSlice"
 import taskNameChangeThunk from "../../redux/projectSlice/thunks/taskNameChangeThunk"
 import taskNameChangeschema from "./yupSchemas/taskNameChangeschema"
 import FormHeader from "./formHeader"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   taskName: string
@@ -19,9 +20,7 @@ function TaskChangeNameForm({
   closePopover: () => void
   task: TaskType
 }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
   const { taskId, taskName } = task
 
