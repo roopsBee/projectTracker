@@ -7,6 +7,7 @@ import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createCommentSchema from "./yupSchemas/createCommentSchema"
 import createCommentThunk from "../../redux/projectSlice/thunks/createCommentThunk"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   text: string
@@ -19,9 +20,7 @@ function CreateTaskForm({
   closePopover: () => void
   taskId: string
 }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
 
   const dispatch = useAppDispatch()
 
