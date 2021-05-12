@@ -6,6 +6,7 @@ import MenuItemButton from "./menuItems/menuItemButton"
 import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
 import ExpandIconButton from "./expandIconButton"
 import EditGroupNameMenuItem from "./menuItems/editGroupNameMenuItem"
+import GroupDeleteMenuItem from "./menuItems/groupDeleteMenuItem"
 
 interface Props {
   group: TaskGroupType
@@ -32,6 +33,10 @@ const Group: React.FC<Props> = ({ group }) => {
                       handleClose={handleClose}
                       type="task"
                       groupId={group.groupId}
+                    />
+                    <GroupDeleteMenuItem
+                      groupId={group.groupId}
+                      handleClose={handleClose}
                     />
                     <EditGroupNameMenuItem
                       handleClose={handleClose}

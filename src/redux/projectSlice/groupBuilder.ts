@@ -2,6 +2,7 @@ import { ActionReducerMapBuilder } from "@reduxjs/toolkit"
 import { ProjectState } from "./projectSlice"
 import createGroup from "./thunks/createGroupThunk"
 import groupChangeName from "./thunks/taskGroupChangeNameThunk"
+import groupDelete from "./thunks/groupDeleteThunk"
 
 const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create group
@@ -43,6 +44,31 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(groupChangeName.rejected, (state, action) => {
+      state.isLoading = false
+      console.log("rejected", action)
+    })
+    // delete group
+    .addCase(groupDelete.pending, state => {
+      state.isLoading = true
+      console.log("Deleting group ...")
+    })
+    .addCase(groupDelete.fulfilled, (state, { payload }) => {
+      const { projectId, groupId } = payload
+
+      const taskGroups = state.projects?.find(
+        project => project.projectId === projectId
+      )?.taskGroups
+
+      const groupIndex = taskGroups?.findIndex(
+        group => groupId === group.groupId
+      )
+
+      groupIndex && taskGroups?.splice(groupIndex, 1)
+
+      state.isLoading = false
+      console.log("fulfilled")
+    })
+    .addCase(groupDelete.rejected, (state, action) => {
       state.isLoading = false
       console.log("rejected", action)
     })
