@@ -3,6 +3,7 @@ import { Checkbox } from "@material-ui/core"
 import { TaskType, ChildTaskType } from "../redux/projectSlice/projectSlice"
 import { useAppDispatch } from "../redux/reduxHooks"
 import toggleTaskDoneThunk from "../redux/projectSlice/thunks/toggleTaskDoneThunk"
+import getProjectIdFromUrl from "../utils/getProjectIdFromUrl"
 
 type Props = task | childTask
 
@@ -18,9 +19,7 @@ interface childTask {
 const TaskDoneCheckBox: React.FC<Props> = props => {
   const [done, setDone] = useState(false)
   const dispatch = useAppDispatch()
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
 
   const taskId =
     props.type === "task" ? props.task.taskId : props.task.childTaskId
