@@ -6,15 +6,14 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import createGroupSchema from "./yupSchemas/createGroupSchema"
 import createGroupThunk from "../../redux/projectSlice/thunks/createGroupThunk"
 import FormHeader from "./formHeader"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   taskGroupName: string
 }
 
 function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
 
   const dispatch = useAppDispatch()
 
