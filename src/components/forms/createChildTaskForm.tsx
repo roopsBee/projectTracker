@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import createChildTaskSchema from "./yupSchemas/createChildTaskSchema"
 import createChildTaskThunk from "../../redux/projectSlice/thunks/createChildTaskThunk"
 import FormHeader from "./formHeader"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   childTaskName: string
@@ -20,10 +21,7 @@ function CreateTaskForm({
   taskId: string
   groupId: string
 }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
-
+  const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
 
   return (
