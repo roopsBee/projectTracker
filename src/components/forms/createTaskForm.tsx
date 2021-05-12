@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import createTaskSchema from "./yupSchemas/createTaskSchema"
 import createTaskThunk from "../../redux/projectSlice/thunks/createTaskThunk"
 import FormHeader from "./formHeader"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Values {
   taskName: string
@@ -18,9 +19,7 @@ function CreateTaskForm({
   closePopover: () => void
   groupId: string
 }) {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
 
   const dispatch = useAppDispatch()
 
