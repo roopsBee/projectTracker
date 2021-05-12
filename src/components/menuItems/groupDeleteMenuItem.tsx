@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import { TaskType } from "../../redux/projectSlice/projectSlice"
-import MenuItemPopover from "./menuItemPopover"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import groupDeleteThunk from "../../redux/projectSlice/thunks/groupDeleteThunk"
 import {
@@ -13,6 +11,7 @@ import {
   MenuItem,
 } from "@material-ui/core"
 import { useAppSelector } from "../../redux/reduxHooks"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 interface Props {
   groupId: string
@@ -20,9 +19,7 @@ interface Props {
 }
 
 const GroupDeleteMenuItem: React.FC<Props> = ({ groupId, handleClose }) => {
-  const url = typeof window !== "undefined" ? window.location.pathname : ""
-  const urlArr = url.split("/")
-  const projectId = urlArr[3]
+  const projectId = getProjectIdFromUrl()
   const isLoading = useAppSelector(state => state.projectState.isLoading)
 
   const [isDialogOpen, setDialogOpen] = useState(false)
@@ -38,7 +35,9 @@ const GroupDeleteMenuItem: React.FC<Props> = ({ groupId, handleClose }) => {
   }
 
   const handleConfirm = async () => {
-    await dispatch(groupDeleteThunk({ groupId, projectId }))
+    projectId
+      ? await dispatch(groupDeleteThunk({ groupId, projectId }))
+      : console.log("ProjectId not found")
   }
 
   return (
