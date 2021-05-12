@@ -4,7 +4,7 @@ let theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       root: {
-        wordBreak: "break-all",
+        wordBreak: "break-word",
       },
     },
   },
