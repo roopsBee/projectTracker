@@ -63,7 +63,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
         group => groupId === group.groupId
       )
 
-      groupIndex && taskGroups?.splice(groupIndex, 1)
+      groupIndex !== undefined && taskGroups?.splice(groupIndex, 1)
 
       state.isLoading = false
       console.log("fulfilled")
