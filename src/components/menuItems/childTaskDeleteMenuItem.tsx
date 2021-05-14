@@ -1,17 +1,9 @@
 import React, { useState } from "react"
 import { useAppDispatch } from "../../redux/reduxHooks"
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  MenuItem,
-} from "@material-ui/core"
-import { useAppSelector } from "../../redux/reduxHooks"
+import { MenuItem } from "@material-ui/core"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import childTaskDeleteThunk from "../../redux/projectSlice/thunks/childTaskDeleteThunk"
+import ConfirmDialog from "../confirmDialog"
 
 interface Props {
   groupId: string
@@ -25,7 +17,6 @@ const ChildTaskDeleteMenuItem: React.FC<Props> = ({
   childTaskId,
 }) => {
   const projectId = getProjectIdFromUrl()
-  const isLoading = useAppSelector(state => state.projectState.isLoading)
 
   const [isDialogOpen, setDialogOpen] = useState(false)
   const dispatch = useAppDispatch()
@@ -48,38 +39,14 @@ const ChildTaskDeleteMenuItem: React.FC<Props> = ({
       <MenuItem dense onClick={handleClick}>
         Delete Sub-Task
       </MenuItem>
-      <Dialog
+      <ConfirmDialog
         open={isDialogOpen}
-        onClose={closeDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete this Sub-Task?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            This will delete this Sub-Task. It cannot be undone.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            disabled={isLoading}
-            onClick={closeDialog}
-            variant="outlined"
-            autoFocus
-          >
-            Cancel
-          </Button>
-          <Button
-            disabled={isLoading}
-            onClick={handleConfirm}
-            variant="contained"
-          >
-            Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
+        closeDialog={closeDialog}
+        title="Are you sure you want to delete this Sub-Task"
+        body="This will permanently delete this Sub-task and it's data. It cannot be undone"
+        handleConfirm={handleConfirm}
+        buttonText="Delete"
+      />
     </>
   )
 }
