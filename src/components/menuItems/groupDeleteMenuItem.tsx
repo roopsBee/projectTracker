@@ -1,17 +1,9 @@
 import React, { useState } from "react"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import groupDeleteThunk from "../../redux/projectSlice/thunks/groupDeleteThunk"
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  MenuItem,
-} from "@material-ui/core"
-import { useAppSelector } from "../../redux/reduxHooks"
+import { MenuItem } from "@material-ui/core"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import ConfirmDialog from "../confirmDialog"
 
 interface Props {
   groupId: string
@@ -20,7 +12,6 @@ interface Props {
 
 const GroupDeleteMenuItem: React.FC<Props> = ({ groupId, handleClose }) => {
   const projectId = getProjectIdFromUrl()
-  const isLoading = useAppSelector(state => state.projectState.isLoading)
 
   const [isDialogOpen, setDialogOpen] = useState(false)
   const dispatch = useAppDispatch()
@@ -43,39 +34,15 @@ const GroupDeleteMenuItem: React.FC<Props> = ({ groupId, handleClose }) => {
       <MenuItem dense onClick={handleClick}>
         Delete Group
       </MenuItem>
-      <Dialog
+      <ConfirmDialog
         open={isDialogOpen}
-        onClose={closeDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete this group?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            This will delete this group and all associated tasks. It cannot be
-            undone.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            disabled={isLoading}
-            onClick={closeDialog}
-            variant="outlined"
-            autoFocus
-          >
-            Cancel
-          </Button>
-          <Button
-            disabled={isLoading}
-            onClick={handleConfirm}
-            variant="contained"
-          >
-            Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
+        closeDialog={closeDialog}
+        title="Are you sure you want to delete this group?"
+        body="This will permanently delete this group and all associated tasks. It cannot be
+        undone."
+        handleConfirm={handleConfirm}
+        buttonText="Delete"
+      />
     </>
   )
 }
