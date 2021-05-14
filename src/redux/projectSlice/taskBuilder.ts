@@ -1,4 +1,5 @@
 import { ActionReducerMapBuilder } from "@reduxjs/toolkit"
+import handlePending from "../handlePending"
 import { ProjectState } from "./projectSlice"
 import createTask from "./thunks/createTaskThunk"
 import taskNameChange from "./thunks/taskNameChangeThunk"
@@ -8,8 +9,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task
   builder
     .addCase(createTask.pending, state => {
-      state.isLoading = true
-      console.log("Creating group...")
+      handlePending(state, "Creating group...")
     })
     .addCase(createTask.fulfilled, (state, { payload }) => {
       const {
@@ -43,8 +43,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
     })
     // edit task name
     .addCase(taskNameChange.pending, state => {
-      state.isLoading = true
-      console.log("Changing task name...")
+      handlePending(state, "Changing task name...")
     })
     .addCase(taskNameChange.fulfilled, (state, { payload }) => {
       const { taskId, groupId, taskName, projectId } = payload
@@ -66,8 +65,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
     })
     //toggle task
     .addCase(toggleTaskDone.pending, state => {
-      state.isLoading = true
-      console.log("Toggling task completion...")
+      handlePending(state, "Toggling task completion...")
     })
     .addCase(toggleTaskDone.fulfilled, (state, { payload }) => {
       const { completed, taskId, projectId } = payload

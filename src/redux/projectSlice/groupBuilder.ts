@@ -3,13 +3,13 @@ import { ProjectState } from "./projectSlice"
 import createGroup from "./thunks/createGroupThunk"
 import groupChangeName from "./thunks/taskGroupChangeNameThunk"
 import groupDelete from "./thunks/groupDeleteThunk"
+import handlePending from "../handlePending"
 
 const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create group
   builder
     .addCase(createGroup.pending, state => {
-      state.isLoading = true
-      console.log("Creating group...")
+      handlePending(state, "Creating group...")
     })
     .addCase(createGroup.fulfilled, (state, { payload }) => {
       const { groupId, projectId, taskGroupName, tasks } = payload
@@ -26,8 +26,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
     })
     // change group name
     .addCase(groupChangeName.pending, state => {
-      state.isLoading = true
-      console.log("Changing group name...")
+      handlePending(state, "Changing group name...")
     })
     .addCase(groupChangeName.fulfilled, (state, { payload }) => {
       const { projectId, groupId, taskGroupName } = payload
@@ -49,8 +48,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
     })
     // delete group
     .addCase(groupDelete.pending, state => {
-      state.isLoading = true
-      console.log("Deleting group ...")
+      handlePending(state, "Deleting group ...")
     })
     .addCase(groupDelete.fulfilled, (state, { payload }) => {
       const { projectId, groupId } = payload

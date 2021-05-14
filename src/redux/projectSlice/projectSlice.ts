@@ -61,8 +61,7 @@ export const projectSlice = createSlice({
     builder
       // create project
       .addCase(createProject.pending, state => {
-        state.isLoading = true
-        console.log("creating project...")
+        handlePending(state, "creating project...")
       })
       .addCase(createProject.fulfilled, (state, { payload }) => {
         state.projects?.push(payload)
@@ -75,8 +74,7 @@ export const projectSlice = createSlice({
       })
       // get project list
       .addCase(getProjectList.pending, state => {
-        state.isLoading = true
-        console.log("fetching project list...")
+        handlePending(state, "fetching project list...")
       })
       .addCase(getProjectList.fulfilled, (state, { payload }) => {
         state.projects = payload
@@ -89,8 +87,7 @@ export const projectSlice = createSlice({
       })
       // get project
       .addCase(getProject.pending, state => {
-        state.isLoading = true
-        console.log("fetching project...")
+        handlePending(state, "fetching project...")
       })
       .addCase(getProject.fulfilled, (state, { payload }) => {
         const project = state.projects?.find(
@@ -106,8 +103,7 @@ export const projectSlice = createSlice({
       })
       // create child task
       .addCase(createChildTask.pending, state => {
-        state.isLoading = true
-        console.log("Creating child task...")
+        handlePending(state, "Creating child task...")
       })
       .addCase(createChildTask.fulfilled, (state, { payload }) => {
         const {
@@ -141,8 +137,7 @@ export const projectSlice = createSlice({
       })
       // delete child task
       .addCase(childTaskDelete.pending, state => {
-        state.isLoading = true
-        console.log("Deleting child task...")
+        handlePending(state, "Deleting child task...")
       })
       .addCase(childTaskDelete.fulfilled, (state, { payload }) => {
         const { projectId, childTaskId, taskId, groupId } = payload
@@ -167,8 +162,7 @@ export const projectSlice = createSlice({
       })
       // create comment
       .addCase(createComment.pending, state => {
-        state.isLoading = true
-        console.log("Adding comment...")
+        handlePending(state, "Adding comment...")
       })
       .addCase(createComment.fulfilled, (state, { payload }) => {
         const { comment, taskId, projectId } = payload
