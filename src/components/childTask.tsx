@@ -6,6 +6,7 @@ import MenuItemButton from "./menuItems/menuItemButton"
 import CommentsMenuItem from "./menuItems/commentsMenuItem"
 import TaskDoneCheckBox from "./taskDoneCheckBox"
 import EditChildTaskNameMenuItem from "./menuItems/editChildTaskNameMenuItem"
+import ChildTaskDeleteMenuItem from "./menuItems/childTaskDeleteMenuItem"
 
 interface Props {
   childTask: ChildTaskType
@@ -31,6 +32,11 @@ const ChildTask: React.FC<Props> = ({ childTask, groupId }) => {
                     childTask={childTask}
                     handleClose={handleClose}
                     groupId={groupId}
+                  />
+                  <ChildTaskDeleteMenuItem
+                    handleClose={handleClose}
+                    groupId={groupId}
+                    childTaskId={childTask.childTaskId}
                   />
                 </div>
               )}

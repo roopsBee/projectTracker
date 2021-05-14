@@ -7,6 +7,7 @@ import taskBuilder from "./taskBuilder"
 import createChildTask from "./thunks/createChildTaskThunk"
 import createComment from "./thunks/createCommentThunk"
 import childTaskNameChange from "./thunks/childTaskNameChangeThunk"
+import childTaskDelete from "./thunks/childTaskDeleteThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -134,6 +135,32 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createChildTask.rejected, (state, action) => {
+        state.isLoading = false
+        console.log("rejected", action)
+      })
+      // delete child task
+      .addCase(childTaskDelete.pending, state => {
+        state.isLoading = true
+        console.log("Deleting child task...")
+      })
+      .addCase(childTaskDelete.fulfilled, (state, { payload }) => {
+        const { projectId, childTaskId, taskId, groupId } = payload
+
+        const childTasks = state.projects
+          ?.find(project => project.projectId === projectId)
+          ?.taskGroups?.find(group => group.groupId === groupId)
+          ?.tasks?.find(task => task.taskId === taskId)?.childTasks
+
+        const childTaskIndex = childTasks?.findIndex(
+          childTask => childTask.childTaskId === childTaskId
+        )
+
+        childTaskIndex !== undefined && childTasks?.splice(childTaskIndex, 1)
+
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(childTaskDelete.rejected, (state, action) => {
         state.isLoading = false
         console.log("rejected", action)
       })
