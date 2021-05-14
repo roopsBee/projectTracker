@@ -8,6 +8,7 @@ import createChildTask from "./thunks/createChildTaskThunk"
 import createComment from "./thunks/createCommentThunk"
 import childTaskNameChange from "./thunks/childTaskNameChangeThunk"
 import childTaskDelete from "./thunks/childTaskDeleteThunk"
+import handlePending from "../handlePending"
 
 export interface ProjectState {
   isLoading: boolean
@@ -198,8 +199,7 @@ export const projectSlice = createSlice({
       })
       // edit child task name
       .addCase(childTaskNameChange.pending, state => {
-        state.isLoading = true
-        console.log("Changing child task name...")
+        handlePending(state, "Changing child task name...")
       })
       .addCase(childTaskNameChange.fulfilled, (state, { payload }) => {
         const {
