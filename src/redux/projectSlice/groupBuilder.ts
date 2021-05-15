@@ -4,6 +4,7 @@ import createGroup from "./thunks/createGroupThunk"
 import groupChangeName from "./thunks/taskGroupChangeNameThunk"
 import groupDelete from "./thunks/groupDeleteThunk"
 import handlePending from "../handlePending"
+import handleRejected from "../handleRejected"
 
 const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create group
@@ -21,8 +22,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(createGroup.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
     // change group name
     .addCase(groupChangeName.pending, state => {
@@ -43,8 +43,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(groupChangeName.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
     // delete group
     .addCase(groupDelete.pending, state => {
@@ -67,8 +66,7 @@ const groupBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(groupDelete.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
 
 export default groupBuilder

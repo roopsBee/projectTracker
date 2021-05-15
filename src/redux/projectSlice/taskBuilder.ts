@@ -4,6 +4,7 @@ import { ProjectState } from "./projectSlice"
 import createTask from "./thunks/createTaskThunk"
 import taskNameChange from "./thunks/taskNameChangeThunk"
 import toggleTaskDone from "./thunks/toggleTaskDoneThunk"
+import handleRejected from "../handleRejected"
 
 const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task
@@ -38,8 +39,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(createTask.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
     // edit task name
     .addCase(taskNameChange.pending, state => {
@@ -60,8 +60,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(taskNameChange.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
     //toggle task
     .addCase(toggleTaskDone.pending, state => {
@@ -91,8 +90,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       console.log("fulfilled")
     })
     .addCase(toggleTaskDone.rejected, (state, action) => {
-      state.isLoading = false
-      console.log("rejected", action)
+      handleRejected(state, action)
     })
 
 export default taskBuilder

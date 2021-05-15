@@ -9,6 +9,7 @@ import createComment from "./thunks/createCommentThunk"
 import childTaskNameChange from "./thunks/childTaskNameChangeThunk"
 import childTaskDelete from "./thunks/childTaskDeleteThunk"
 import handlePending from "../handlePending"
+import handleRejected from "../handleRejected"
 
 export interface ProjectState {
   isLoading: boolean
@@ -69,8 +70,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createProject.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // get project list
       .addCase(getProjectList.pending, state => {
@@ -82,8 +82,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(getProjectList.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // get project
       .addCase(getProject.pending, state => {
@@ -98,8 +97,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(getProject.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // create child task
       .addCase(createChildTask.pending, state => {
@@ -132,8 +130,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createChildTask.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // delete child task
       .addCase(childTaskDelete.pending, state => {
@@ -157,8 +154,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(childTaskDelete.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // create comment
       .addCase(createComment.pending, state => {
@@ -188,8 +184,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(createComment.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
       // edit child task name
       .addCase(childTaskNameChange.pending, state => {
@@ -218,8 +213,7 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(childTaskNameChange.rejected, (state, action) => {
-        state.isLoading = false
-        console.log("rejected", action)
+        handleRejected(state, action)
       })
     taskBuilder(builder)
     groupBuilder(builder)
