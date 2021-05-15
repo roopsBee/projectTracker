@@ -79,7 +79,7 @@ const Header: React.FC<Props> = ({
         isDarkMode={isDarkMode}
       />
       <Drawer
-        keepMounted
+        ModalProps={{ keepMounted: true }}
         className={classes.drawer}
         variant={
           !isMounted ? "temporary" : isScreenBig ? "permanent" : "temporary"
