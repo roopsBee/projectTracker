@@ -9,8 +9,16 @@ interface Props {
 }
 
 const DrawerLink: React.FC<Props> = ({ to, text, Icon, ...props }) => {
+  const prevURL = window !== undefined ? window.location.pathname : null
   return (
-    <ListItem {...props} to={to} button dense component={Link}>
+    <ListItem
+      {...props}
+      state={{ prevURL }}
+      to={to}
+      button
+      dense
+      component={Link}
+    >
       {Icon && (
         <ListItemIcon>
           <Icon />
