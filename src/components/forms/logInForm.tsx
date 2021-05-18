@@ -12,7 +12,7 @@ interface Values {
   email: string
 }
 
-function LogIn() {
+function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
   const dispatch = useAppDispatch()
 
   return (
@@ -27,6 +27,7 @@ function LogIn() {
         onSubmit={async ({ password, email }: Values) => {
           try {
             await dispatch(loginThunk({ email, password }))
+            handleClosePopover()
           } catch (error) {
             console.log(error)
           }

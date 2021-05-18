@@ -17,7 +17,7 @@ const AppBarLoginOutButton: React.FC = () => {
     isLoggedIn ? dispatch(logOutThunk()) : setPopoverOpen(true)
   }
 
-  const onClosePopover = () => {
+  const handleClosePopover = () => {
     setPopoverOpen(false)
   }
 
@@ -44,9 +44,9 @@ const AppBarLoginOutButton: React.FC = () => {
         }}
         id={id}
         open={isPopoverOpen}
-        onBackdropClick={onClosePopover}
+        onBackdropClick={handleClosePopover}
       >
-        <LogInForm />
+        <LogInForm handleClosePopover={handleClosePopover} />
       </Popover>
     </>
   )
