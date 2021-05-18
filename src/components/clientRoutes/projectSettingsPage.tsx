@@ -7,10 +7,12 @@ import {
   Typography,
   Divider,
   List,
+  ListItem,
 } from "@material-ui/core"
 import React from "react"
 import { useAppSelector } from "../../redux/reduxHooks"
 import DeleteProjectListItem from "../settingsItems/deleteProjectListItem"
+import ChangeProjectNameListItem from "../settingsItems/changeProjectNameListItem"
 
 interface Props {
   projectId: string
@@ -35,6 +37,7 @@ const ProjectSettingsPage: React.FC<Props> = ({ projectId }) => {
           <List>
             <Divider />
             <DeleteProjectListItem projectId={projectId} />
+            <ChangeProjectNameListItem />
           </List>
         </Paper>
       </Container>
