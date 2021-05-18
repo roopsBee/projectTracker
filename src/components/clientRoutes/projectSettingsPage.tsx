@@ -34,7 +34,7 @@ const ProjectSettingsPage: React.FC<Props> = ({ projectId }) => {
           </Grid>
           <List>
             <Divider />
-            <DeleteProjectListItem />
+            <DeleteProjectListItem projectId={projectId} />
           </List>
         </Paper>
       </Container>

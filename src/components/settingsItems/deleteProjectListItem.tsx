@@ -10,8 +10,13 @@ import React, { useState } from "react"
 import DeleteIcon from "@material-ui/icons/Delete"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import ConfirmDialog from "../confirmDialog"
+import projectDeleteThunk from "../../redux/projectSlice/thunks/projectDeleteThunk"
 
-const DeleteProjectListItem: React.FC = () => {
+interface Props {
+  projectId: string
+}
+
+const DeleteProjectListItem: React.FC<Props> = ({ projectId }) => {
   const [isDialogOpen, setDialogOpen] = useState(false)
   const dispatch = useAppDispatch()
 
@@ -24,7 +29,7 @@ const DeleteProjectListItem: React.FC = () => {
   }
 
   const handleConfirm = async () => {
-    console.log("confirm")
+    await dispatch(projectDeleteThunk({ projectId }))
   }
 
   return (
