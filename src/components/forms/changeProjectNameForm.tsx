@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import React from "react"
+import React, { useEffect } from "react"
 import { Formik, Form, Field } from "formik"
 import { Button, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
@@ -37,7 +37,7 @@ function ChildTaskChangeNameForm() {
         }
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values }) => (
         <Form autoComplete="off" css={{ marginBottom: 16 }}>
           <Grid container item xs={12}>
             <Grid item xs={8}>
@@ -56,7 +56,13 @@ function ChildTaskChangeNameForm() {
               alignContent="flex-end"
               justify="flex-end"
             >
-              <Button variant="outlined" disabled={isSubmitting} type="submit">
+              <Button
+                variant="outlined"
+                disabled={
+                  isSubmitting || project?.projectName === values.projectName
+                }
+                type="submit"
+              >
                 Save
               </Button>
             </Grid>
