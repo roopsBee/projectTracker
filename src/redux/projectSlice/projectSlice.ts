@@ -11,6 +11,7 @@ import childTaskDelete from "./thunks/childTaskDeleteThunk"
 import handlePending from "../handlePending"
 import handleRejected from "../handleRejected"
 import projectDelete from "./thunks/projectDeleteThunk"
+import projectChangeName from "./thunks/projectChangeNameThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -235,7 +236,23 @@ export const projectSlice = createSlice({
       .addCase(projectDelete.rejected, (state, action) => {
         handleRejected(state, action)
       })
+      // change project name
+      .addCase(projectChangeName.pending, state => {
+        handlePending(state, "Changing Project name...")
+      })
+      .addCase(projectChangeName.fulfilled, (state, { payload }) => {
+        const { projectId, newProjectName } = payload
 
+        const project = state.projects?.find(
+          project => project.projectId === projectId
+        )
+        project && (project.projectName = newProjectName)
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(projectChangeName.rejected, (state, action) => {
+        handleRejected(state, action)
+      })
     taskBuilder(builder)
     groupBuilder(builder)
   },

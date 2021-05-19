@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import React, { useEffect } from "react"
+import React from "react"
 import { Formik, Form, Field } from "formik"
 import { Button, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import changeProjectNameSchema from "./yupSchemas/changeProjectNameSchema"
+import projectChangeNameThunk from "../../redux/projectSlice/thunks/projectChangeNameThunk"
 
 interface Values {
   projectName: string
@@ -24,14 +25,16 @@ function ChildTaskChangeNameForm() {
   return (
     <Formik
       initialValues={{
-        projectName: project ? project.projectName! : "",
+        projectName: project?.projectName ? project.projectName : "",
       }}
       validationSchema={changeProjectNameSchema}
       validateOnBlur={false}
       validateOnChange={false}
       onSubmit={async ({ projectName }: Values) => {
         try {
-          console.log({ projectName })
+          await dispatch(
+            projectChangeNameThunk({ newProjectName: projectName, projectId })
+          )
         } catch (error) {
           console.log(error)
         }
