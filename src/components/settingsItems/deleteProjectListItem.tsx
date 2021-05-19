@@ -4,7 +4,7 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  IconButton,
+  Button,
 } from "@material-ui/core"
 import React, { useState } from "react"
 import DeleteIcon from "@material-ui/icons/Delete"
@@ -34,12 +34,17 @@ const DeleteProjectListItem: React.FC<Props> = ({ projectId }) => {
 
   return (
     <>
-      <ListItem divider>
+      <ListItem ContainerComponent="div" divider>
         <ListItemText css={{ paddingLeft: 20 }}>Delete Project</ListItemText>
         <ListItemSecondaryAction>
-          <IconButton onClick={handleClick}>
-            <DeleteIcon />
-          </IconButton>
+          <Button
+            onClick={handleClick}
+            variant="contained"
+            color="secondary"
+            startIcon={<DeleteIcon />}
+          >
+            Delete
+          </Button>
         </ListItemSecondaryAction>
       </ListItem>
       <ConfirmDialog

@@ -9,7 +9,7 @@ import ChangeProjectNameForm from "../forms/changeProjectNameForm"
 const ChangeProjectNameListItem: React.FC = () => {
   return (
     <>
-      <div css={{ padding: "0px 36px" }}>
+      <div css={{ padding: "8px 16px 0px 36px" }}>
         <ChangeProjectNameForm />
       </div>
       <Divider />

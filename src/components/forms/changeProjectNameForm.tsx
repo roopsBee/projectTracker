@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import changeProjectNameSchema from "./yupSchemas/changeProjectNameSchema"
 import projectChangeNameThunk from "../../redux/projectSlice/thunks/projectChangeNameThunk"
+import SaveIcon from "@material-ui/icons/Save"
 
 interface Values {
   projectName: string
@@ -41,7 +42,7 @@ function ChildTaskChangeNameForm() {
       }}
     >
       {({ isSubmitting, values }) => (
-        <Form autoComplete="off" css={{ marginBottom: 16 }}>
+        <Form autoComplete="off" css={{ marginBottom: 8 }}>
           <Grid container item xs={12}>
             <Grid item xs={8}>
               <Field
@@ -60,7 +61,10 @@ function ChildTaskChangeNameForm() {
               justify="flex-end"
             >
               <Button
-                variant="outlined"
+                css={{ width: 114 }}
+                startIcon={<SaveIcon />}
+                variant="contained"
+                color="primary"
                 disabled={
                   isSubmitting || project?.projectName === values.projectName
                 }
