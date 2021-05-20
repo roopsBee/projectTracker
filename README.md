@@ -1,6 +1,6 @@
 # Project tracker
 
-A JAMstack web app to organise taks relating to your project. Keep track of features, bugs, nice to haves etc.
+A JAMstack web app written in typescript to organise taks relating to your project. Keep track of features, bugs, nice to haves etc.
 
 ## Features
 
@@ -9,7 +9,7 @@ A JAMstack web app to organise taks relating to your project. Keep track of feat
 - Each task has it's own comment thread.
 - Tag each group and task with custom tags (WIP)
 - Global task log of each action taken (WIP)
-- Full Authentication. All projects are private.
+- Full Authentication using serverless functions. All projects are private.
 
 ## Tech used
 
