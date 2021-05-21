@@ -27,8 +27,9 @@ const ProjectPage: React.FC<Props> = ({ projectId, location }) => {
 
   return (
     <Container>
-      <Typography>{project?.projectName}</Typography>
-      {project?.taskGroups && <GroupList taskGroups={project?.taskGroups} />}
+      <>
+        {project?.taskGroups && <GroupList taskGroups={project?.taskGroups} />}
+      </>
     </Container>
   )
 }

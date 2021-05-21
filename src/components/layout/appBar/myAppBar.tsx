@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import clsx from "clsx"
 import MenuIcon from "@material-ui/icons/Menu"
 import {
@@ -7,6 +7,7 @@ import {
   Toolbar,
   AppBar,
   makeStyles,
+  Typography,
 } from "@material-ui/core"
 import Brightness4Icon from "@material-ui/icons/Brightness4"
 import Brightness7Icon from "@material-ui/icons/Brightness7"
@@ -14,6 +15,8 @@ import AppBarLoginOutButton from "./appBarLoginOutButton"
 import AppBarSignUpButton from "./appBarSignUpButton"
 import { useAppSelector } from "../../../redux/reduxHooks"
 import useIsMounted from "../../../utils/useIsMounted"
+import getProjectIdFromUrl from "../../../utils/getProjectIdFromUrl"
+import { DRAWER_WIDTH } from "../../../config"
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -29,6 +32,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   darkSwitch: { marginLeft: "auto" },
+  appBar: {
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${DRAWER_WIDTH}px)`,
+      marginLeft: DRAWER_WIDTH,
+    },
+  },
 }))
 
 interface Props {
@@ -45,12 +54,24 @@ const MyAppBar: React.FC<Props> = ({
   handleDarkModeSwitch,
   isDarkMode,
 }) => {
+  const [projectName, setProjectName] = useState<string | undefined>("")
   const classes = useStyles()
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn)
+  const projects = useAppSelector(state => state.projectState.projects)
   const isMounted = useIsMounted()
+  const projectId = getProjectIdFromUrl()
+
+  useEffect(() => {
+    if (projectId) {
+      const project = projects?.find(project => project.projectId === projectId)
+      setProjectName(project?.projectName)
+    } else {
+      setProjectName("")
+    }
+  }, [projectId])
 
   return (
-    <AppBar position="fixed" elevation={0}>
+    <AppBar className={classes.appBar} position="fixed" elevation={0}>
       <Toolbar>
         <IconButton
           color="inherit"
@@ -61,6 +82,7 @@ const MyAppBar: React.FC<Props> = ({
         >
           <MenuIcon />
         </IconButton>
+        <Typography>{projectName}</Typography>
         <Switch
           className={classes.darkSwitch}
           checked={isDarkMode}
