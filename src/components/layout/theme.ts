@@ -38,6 +38,11 @@ export default (isDarkMode: boolean) =>
             },
           },
         },
+        MuiDrawer: {
+          paper: {
+            backgroundColor: isDarkMode ? "#3D4A3D" : "#00639F",
+          },
+        },
       },
     })
   )
