@@ -24,15 +24,20 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: DRAWER_WIDTH,
+    borderRight: 0,
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
     ...theme.mixins.toolbar,
   },
   materialStylesButton: {
     height: "100%",
+    backgroundColor: theme.palette.primary.dark,
+    borderRadius: 0,
+    width: "100%",
   },
   popoverPaper: {
     "& .MuiPopover-paper": {
@@ -98,7 +103,7 @@ const Header: React.FC<Props> = ({
             component={Link}
             to="/"
           >
-            MY-SITE
+            PROJECT-TRACKER
           </Button>
         </div>
         <Divider />
