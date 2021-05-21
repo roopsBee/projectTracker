@@ -10,7 +10,7 @@ const DrawerButtons: React.FC<{
 
   return (
     <>
-      <List dense onClick={handleDrawerClose}>
+      <List disablePadding dense onClick={handleDrawerClose}>
         {isLoggedIn && <LoggedInDrawerButtons />}
       </List>
     </>

@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.dark,
     borderRadius: 0,
     width: "100%",
+    "&:hover": { backgroundColor: "#2A953D" },
   },
   popoverPaper: {
     "& .MuiPopover-paper": {

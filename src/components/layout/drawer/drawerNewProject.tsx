@@ -18,7 +18,7 @@ const DrawerNewProject: React.FC = () => {
 
   return (
     <>
-      <ListItem dense button onClick={handleClick}>
+      <ListItem divider dense button onClick={handleClick}>
         <ListItemText>New Project</ListItemText>
       </ListItem>
       <Popover

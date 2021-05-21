@@ -42,6 +42,14 @@ export default (isDarkMode: boolean) =>
           paper: {
             backgroundColor: isDarkMode ? "#3D4A3D" : "#00639F",
           },
+          root: {
+            "& .MuiListItem-root": {
+              backgroundColor: isDarkMode ? "#3D4A3D" : "#0088AF",
+              "&:hover": {
+                backgroundColor: isDarkMode ? "#6C6F4C" : "#00639F",
+              },
+            },
+          },
         },
       },
     })
