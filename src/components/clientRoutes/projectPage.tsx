@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../redux/reduxHooks"
 import getProjectThunk from "../../redux/projectSlice/thunks/getProjectThunk"
-import { Container, Typography } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import { PageProps } from "gatsby"
 
 import GroupList from "../groupList"

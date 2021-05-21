@@ -4,7 +4,6 @@ const getProjectIdFromUrl = () => {
   if (urlArr.length > 2) {
     return urlArr[3]
   } else {
-    console.log("Project Id is not in url.")
     return ""
   }
 }
