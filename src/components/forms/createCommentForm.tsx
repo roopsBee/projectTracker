@@ -8,6 +8,8 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import createCommentSchema from "./yupSchemas/createCommentSchema"
 import createCommentThunk from "../../redux/projectSlice/thunks/createCommentThunk"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import SubmitButton from "./submitButton"
+import CancelButton from "./cancelButton"
 
 interface Values {
   text: string
@@ -62,22 +64,14 @@ function CreateTaskForm({
                 />
               </Grid>
               <Grid item>
-                <Button
-                  variant="outlined"
-                  disabled={isSubmitting}
-                  type="submit"
-                >
-                  Add
-                </Button>
+                <SubmitButton disabled={isSubmitting} />
               </Grid>
               <Grid item>
-                <Button
-                  variant="outlined"
+                <CancelButton
+                  text="Close"
                   disabled={isSubmitting}
                   onClick={closePopover}
-                >
-                  Close
-                </Button>
+                />
               </Grid>
             </Grid>
           </Form>

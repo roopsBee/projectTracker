@@ -7,6 +7,8 @@ import createChildTaskSchema from "./yupSchemas/createChildTaskSchema"
 import createChildTaskThunk from "../../redux/projectSlice/thunks/createChildTaskThunk"
 import FormHeader from "./formHeader"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import SubmitButton from "./submitButton"
+import CancelButton from "./cancelButton"
 
 interface Values {
   childTaskName: string
@@ -63,22 +65,13 @@ function CreateTaskForm({
                     />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      Create
-                    </Button>
+                    <SubmitButton text="Create" disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
+                    <CancelButton
                       disabled={isSubmitting}
                       onClick={closePopover}
-                    >
-                      Cancel
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Form>

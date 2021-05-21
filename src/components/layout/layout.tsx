@@ -5,7 +5,6 @@ import {
   ThemeProvider,
   Box,
   CssBaseline,
-  createMuiTheme,
   useMediaQuery,
 } from "@material-ui/core"
 import { Toolbar } from "@material-ui/core"
@@ -48,14 +47,7 @@ const Layout: React.FC = ({ children }) => {
     }
   }, [prefersDarkTheme])
 
-  const myTheme = useMemo(
-    () =>
-      createMuiTheme({
-        ...theme,
-        palette: { type: isDarkMode ? "dark" : "light" },
-      }),
-    [isDarkMode]
-  )
+  const myTheme = useMemo(() => theme(isDarkMode), [isDarkMode])
 
   const handleDarkModeSwitch = () => {
     setDarkMode(!isDarkMode)

@@ -1,11 +1,12 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import signupSchema from "./yupSchemas/signupSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import signUpThunk from "../../redux/userSlice/signUpThunk"
 import FormHeader from "./formHeader"
+import SubmitButton from "./submitButton"
 
 interface Values {
   password: string
@@ -68,9 +69,7 @@ function SignUp() {
               placeholder="Confirm Password"
             />
 
-            <Button disabled={isSubmitting} type="submit">
-              Submit
-            </Button>
+            <SubmitButton disabled={isSubmitting} />
           </Form>
         )}
       </Formik>

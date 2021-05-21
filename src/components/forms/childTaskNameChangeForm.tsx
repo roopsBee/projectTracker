@@ -8,6 +8,8 @@ import childTaskNameChangeSchema from "./yupSchemas/childTaskNameChangeSchema"
 import childTaskNameChangeThunk from "../../redux/projectSlice/thunks/childTaskNameChangeThunk"
 import FormHeader from "./formHeader"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import SubmitButton from "./submitButton"
+import CancelButton from "./cancelButton"
 
 interface Values {
   childTaskName: string
@@ -65,22 +67,13 @@ function ChildTaskChangeNameForm({
                     />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      Submit
-                    </Button>
+                    <SubmitButton disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
+                    <CancelButton
                       disabled={isSubmitting}
                       onClick={closePopover}
-                    >
-                      Cancel
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Form>

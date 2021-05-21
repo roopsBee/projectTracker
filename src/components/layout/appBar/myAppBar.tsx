@@ -68,11 +68,7 @@ const MyAppBar: React.FC<Props> = ({
           name="dark mode"
           inputProps={{ "aria-label": "dark mode switch" }}
         />
-        {isDarkMode ? (
-          <Brightness4Icon color="secondary" />
-        ) : (
-          <Brightness7Icon />
-        )}
+        {isDarkMode ? <Brightness4Icon /> : <Brightness7Icon />}
         <AppBarLoginOutButton />
         {isMounted && !isLoggedIn && <AppBarSignUpButton />}
       </Toolbar>

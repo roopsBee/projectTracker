@@ -36,14 +36,12 @@ const LoggedInDrawerButtons = () => {
     )
   }
 
-  if (url.indexOf("/") > -1) {
-    return (
-      <>
-        <DrawerNewProject />
-        <DrawerProjectList />
-      </>
-    )
-  }
+  return (
+    <>
+      <DrawerNewProject />
+      <DrawerProjectList />
+    </>
+  )
 }
 
 export default LoggedInDrawerButtons

@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import {
   Button,
@@ -44,12 +46,15 @@ const ConfirmDialog: React.FC<Props> = ({
           <Button
             disabled={isLoading}
             onClick={closeDialog}
-            variant="outlined"
+            variant="contained"
+            color="secondary"
             autoFocus
           >
             Cancel
           </Button>
           <Button
+            css={{ backgroundColor: "red", color: "white" }}
+            color="primary"
             disabled={isLoading}
             onClick={handleConfirm}
             variant="contained"

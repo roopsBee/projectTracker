@@ -1,14 +1,43 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 
-let theme = createMuiTheme({
-  overrides: {
-    MuiTypography: {
-      root: {
-        wordBreak: "break-word",
+export default (isDarkMode: boolean) =>
+  responsiveFontSizes(
+    createMuiTheme({
+      palette: {
+        primary: {
+          main: "#2A953D",
+        },
+        secondary: {
+          main: "#1A6EB9",
+        },
+        background: {
+          paper: isDarkMode ? "#6C6852" : "#007DBD",
+          // default: isDarkMode ? "#221E24" : "#F0F0F2",
+        },
+        text: { primary: "#F3EDF2", secondary: "#c8c6c7" },
+        type: isDarkMode ? "dark" : "light",
       },
-    },
-  },
-})
-theme = responsiveFontSizes(theme)
-
-export default theme
+      overrides: {
+        MuiTypography: {
+          root: {
+            wordBreak: "break-word",
+          },
+        },
+        MuiInputLabel: {
+          root: {
+            color: "#F3EDF2",
+            "&$focused": {
+              color: "black",
+            },
+          },
+        },
+        MuiInput: {
+          underline: {
+            "&:after": {
+              borderBottom: "2px black solid",
+            },
+          },
+        },
+      },
+    })
+  )

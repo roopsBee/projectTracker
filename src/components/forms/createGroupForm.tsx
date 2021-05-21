@@ -7,6 +7,8 @@ import createGroupSchema from "./yupSchemas/createGroupSchema"
 import createGroupThunk from "../../redux/projectSlice/thunks/createGroupThunk"
 import FormHeader from "./formHeader"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import SubmitButton from "./submitButton"
+import CancelButton from "./cancelButton"
 
 interface Values {
   taskGroupName: string
@@ -49,22 +51,13 @@ function CreateGroupForm({ closePopover }: { closePopover: () => void }) {
                     />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      Create
-                    </Button>
+                    <SubmitButton text="Create" disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
+                    <CancelButton
                       disabled={isSubmitting}
                       onClick={closePopover}
-                    >
-                      Cancel
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Form>

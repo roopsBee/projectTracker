@@ -1,11 +1,12 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container } from "@material-ui/core"
+import { Container } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import loginSchema from "./yupSchemas/loginSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import loginThunk from "../../redux/userSlice/loginThunk"
 import FormHeader from "./formHeader"
+import SubmitButton from "./submitButton"
 
 interface Values {
   password: string
@@ -50,9 +51,7 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
               label="Password"
               placeholder="Password"
             />
-            <Button disabled={isSubmitting} type="submit">
-              Log In
-            </Button>
+            <SubmitButton text="Login" disabled={isSubmitting} />
           </Form>
         )}
       </Formik>

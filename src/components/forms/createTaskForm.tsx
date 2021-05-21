@@ -1,12 +1,14 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container, Grid } from "@material-ui/core"
+import { Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createTaskSchema from "./yupSchemas/createTaskSchema"
 import createTaskThunk from "../../redux/projectSlice/thunks/createTaskThunk"
 import FormHeader from "./formHeader"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import SubmitButton from "./submitButton"
+import CancelButton from "./cancelButton"
 
 interface Values {
   taskName: string
@@ -57,22 +59,13 @@ function CreateTaskForm({
                     />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      Create
-                    </Button>
+                    <SubmitButton text="Create" disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
+                    <CancelButton
                       disabled={isSubmitting}
                       onClick={closePopover}
-                    >
-                      Cancel
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Form>

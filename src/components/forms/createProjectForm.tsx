@@ -1,11 +1,13 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Button, Container, Grid } from "@material-ui/core"
+import { Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import createProjectSchema from "./yupSchemas/createProjectSchema"
 import createProject from "../../redux/projectSlice/thunks/createProjectThunk"
 import FormHeader from "./formHeader"
+import CancelButton from "./cancelButton"
+import SubmitButton from "./submitButton"
 
 interface Values {
   projectName: string
@@ -46,22 +48,13 @@ function CreateProjectForm({ closePopover }: { closePopover: () => void }) {
                     />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
-                      disabled={isSubmitting}
-                      type="submit"
-                    >
-                      Create
-                    </Button>
+                    <SubmitButton text="Create" disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
-                    <Button
-                      variant="outlined"
+                    <CancelButton
                       disabled={isSubmitting}
                       onClick={closePopover}
-                    >
-                      Cancel
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Form>
