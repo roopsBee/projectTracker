@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import loginThunk from "../../redux/userSlice/loginThunk"
 import FormHeader from "./formHeader"
 import SubmitButton from "./submitButton"
+import { navigate } from "gatsby"
 
 interface Values {
   password: string
@@ -28,6 +29,7 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
         onSubmit={async ({ password, email }: Values) => {
           try {
             await dispatch(loginThunk({ email, password }))
+            navigate("/app")
             handleClosePopover()
           } catch (error) {
             console.log(error)
