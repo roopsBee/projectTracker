@@ -12,7 +12,7 @@ export default (isDarkMode: boolean) =>
         },
         background: {
           paper: isDarkMode ? "#2F4858" : "#007DBD",
-          // default: isDarkMode ? "#221E24" : "#F0F0F2",
+          default: isDarkMode ? "#221E24" : "#0088AF",
         },
         text: { primary: "#F3EDF2", secondary: "#c8c6c7" },
         type: isDarkMode ? "dark" : "light",
@@ -84,11 +84,9 @@ export default (isDarkMode: boolean) =>
               borderStyle: "solid",
               borderColor: isDarkMode ? "#01596B" : "#00639F",
             },
-            // "&.MuiAppBar-colorPrimary": {
-            //   borderWidth: "1px 0px 1px 0px",
-            //   borderStyle: "solid",
-            //   borderColor: "#009469",
-            // },
+            "&.MuiAppBar-colorPrimary": {
+              backgroundColor: isDarkMode ? "#005600" : "#2A953D",
+            },
           },
         },
         // MuiList: {
