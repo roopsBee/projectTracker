@@ -86,6 +86,9 @@ export default (isDarkMode: boolean) =>
             },
             "&.MuiAppBar-colorPrimary": {
               backgroundColor: isDarkMode ? "#005600" : "#2A953D",
+              borderWidth: "0px 0px 2px 0px",
+              borderStyle: "solid",
+              borderColor: isDarkMode ? "#01596B" : "#00639F",
             },
           },
         },
