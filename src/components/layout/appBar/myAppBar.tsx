@@ -84,6 +84,7 @@ const MyAppBar: React.FC<Props> = ({
         </IconButton>
         <Typography>{projectName}</Typography>
         <Switch
+          color="default"
           className={classes.darkSwitch}
           checked={isDarkMode}
           onChange={handleDarkModeSwitch}

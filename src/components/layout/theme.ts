@@ -45,10 +45,26 @@ export default (isDarkMode: boolean) =>
           root: {
             "& .MuiListItem-root": {
               backgroundColor: isDarkMode ? "#3D4A3D" : "#0088AF",
+              "& .MuiListItemIcon-root": {
+                color: "white",
+              },
               "&:hover": {
                 backgroundColor: isDarkMode ? "#6C6F4C" : "#00639F",
               },
             },
+          },
+        },
+        MuiIconButton: {
+          root: {
+            color: "white",
+          },
+        },
+        MuiSwitch: {
+          switchBase: {
+            color: "white",
+            // "&.Mui-checked": {
+            //   color: "red",
+            // },
           },
         },
       },
