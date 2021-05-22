@@ -40,7 +40,7 @@ export default (isDarkMode: boolean) =>
         },
         MuiDrawer: {
           paper: {
-            backgroundColor: isDarkMode ? "#3D4A3D" : "#00639F",
+            backgroundColor: isDarkMode ? "#2F4858" : "#00639F",
           },
           root: {
             "& .MuiListItem-root": {
@@ -65,6 +65,25 @@ export default (isDarkMode: boolean) =>
             // "&.Mui-checked": {
             //   color: "red",
             // },
+          },
+        },
+        MuiListItem: {
+          root: {
+            "&.MuiListItem-button": {
+              backgroundColor: isDarkMode ? "#2F4858" : "#007DBD",
+              "&:hover": {
+                backgroundColor: isDarkMode ? "#01596B" : "#00639F",
+              },
+            },
+          },
+        },
+        MuiPaper: {
+          root: {
+            "&.MuiPaper-rounded": {
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: isDarkMode ? "#6C6F4C" : "#00639F",
+            },
           },
         },
       },

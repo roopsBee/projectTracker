@@ -4,6 +4,7 @@ import PrivateRoute from "../components/clientRoutes/privateRoute"
 import projectPage from "../components/clientRoutes/projectPage"
 import useIsMounted from "../utils/useIsMounted"
 import ProjectSettingsPage from "../components/clientRoutes/projectSettingsPage"
+import appHomePage from "../components/clientRoutes/appHomePage"
 
 const App = () => {
   const isMounted = useIsMounted()
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <Router>
+      <PrivateRoute path="/app" component={appHomePage} />
       <PrivateRoute path="/app/project/:projectId" component={projectPage} />
       <PrivateRoute
         path="/app/project/:projectId/settings"

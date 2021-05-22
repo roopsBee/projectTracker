@@ -19,7 +19,9 @@ const DrawerNewProject: React.FC = () => {
   return (
     <>
       <ListItem divider dense button onClick={handleClick}>
-        <ListItemText>New Project</ListItemText>
+        <ListItemText primaryTypographyProps={{ align: "center" }}>
+          New Project
+        </ListItemText>
       </ListItem>
       <Popover
         anchorReference="anchorPosition"
