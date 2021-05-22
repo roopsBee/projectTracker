@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import {
   useMediaQuery,
   Button,
-  Divider,
   CssBaseline,
   Drawer,
   makeStyles,
@@ -25,7 +24,10 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: DRAWER_WIDTH,
-    borderRight: 0,
+
+    borderWidth: "0px 1px 0px 0px",
+    borderStyle: "solid",
+    borderColor: theme.palette.type === "dark" ? "#01596B" : "#00639F",
   },
   drawerHeader: {
     display: "flex",
@@ -119,7 +121,7 @@ const Header: React.FC<Props> = ({
               PROJECT-TRACKER
             </Button>
           </div>
-          <Divider />
+
           <DrawerButtons handleDrawerClose={handleDrawerClose} />
         </Drawer>
       )}

@@ -9,11 +9,7 @@ const useStyles = makeStyles({
 
 const Footer = () => {
   const classes = useStyles()
-  return (
-    <footer className={classes.footer}>
-      © {new Date().getFullYear()} My site
-    </footer>
-  )
+  return <footer className={classes.footer}></footer>
 }
 
 export default Footer

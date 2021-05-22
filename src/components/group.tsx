@@ -1,5 +1,13 @@
+/** @jsx jsx */
 import React, { useState } from "react"
-import { List, ListItem, ListItemText, Collapse, Box } from "@material-ui/core"
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Collapse,
+  Box,
+  Paper,
+} from "@material-ui/core"
 import TaskList from "./taskList"
 import { TaskGroupType } from "../redux/projectSlice/projectSlice"
 import MenuItemButton from "./menuItems/menuItemButton"
@@ -7,6 +15,7 @@ import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
 import ExpandIconButton from "./expandIconButton"
 import EditGroupNameMenuItem from "./menuItems/editGroupNameMenuItem"
 import GroupDeleteMenuItem from "./menuItems/groupDeleteMenuItem"
+import { jsx } from "@emotion/react"
 
 interface Props {
   group: TaskGroupType
@@ -22,7 +31,7 @@ const Group: React.FC<Props> = ({ group }) => {
 
   return (
     <>
-      <Box marginY={1} bgcolor="background.paper">
+      <Paper css={{ marginTop: 8 }}>
         <List disablePadding>
           <Box margin={0} height={59} clone>
             <ListItem dense key={group.groupId} disableGutters>
@@ -61,7 +70,7 @@ const Group: React.FC<Props> = ({ group }) => {
             )}
           </Collapse>
         </List>
-      </Box>
+      </Paper>
     </>
   )
 }

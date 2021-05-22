@@ -53,7 +53,11 @@ const ConfirmDialog: React.FC<Props> = ({
             Cancel
           </Button>
           <Button
-            css={{ backgroundColor: "red", color: "white" }}
+            css={{
+              backgroundColor: "red",
+              color: "white",
+              "&:hover": { backgroundColor: "maroon" },
+            }}
             color="primary"
             disabled={isLoading}
             onClick={handleConfirm}
