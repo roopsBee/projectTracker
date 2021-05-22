@@ -1,8 +1,6 @@
 import React from "react"
 import DrawerLink from "./drawerLink"
-import DrawerNewProject from "./drawerNewProject"
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore"
-import DrawerProjectList from "./drawerProjectList"
 import DrawerCreateGroup from "./drawerCreateGroup"
 import SettingsIcon from "@material-ui/icons/Settings"
 import { useAppSelector } from "../../../redux/reduxHooks"
@@ -25,21 +23,11 @@ const LoggedInDrawerButtons = () => {
       </>
     )
   }
-
-  if (url.indexOf("project") > -1) {
-    return (
-      <>
-        <DrawerLink to="/" text="Projects" Icon={NavigateBeforeIcon} />
-        <DrawerCreateGroup />
-        <DrawerLink to="settings" text="Settings" Icon={SettingsIcon} />
-      </>
-    )
-  }
-
   return (
     <>
-      <DrawerNewProject />
-      <DrawerProjectList />
+      <DrawerLink to="/app" text="Projects" Icon={NavigateBeforeIcon} />
+      <DrawerCreateGroup />
+      <DrawerLink to="settings" text="Settings" Icon={SettingsIcon} />
     </>
   )
 }
