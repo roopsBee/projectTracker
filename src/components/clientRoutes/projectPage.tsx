@@ -20,7 +20,7 @@ const ProjectPage: React.FC<Props> = ({ projectId, location }) => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (!location.state.prevURL?.includes("settings")) {
+    if (location.state && !location.state.prevURL?.includes("settings")) {
       dispatch(getProjectThunk({ projectId }))
     }
   }, [])

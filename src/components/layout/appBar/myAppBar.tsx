@@ -55,6 +55,7 @@ const MyAppBar: React.FC<Props> = ({
   isDarkMode,
 }) => {
   const [projectName, setProjectName] = useState<string | undefined>("")
+  const [inProject, setInProject] = useState(false)
   const classes = useStyles()
   const isLoggedIn = useAppSelector(state => state.user.isLoggedIn)
   const projects = useAppSelector(state => state.projectState.projects)
@@ -65,20 +66,29 @@ const MyAppBar: React.FC<Props> = ({
     if (projectId) {
       const project = projects?.find(project => project.projectId === projectId)
       setProjectName(project?.projectName)
+      setInProject(true)
     } else {
       setProjectName("")
+      setInProject(false)
     }
   }, [projectId])
 
   return (
-    <AppBar className={classes.appBar} position="fixed" elevation={0}>
+    <AppBar
+      className={clsx(inProject && classes.appBar)}
+      position="fixed"
+      elevation={0}
+    >
       <Toolbar>
         <IconButton
           color="inherit"
           aria-label="Open drawer"
           onClick={handleDrawerOpen}
           edge="start"
-          className={clsx(classes.menuButton, drawerOpen && classes.hide)}
+          className={clsx(
+            classes.menuButton,
+            (drawerOpen || !inProject) && classes.hide
+          )}
         >
           <MenuIcon />
         </IconButton>

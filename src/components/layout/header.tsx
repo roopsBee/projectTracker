@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   useMediaQuery,
   Button,
@@ -13,6 +13,7 @@ import { DRAWER_WIDTH } from "../../config"
 import MyAppBar from "./appBar/myAppBar"
 import DrawerButtons from "./drawer/DrawerButtons"
 import useIsMounted from "../../utils/useIsMounted"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,7 +61,17 @@ const Header: React.FC<Props> = ({
 }) => {
   const classes = useStyles()
   const [openDrawer, setOpenDrawer] = useState(false)
+  const [inProject, setInProject] = useState(false)
   const isMounted = useIsMounted()
+  const projectId = getProjectIdFromUrl()
+
+  useEffect(() => {
+    if (projectId) {
+      setInProject(true)
+    } else {
+      setInProject(false)
+    }
+  }, [projectId])
 
   const isScreenBig = useMediaQuery((theme: Theme) =>
     theme.breakpoints.up("md")
@@ -84,32 +95,34 @@ const Header: React.FC<Props> = ({
         handleDarkModeSwitch={handleDarkModeSwitch}
         isDarkMode={isDarkMode}
       />
-      <Drawer
-        ModalProps={{ keepMounted: true }}
-        className={classes.drawer}
-        variant={
-          !isMounted ? "temporary" : isScreenBig ? "permanent" : "temporary"
-        }
-        anchor="left"
-        open={openDrawer}
-        onClose={handleDrawerClose}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <Button
-            className={classes.materialStylesButton}
-            fullWidth
-            component={Link}
-            to="/"
-          >
-            PROJECT-TRACKER
-          </Button>
-        </div>
-        <Divider />
-        <DrawerButtons handleDrawerClose={handleDrawerClose} />
-      </Drawer>
+      {inProject && (
+        <Drawer
+          ModalProps={{ keepMounted: true }}
+          className={classes.drawer}
+          variant={
+            !isMounted ? "temporary" : isScreenBig ? "permanent" : "temporary"
+          }
+          anchor="left"
+          open={openDrawer}
+          onClose={handleDrawerClose}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div className={classes.drawerHeader}>
+            <Button
+              className={classes.materialStylesButton}
+              fullWidth
+              component={Link}
+              to="/"
+            >
+              PROJECT-TRACKER
+            </Button>
+          </div>
+          <Divider />
+          <DrawerButtons handleDrawerClose={handleDrawerClose} />
+        </Drawer>
+      )}
     </header>
   )
 }
