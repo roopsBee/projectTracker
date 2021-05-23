@@ -67,6 +67,7 @@ const Layout: React.FC = ({ children }) => {
               : `url(${backgroundBlue})`,
             backgroundAttachment: "fixed",
             backgroundSize: "cover",
+            transition: "background-image 0.3s ease",
           }}
         >
           <Toolbar />

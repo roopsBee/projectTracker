@@ -4,6 +4,8 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 import lightAppBarBackground from "../../images/lightAppBarBackground.svg"
 import darkAppBarBackground from "../../images/darkAppBarBackground.svg"
 
+const darkModeTransition = "background-color 0.3s ease"
+
 export default (isDarkMode: boolean) =>
   responsiveFontSizes(
     createMuiTheme({
@@ -45,18 +47,15 @@ export default (isDarkMode: boolean) =>
         MuiDrawer: {
           paper: {
             backgroundColor: isDarkMode ? "#2F4858" : "#00639F",
+            transition: darkModeTransition,
           },
-          root: {
-            "& .MuiListItem-root": {
-              backgroundColor: isDarkMode ? "#3D4A3D" : "#0088AF",
-              "& .MuiListItemIcon-root": {
-                color: "white",
-              },
-              "&:hover": {
-                backgroundColor: isDarkMode ? "#6C6F4C" : "#00639F",
-              },
-            },
-          },
+          // root: {
+          //   "& .MuiListItem-root": {
+          //     "& .MuiListItemIcon-root": {
+          //       color: "white",
+          //     },
+          //   },
+          // },
         },
         MuiIconButton: {
           root: {
@@ -74,15 +73,21 @@ export default (isDarkMode: boolean) =>
         MuiListItem: {
           root: {
             "&.MuiListItem-button": {
+              transition: darkModeTransition,
+
               backgroundColor: isDarkMode ? "#2F4858" : "#007DBD",
               "&:hover": {
                 backgroundColor: isDarkMode ? "#01596B" : "#00639F",
               },
             },
+            "& .MuiListItemIcon-root": {
+              color: "white",
+            },
           },
         },
         MuiPaper: {
           root: {
+            transition: darkModeTransition,
             "&.MuiPaper-rounded": {
               borderWidth: "1px",
               borderStyle: "solid",
@@ -98,6 +103,7 @@ export default (isDarkMode: boolean) =>
                 : `url(${lightAppBarBackground})`,
               backgroundAttachment: "fixed",
               backgroundSize: "cover",
+              transition: "background-image 0.3s ease",
             },
           },
         },

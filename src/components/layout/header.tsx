@@ -38,10 +38,11 @@ const useStyles = makeStyles(theme => ({
   materialStylesButton: {
     height: "100%",
     backgroundColor: theme.palette.type === "dark" ? "#2F4858" : "#00639F",
+    transition: "background-color 0.3s ease",
     borderRadius: 0,
     width: "100%",
     "&:hover": {
-      backgroundColor: theme.palette.type === "dark" ? "#0055B4" : "#00639F",
+      backgroundColor: theme.palette.type === "dark" ? "#0055B4" : "#007DBD",
     },
   },
   popoverPaper: {
