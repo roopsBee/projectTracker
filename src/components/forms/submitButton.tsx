@@ -1,15 +1,16 @@
-import { Button } from "@material-ui/core"
+import { Button, ButtonProps } from "@material-ui/core"
 import React from "react"
 
-interface Props {
+type Props = ButtonProps & {
   text?: string
   disabled: boolean
 }
 
-const SubmitButton: React.FC<Props> = ({ text, disabled }) => {
+const SubmitButton: React.FC<Props> = ({ text, disabled, ...props }) => {
   return (
     <>
       <Button
+        {...props}
         variant="contained"
         color="primary"
         disabled={disabled}

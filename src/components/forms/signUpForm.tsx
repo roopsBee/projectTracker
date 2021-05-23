@@ -1,6 +1,6 @@
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Container } from "@material-ui/core"
+import { Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import signupSchema from "./yupSchemas/signupSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
@@ -39,37 +39,52 @@ function SignUp() {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field
-              component={TextField}
-              fullWidth
-              name="userName"
-              label="User Name"
-              placeholder="Your username..."
-            />
-            <Field
-              component={TextField}
-              fullWidth
-              name="email"
-              label="Email"
-              placeholder="john@acme.com"
-              type="email"
-            />
-            <Field
-              component={TextField}
-              fullWidth
-              name="password"
-              label="Password"
-              placeholder="Password"
-            />
-            <Field
-              component={TextField}
-              fullWidth
-              name="confirmPassword"
-              label="Confirm Password"
-              placeholder="Confirm Password"
-            />
-
-            <SubmitButton disabled={isSubmitting} />
+            <Grid container spacing={1}>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="userName"
+                  label="User Name"
+                  placeholder="Your username..."
+                />
+              </Grid>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="email"
+                  label="Email"
+                  placeholder="john@acme.com"
+                  type="email"
+                />
+              </Grid>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  placeholder="Password"
+                />
+              </Grid>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="confirmPassword"
+                  label="Confirm Password"
+                  placeholder="Confirm Password"
+                />
+              </Grid>
+              <Grid item container>
+                <SubmitButton
+                  text="Sign Up"
+                  fullWidth
+                  disabled={isSubmitting}
+                />
+              </Grid>
+            </Grid>
           </Form>
         )}
       </Formik>

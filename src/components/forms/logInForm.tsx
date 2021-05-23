@@ -1,6 +1,7 @@
+/**@jsx jsx */
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Container } from "@material-ui/core"
+import { Container, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import loginSchema from "./yupSchemas/loginSchema"
 import { useAppDispatch } from "../../redux/reduxHooks"
@@ -8,6 +9,7 @@ import loginThunk from "../../redux/userSlice/loginThunk"
 import FormHeader from "./formHeader"
 import SubmitButton from "./submitButton"
 import { navigate } from "gatsby"
+import { jsx } from "@emotion/react"
 
 interface Values {
   password: string
@@ -38,22 +40,30 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
       >
         {({ isSubmitting }) => (
           <Form>
-            <Field
-              component={TextField}
-              fullWidth
-              name="email"
-              label="Email"
-              placeholder="john@acme.com"
-              type="email"
-            />
-            <Field
-              component={TextField}
-              fullWidth
-              name="password"
-              label="Password"
-              placeholder="Password"
-            />
-            <SubmitButton text="Login" disabled={isSubmitting} />
+            <Grid container spacing={1}>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="email"
+                  label="Email"
+                  placeholder="your@email.com"
+                  type="email"
+                />
+              </Grid>
+              <Grid item container>
+                <Field
+                  component={TextField}
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  placeholder="Password"
+                />
+              </Grid>
+              <Grid item container justify="center">
+                <SubmitButton fullWidth text="Login" disabled={isSubmitting} />
+              </Grid>
+            </Grid>
           </Form>
         )}
       </Formik>

@@ -63,6 +63,7 @@ export default (isDarkMode: boolean) =>
           },
         },
         MuiSwitch: {
+          root: {},
           switchBase: {
             color: "white",
             // "&.Mui-checked": {
