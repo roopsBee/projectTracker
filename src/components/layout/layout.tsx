@@ -1,7 +1,7 @@
+/** @jsx jsx */
 import React, { useMemo, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import {
-  makeStyles,
   ThemeProvider,
   Box,
   CssBaseline,
@@ -12,18 +12,11 @@ import Header from "./header"
 import Footer from "./footer"
 import theme from "./theme"
 import "./layout.css"
-
-const useStyles = makeStyles({
-  content: {
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100%",
-    width: "100%",
-  },
-})
+import backgroundBlue from "../../images/backgroundBlue.svg"
+import darkBackground from "../../images/darkBackground.svg"
+import { jsx } from "@emotion/react"
 
 const Layout: React.FC = ({ children }) => {
-  const classes = useStyles()
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -63,7 +56,19 @@ const Layout: React.FC = ({ children }) => {
           handleDarkModeSwitch={handleDarkModeSwitch}
           isDarkMode={isDarkMode}
         />
-        <main className={classes.content}>
+        <main
+          css={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100%",
+            width: "100%",
+            backgroundImage: isDarkMode
+              ? `url(${darkBackground})`
+              : `url(${backgroundBlue})`,
+            backgroundAttachment: "fixed",
+            backgroundSize: "cover",
+          }}
+        >
           <Toolbar />
           {children}
           <Footer />

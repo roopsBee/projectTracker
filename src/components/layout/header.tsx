@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: DRAWER_WIDTH,
-
     borderWidth: "0px 1px 0px 0px",
     borderStyle: "solid",
     borderColor: theme.palette.type === "dark" ? "#01596B" : "#00639F",

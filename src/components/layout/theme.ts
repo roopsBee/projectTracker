@@ -1,4 +1,8 @@
+// main color #2A953D https://mycolor.space/?hex=%232A953D&sub=1
+
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
+import lightAppBarBackground from "../../images/lightAppBarBackground.svg"
+import darkAppBarBackground from "../../images/darkAppBarBackground.svg"
 
 export default (isDarkMode: boolean) =>
   responsiveFontSizes(
@@ -89,16 +93,14 @@ export default (isDarkMode: boolean) =>
               borderWidth: "0px 0px 2px 0px",
               borderStyle: "solid",
               borderColor: isDarkMode ? "#01596B" : "#00639F",
+              backgroundImage: isDarkMode
+                ? `url(${darkAppBarBackground})`
+                : `url(${lightAppBarBackground})`,
+              backgroundAttachment: "fixed",
+              backgroundSize: "cover",
             },
           },
         },
-        // MuiList: {
-        //   root: {
-        //     borderWidth: "1px",
-        //     borderStyle: "solid",
-        //     borderColor: isDarkMode ? "#01596B" : "#00639F",
-        //   },
-        // },
       },
     })
   )

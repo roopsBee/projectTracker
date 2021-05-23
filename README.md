@@ -18,3 +18,7 @@ A JAMstack web app written in typescript to organise taks relating to your proje
 - Firebase for authentication
 - Reactjs and redux toolkit
 - Material-UI for styling
+
+## Credits
+
+Svg backgrounds credited to SVGBackgrounds.com
