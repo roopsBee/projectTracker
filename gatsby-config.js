@@ -69,7 +69,20 @@ module.exports = {
         component: require.resolve(`./src/components/layout/layout.tsx`),
       },
     },
-    "gatsby-plugin-material-ui",
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: false,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        sourceMap: false,
+      },
+    },
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {
