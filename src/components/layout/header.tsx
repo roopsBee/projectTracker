@@ -74,6 +74,7 @@ const Header: React.FC<Props> = ({
       setInProject(true)
     } else {
       setInProject(false)
+      handleDrawerClose()
     }
   }, [projectId])
 
@@ -99,34 +100,37 @@ const Header: React.FC<Props> = ({
         handleDarkModeSwitch={handleDarkModeSwitch}
         isDarkMode={isDarkMode}
       />
-      {inProject && (
-        <Drawer
-          ModalProps={{ keepMounted: true }}
-          className={classes.drawer}
-          variant={
-            !isMounted ? "temporary" : isScreenBig ? "permanent" : "temporary"
-          }
-          anchor="left"
-          open={openDrawer}
-          onClose={handleDrawerClose}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <Button
-              className={classes.materialStylesButton}
-              fullWidth
-              component={Link}
-              to="/"
-            >
-              PROJECT-TRACKER
-            </Button>
-          </div>
-
-          <DrawerButtons handleDrawerClose={handleDrawerClose} />
-        </Drawer>
-      )}
+      <Drawer
+        ModalProps={{ keepMounted: true }}
+        className={classes.drawer}
+        variant={
+          !inProject
+            ? "temporary"
+            : !isMounted
+            ? "temporary"
+            : isScreenBig
+            ? "permanent"
+            : "temporary"
+        }
+        anchor="left"
+        open={openDrawer}
+        onClose={handleDrawerClose}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <Button
+            className={classes.materialStylesButton}
+            fullWidth
+            component={Link}
+            to="/"
+          >
+            PROJECT-TRACKER
+          </Button>
+        </div>
+        <DrawerButtons handleDrawerClose={handleDrawerClose} />
+      </Drawer>
     </header>
   )
 }

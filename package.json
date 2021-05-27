@@ -19,6 +19,7 @@
     "firebase-admin": "^9.8.0",
     "formik": "^2.2.8",
     "formik-material-ui": "^3.0.1",
+    "framer-motion": "^4.1.17",
     "gatsby": "^3.5.1",
     "gatsby-plugin-create-client-paths": "^3.5.0",
     "gatsby-plugin-emotion": "^6.5.0",

@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import DrawerNewProject from "../layout/drawer/drawerNewProject"
+import { motion } from "framer-motion"
 
 const AppHomePage: React.FC = () => {
   const projects = useAppSelector(state => state.projectState?.projects)
@@ -21,18 +22,24 @@ const AppHomePage: React.FC = () => {
         <List disablePadding>
           <DrawerNewProject />
           {projects?.map(project => (
-            <ListItem
-              alignItems="center"
+            <motion.div
               key={project.projectId}
-              to={`/app/project/${project.projectId}`}
-              button
-              dense
-              component={Link}
+              initial={{ height: 0 }}
+              animate={{ height: "initial" }}
             >
-              <ListItemText primaryTypographyProps={{ align: "center" }}>
-                {project.projectName}
-              </ListItemText>
-            </ListItem>
+              <ListItem
+                alignItems="center"
+                key={project.projectId}
+                to={`/app/project/${project.projectId}`}
+                button
+                dense
+                component={Link}
+              >
+                <ListItemText primaryTypographyProps={{ align: "center" }}>
+                  {project.projectName}
+                </ListItemText>
+              </ListItem>
+            </motion.div>
           ))}
         </List>
       </Paper>

@@ -61,7 +61,7 @@ function ChildTaskChangeNameForm() {
               justify="flex-end"
             >
               <Button
-                css={{ width: 114, position: "absolute", top: 28 }}
+                css={{ width: 114, top: 0 }}
                 startIcon={<SaveIcon />}
                 variant="contained"
                 color="primary"
