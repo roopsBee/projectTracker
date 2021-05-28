@@ -22,6 +22,12 @@ export type ProjectType = {
   projectName?: string
   projectId?: string
   taskGroups?: TaskGroupType[]
+  projectTags?: ProjectTag[]
+}
+
+export type ProjectTag = {
+  name: string
+  color: string
 }
 
 export type TaskGroupType = {
@@ -193,13 +199,8 @@ export const projectSlice = createSlice({
         handlePending(state, "Changing child task name...")
       })
       .addCase(childTaskNameChange.fulfilled, (state, { payload }) => {
-        const {
-          taskId,
-          groupId,
-          childTaskName,
-          projectId,
-          childTaskId,
-        } = payload
+        const { taskId, groupId, childTaskName, projectId, childTaskId } =
+          payload
         state.projects
           ?.find(project => project.projectId === projectId)
           ?.taskGroups?.find(group => group.groupId === groupId)

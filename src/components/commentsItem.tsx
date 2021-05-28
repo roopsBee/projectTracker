@@ -22,7 +22,7 @@ const CommentsItem: React.FC<Props> = ({ comments }) => {
         animate={{ height: "initial" }}
         style={{ overflow: "hidden" }}
       >
-        <ListItem css={{ marginBottom: 0, paddingTop: 0 }}>
+        <ListItem style={{ margin: 0, paddingTop: 0, paddingBottom: 0 }}>
           <Grid container>
             <Grid item xs={12}>
               <Typography variant="caption" css={{ fontStyle: "italic" }}>

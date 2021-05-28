@@ -1,15 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "../../store"
 import faunaClient from "../../../utils/faunaClient"
-
-type ProjectCreateReturnType = {
-  projectId: string
-  projectName: string
-  taskgroups?: []
-}
+import { ProjectType } from "../projectSlice"
 
 const createProject = createAsyncThunk<
-  ProjectCreateReturnType,
+  ProjectType,
   string,
   { state: RootState }
 >(
@@ -19,12 +14,11 @@ const createProject = createAsyncThunk<
     if (secret) {
       const { client, q } = faunaClient(secret)
 
-      const data: ProjectCreateReturnType = await client.query(
+      const data: ProjectType = await client.query(
         q.Call("projectCreate", [projectName, userId])
       )
 
-      const { projectId } = data
-      return { projectId, projectName }
+      return { ...data }
     } else {
       return rejectWithValue(secret)
     }
