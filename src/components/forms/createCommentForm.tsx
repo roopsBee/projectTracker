@@ -40,7 +40,6 @@ function CreateTaskForm({
             await dispatch(
               createCommentThunk({ taskId, commentText: text, projectId })
             )
-            closePopover()
           } catch (error) {
             console.log(error)
           }

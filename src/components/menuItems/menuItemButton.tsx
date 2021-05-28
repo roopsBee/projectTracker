@@ -25,6 +25,7 @@ const MenuItemButton: React.FC<Props> = ({ children }) => {
         </IconButton>
       </ListItemIcon>
       <Menu
+        // disableScrollLock={true}
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
