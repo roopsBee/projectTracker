@@ -60,7 +60,7 @@ function TaskChangeNameForm({
                     />
                   </Grid>
                   <Grid item>
-                    <SubmitButton text="Create" disabled={isSubmitting} />
+                    <SubmitButton text="Save" disabled={isSubmitting} />
                   </Grid>
                   <Grid item>
                     <CancelButton
