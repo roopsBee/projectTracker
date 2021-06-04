@@ -5,6 +5,7 @@ import DrawerCreateGroup from "./drawerCreateGroup"
 import SettingsIcon from "@material-ui/icons/Settings"
 import { useAppSelector } from "../../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../../utils/getProjectIdFromUrl"
+import DrawerTags from "./drawerTags"
 
 const LoggedInDrawerButtons = () => {
   const url = typeof window !== "undefined" ? window.location.pathname : ""
@@ -27,6 +28,7 @@ const LoggedInDrawerButtons = () => {
     <>
       <DrawerLink to="/app" text="Projects" Icon={NavigateBeforeIcon} />
       <DrawerCreateGroup />
+      <DrawerTags />
       <DrawerLink to="settings" text="Settings" Icon={SettingsIcon} />
     </>
   )
