@@ -19,6 +19,7 @@ import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
 import CommentsMenuItem from "./menuItems/commentsMenuItem"
 import EditTaskNameMenuItem from "./menuItems/editTaskNameMenuItem"
 import TaskDeleteMenuItem from "./menuItems/taskDeleteMenuItem"
+import TagBar from "./tagBar"
 
 interface Props {
   task: TaskType
@@ -74,6 +75,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
           </ListItem>
         </Box>
         <CommentsItem comments={task.comments} />
+        <TagBar />
         <TaskDoneCheckBox task={task} type="task" />
       </Box>
       <Collapse in={openChildTasks}>
