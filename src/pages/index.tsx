@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Typography, Box, Grid } from "@material-ui/core"
+import { navigate } from "gatsby"
 
 import SEO from "../components/layout/seo"
+import { useAppSelector } from "../redux/reduxHooks"
 
 const IndexPage = () => {
+  const isLoggedin = useAppSelector(state => state.user.isLoggedIn)
+  useEffect(() => {
+    isLoggedin && navigate("/app")
+  })
   return (
     <>
       <SEO title="Home" />
