@@ -40,6 +40,7 @@ export type TaskType = {
   taskId: string
   taskName: string
   completed: boolean
+  tags: ProjectTag[] | []
   comments: CommentType[]
   childTasks: ChildTaskType[]
 }
@@ -48,6 +49,7 @@ export type ChildTaskType = {
   childTaskId: string
   childTaskName: string
   completed: boolean
+  tags: ProjectTag[] | []
   comments: CommentType[]
 }
 
@@ -132,6 +134,7 @@ export const projectSlice = createSlice({
           childTaskId,
           completed,
           comments,
+          tags: [],
         })
 
         state.isLoading = false

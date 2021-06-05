@@ -34,6 +34,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
         comments,
         taskName,
         completed,
+        tags: [],
       })
 
       state.isLoading = false
