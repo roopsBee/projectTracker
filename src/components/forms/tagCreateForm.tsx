@@ -7,7 +7,7 @@ import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import SubmitButton from "./submitButton"
-import tagCreateSchema from "./yupSchemas/tagCreateSchema"
+import tagSchema from "./yupSchemas/tagSchema"
 import FormikColorPicker from "../formikColorPicker"
 import tagCreateThunk from "../../redux/projectSlice/thunks/tagCreateThunk"
 
@@ -26,7 +26,7 @@ function TagCreateForm() {
         name: "",
         color: "",
       }}
-      validationSchema={tagCreateSchema}
+      validationSchema={tagSchema}
       validateOnBlur={false}
       validateOnChange={false}
       onSubmit={async (

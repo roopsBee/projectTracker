@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useField } from "formik"
 import { CirclePicker, ColorChangeHandler } from "react-color"
 import { Button } from "@material-ui/core"
@@ -8,15 +8,24 @@ import CenteredPopover, { usePopoverState } from "./centeredPopover"
 import BrushIcon from "@material-ui/icons/BrushOutlined"
 interface Props {
   name: string
+  initialColor?: string
 }
 
-const FormikColorPicker: React.FC<Props> = ({ name, ...props }) => {
+const FormikColorPicker: React.FC<Props> = ({
+  name,
+  initialColor,
+  ...props
+}) => {
   const [buttonColor, setButtonColor] = useState("")
   const [closePopover, openPopover, pProps] = usePopoverState()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta, helpers] = useField(name)
   const { setValue } = helpers
+
+  useEffect(() => {
+    initialColor && setButtonColor(initialColor)
+  }, [])
 
   const handleSelectColor: ColorChangeHandler = color => {
     setValue(color.hex)
