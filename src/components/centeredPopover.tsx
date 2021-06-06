@@ -1,4 +1,4 @@
-import { Popover } from "@material-ui/core"
+import { Popover, PaperProps } from "@material-ui/core"
 import useWindowResize from "../utils/useWindowResize"
 
 import React, { useState } from "react"
@@ -15,6 +15,7 @@ interface Props {
   id: string
   isPopoverOpen: boolean
   closePopover: () => void
+  paperProps?: PaperProps
 }
 
 const CenteredPopover: React.FC<Props> = ({
@@ -22,11 +23,13 @@ const CenteredPopover: React.FC<Props> = ({
   id,
   isPopoverOpen,
   closePopover,
+  paperProps,
 }) => {
   const [width, height] = useWindowResize()
 
   return (
     <Popover
+      PaperProps={{ style: { overflow: "hidden" }, ...paperProps }}
       anchorReference="anchorPosition"
       anchorPosition={{
         top: (typeof window !== "undefined" && height && height / 2) || 0,
