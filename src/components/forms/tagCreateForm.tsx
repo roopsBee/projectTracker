@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
 import React from "react"
-import { Formik, Form, Field, FormikBag, FormikHelpers } from "formik"
+import { Formik, Form, Field, FormikHelpers } from "formik"
 import { Box, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
@@ -16,7 +16,7 @@ interface Values {
   color: string
 }
 
-function TagCreateForm({ closePopover }: { closePopover: () => void }) {
+function TagCreateForm() {
   const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
 

@@ -13,7 +13,7 @@ const EditTagsPopover = ({ closePopover }: { closePopover: () => void }) => {
         </Grid>
         <Divider style={dividerStyle} />
         <Grid container item xs={12}>
-          <TagCreateForm closePopover={closePopover} />
+          <TagCreateForm />
         </Grid>
         <Divider style={dividerStyle} />
       </Grid>
