@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
 import React from "react"
-import { Formik, Form, Field, FormikHelpers } from "formik"
+import { Formik, Form, Field } from "formik"
 import { Box, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
@@ -10,6 +10,7 @@ import SubmitButton from "./submitButton"
 import tagSchema from "./yupSchemas/tagSchema"
 import FormikColorPicker from "../formikColorPicker"
 import { ProjectTag } from "../../redux/projectSlice/projectSlice"
+import tagEditThunk from "../../redux/projectSlice/thunks/tagEditThunk"
 
 interface Values {
   name: string
@@ -43,9 +44,14 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
       validateOnChange={false}
       onSubmit={async ({ name, color }: Values) => {
         try {
-          //   await dispatch(
-          //     tagEditThunk({ tagName: name, tagColor: color, projectId })
-          //   )
+          await dispatch(
+            tagEditThunk({
+              tagName: name,
+              tagColor: color,
+              projectId,
+              index: tagIndex,
+            })
+          )
         } catch (error) {
           console.log(error)
         }

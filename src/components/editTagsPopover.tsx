@@ -1,6 +1,5 @@
 import { Container, Divider, Grid } from "@material-ui/core"
 import React from "react"
-import { ProjectTag } from "../redux/projectSlice/projectSlice"
 import { useAppSelector } from "../redux/reduxHooks"
 import getProjectIdFromUrl from "../utils/getProjectIdFromUrl"
 import FormHeader from "./forms/formHeader"
@@ -26,7 +25,7 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
         <Grid container item xs={12}>
           <FormHeader title="Tags" />
         </Grid>
-        <Divider style={dividerStyle} />
+        <Divider style={{ ...dividerStyle, margin: "10px 0px" }} />
         {tags?.map((tag, index) => (
           <Grid key={index} container item xs={12}>
             <TagEditForm
@@ -36,7 +35,6 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
             />
           </Grid>
         ))}
-
         <Divider style={dividerStyle} />
         <Grid container item xs={12}>
           <TagCreateForm />

@@ -13,6 +13,7 @@ import handleRejected from "../handleRejected"
 import projectDelete from "./thunks/projectDeleteThunk"
 import projectChangeName from "./thunks/projectChangeNameThunk"
 import tagCreate from "./thunks/tagCreateThunk"
+import tagEdit from "./thunks/tagEditThunk"
 
 export interface ProjectState {
   isLoading: boolean
@@ -273,6 +274,23 @@ export const projectSlice = createSlice({
         console.log("fulfilled")
       })
       .addCase(tagCreate.rejected, (state, action) => {
+        handleRejected(state, action)
+      })
+      // edit tag for project
+      .addCase(tagEdit.pending, state => {
+        handlePending(state, "Editing tag...")
+      })
+      .addCase(tagEdit.fulfilled, (state, { payload }) => {
+        const { projectId, tag, index } = payload
+
+        const project = state.projects?.find(
+          project => project.projectId === projectId
+        )
+        project?.projectTags && (project.projectTags[index] = tag)
+        state.isLoading = false
+        console.log("fulfilled")
+      })
+      .addCase(tagEdit.rejected, (state, action) => {
         handleRejected(state, action)
       })
     taskBuilder(builder)
