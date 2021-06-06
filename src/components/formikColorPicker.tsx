@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import React from "react"
+import React, { useState } from "react"
 import { useField } from "formik"
-import { CirclePicker } from "react-color"
+import { CirclePicker, ColorChangeHandler } from "react-color"
 import { Button } from "@material-ui/core"
 import { jsx } from "@emotion/react"
 import CenteredPopover, { usePopoverState } from "./centeredPopover"
@@ -11,12 +11,18 @@ interface Props {
 }
 
 const FormikColorPicker: React.FC<Props> = ({ name, ...props }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [buttonColor, setButtonColor] = useState("")
   const [closePopover, openPopover, pProps] = usePopoverState()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [field, meta, helpers] = useField(name)
   const { setValue } = helpers
+
+  const handleSelectColor: ColorChangeHandler = color => {
+    setValue(color.hex)
+    setButtonColor(color.hex)
+    closePopover()
+  }
 
   return (
     <>
@@ -27,6 +33,7 @@ const FormikColorPicker: React.FC<Props> = ({ name, ...props }) => {
           height: "39px",
           minWidth: 0,
           border: "1px solid black",
+          backgroundColor: buttonColor,
         }}
         variant="contained"
         onClick={openPopover}
@@ -52,7 +59,7 @@ const FormikColorPicker: React.FC<Props> = ({ name, ...props }) => {
               card: { margin: 0, alignItems: "center", justifyItems: "center" },
             },
           }}
-          onChangeComplete={color => setValue(color.hex)}
+          onChangeComplete={handleSelectColor}
         />
       </CenteredPopover>
     </>
