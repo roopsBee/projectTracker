@@ -1,25 +1,14 @@
-import {
-  Popover,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-} from "@material-ui/core"
-import React, { useState } from "react"
-import useWindowResize from "../../../utils/useWindowResize"
+import { ListItem, ListItemText, ListItemIcon } from "@material-ui/core"
+import React from "react"
 import TagIcon from "@material-ui/icons/LocalOfferOutlined"
 import EditTagsPopover from "../../editTagsPopover"
+import CenteredPopover, { usePopoverState } from "../../centeredPopover"
 
 const DrawerTags: React.FC = () => {
-  const [isPopoverOpen, setPopoverOpen] = useState(false)
-  const [width, height] = useWindowResize()
-  const id = isPopoverOpen ? "edit-tags-popover" : undefined
-
-  const closePopover = () => {
-    setPopoverOpen(false)
-  }
+  const [closePopover, openPopover, props] = usePopoverState()
 
   const handleClick = () => {
-    setPopoverOpen(true)
+    openPopover()
   }
 
   return (
@@ -30,22 +19,9 @@ const DrawerTags: React.FC = () => {
         </ListItemIcon>
         <ListItemText>Edit Tags</ListItemText>
       </ListItem>
-      <Popover
-        anchorReference="anchorPosition"
-        anchorPosition={{
-          top: (typeof window !== "undefined" && height && height / 2) || 0,
-          left: (typeof window !== "undefined" && width && width / 2) || 0,
-        }}
-        transformOrigin={{
-          vertical: "center",
-          horizontal: "center",
-        }}
-        id={id}
-        open={isPopoverOpen}
-        onClose={closePopover}
-      >
+      <CenteredPopover {...props} id="edit-tags-popover">
         <EditTagsPopover closePopover={closePopover} />
-      </Popover>
+      </CenteredPopover>
     </>
   )
 }

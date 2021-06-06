@@ -40,6 +40,7 @@
     "netlify-cli": "^3.31.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-redux": "^7.2.4",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.2.0",
+    "@types/react-color": "^3.0.4",
     "@types/react-helmet": "^6.1.0",
     "@types/react-redux": "^7.1.16",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
