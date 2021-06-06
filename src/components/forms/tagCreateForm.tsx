@@ -9,6 +9,7 @@ import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import SubmitButton from "./submitButton"
 import tagCreateSchema from "./yupSchemas/tagCreateSchema"
 import FormikColorPicker from "../formikColorPicker"
+import tagCreateThunk from "../../redux/projectSlice/thunks/tagCreateThunk"
 
 interface Values {
   name: string
@@ -17,7 +18,6 @@ interface Values {
 
 function TagCreateForm({ closePopover }: { closePopover: () => void }) {
   const projectId = getProjectIdFromUrl()
-
   const dispatch = useAppDispatch()
 
   return (
@@ -31,8 +31,9 @@ function TagCreateForm({ closePopover }: { closePopover: () => void }) {
       validateOnChange={false}
       onSubmit={async ({ name, color }: Values) => {
         try {
-          // await dispatch(createTagThunk({}))
-          console.log({ name, color })
+          await dispatch(
+            tagCreateThunk({ tagName: name, tagColor: color, projectId })
+          )
         } catch (error) {
           console.log(error)
         }

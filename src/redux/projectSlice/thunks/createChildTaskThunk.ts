@@ -28,7 +28,7 @@ const createChildTask = createAsyncThunk<
         q.Call("childTaskCreate", [childTaskName, taskId, userId])
       )
 
-      return { ...data, projectId, taskId, groupId }
+      return { ...data, projectId, taskId, groupId, tags: [] }
     } else {
       return rejectWithValue(secret)
     }
