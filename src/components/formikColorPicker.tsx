@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react"
 import { useField } from "formik"
 import { CirclePicker, ColorChangeHandler } from "react-color"
-import { Button } from "@material-ui/core"
 import { jsx } from "@emotion/react"
 import CenteredPopover, { usePopoverState } from "./centeredPopover"
 import BrushIcon from "@material-ui/icons/BrushOutlined"
+import IconButton from "./iconButton"
+
 interface Props {
   name: string
   initialColor?: string
@@ -35,21 +36,12 @@ const FormikColorPicker: React.FC<Props> = ({
 
   return (
     <>
-      <Button
-        style={{
-          borderRadius: "5px",
-          width: "39px",
-          height: "39px",
-          minWidth: 0,
-          border: "1px solid black",
-          backgroundColor: buttonColor,
-        }}
-        variant="contained"
+      <IconButton
+        icon={<BrushIcon />}
         onClick={openPopover}
+        color={buttonColor}
         {...props}
-      >
-        <BrushIcon />
-      </Button>
+      />
       <CenteredPopover
         {...pProps}
         id="edit-tags-popover"
