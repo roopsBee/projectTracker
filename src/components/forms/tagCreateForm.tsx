@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
 import React from "react"
-import { Formik, Form, Field } from "formik"
+import { Formik, Form, Field, FormikBag, FormikHelpers } from "formik"
 import { Box, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
@@ -29,11 +29,15 @@ function TagCreateForm({ closePopover }: { closePopover: () => void }) {
       validationSchema={tagCreateSchema}
       validateOnBlur={false}
       validateOnChange={false}
-      onSubmit={async ({ name, color }: Values) => {
+      onSubmit={async (
+        { name, color }: Values,
+        { resetForm }: FormikHelpers<Values>
+      ) => {
         try {
           await dispatch(
             tagCreateThunk({ tagName: name, tagColor: color, projectId })
           )
+          resetForm()
         } catch (error) {
           console.log(error)
         }
