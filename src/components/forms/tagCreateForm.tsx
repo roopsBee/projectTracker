@@ -1,8 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/react"
 import React from "react"
 import { Formik, Form, Field, FormikHelpers } from "formik"
-import { Box, Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
@@ -43,7 +41,7 @@ function TagCreateForm() {
         }
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values }) => (
         <Form
           style={{ width: "100%", position: "relative", marginBottom: "15px" }}
         >
@@ -53,20 +51,17 @@ function TagCreateForm() {
                 component={TextField}
                 fullWidth
                 name="name"
-                label="Name"
                 placeholder="Name..."
               />
             </Grid>
             <Grid item container justify="center" xs={2}>
-              <Box top="11px" clone>
-                <FormikColorPicker name="color" />
-              </Box>
+              <FormikColorPicker initialColor="rgb(3 169 244)" name="color" />
             </Grid>
             <Grid item container justify="flex-end" xs={4} sm={3}>
               <SubmitButton
-                style={{ top: "11px", height: "39px" }}
+                style={{ height: "39px" }}
                 text="Create"
-                disabled={isSubmitting}
+                disabled={isSubmitting || values.name === ""}
               />
             </Grid>
           </Grid>

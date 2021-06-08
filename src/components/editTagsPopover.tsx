@@ -18,14 +18,18 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
     )
   )?.projectTags
 
-  const dividerStyle = { width: "120%", transform: "translateX(-10%)" }
+  const dividerStyle = {
+    width: "120%",
+    transform: "translateX(-10%)",
+    margin: "10px 0px",
+  }
   return (
     <Container maxWidth="xs">
       <Grid container>
         <Grid container item xs={12}>
           <FormHeader title="Tags" />
         </Grid>
-        <Divider style={{ ...dividerStyle, margin: "10px 0px" }} />
+        <Divider style={{ ...dividerStyle }} />
         {tags?.map((tag, index) => (
           <Grid key={index} container item xs={12}>
             <TagEditForm
@@ -39,7 +43,6 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
         <Grid container item xs={12}>
           <TagCreateForm />
         </Grid>
-        <Divider style={dividerStyle} />
       </Grid>
     </Container>
   )

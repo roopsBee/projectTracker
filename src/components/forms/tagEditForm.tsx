@@ -2,15 +2,16 @@
 import { jsx } from "@emotion/react"
 import React from "react"
 import { Formik, Form, Field } from "formik"
-import { Box, Grid } from "@material-ui/core"
 import { TextField } from "formik-material-ui"
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
-import SubmitButton from "./submitButton"
 import tagSchema from "./yupSchemas/tagSchema"
 import FormikColorPicker from "../formikColorPicker"
 import { ProjectTag } from "../../redux/projectSlice/projectSlice"
 import tagEditThunk from "../../redux/projectSlice/thunks/tagEditThunk"
+import IconButton from "../iconButton"
+import SaveIcon from "@material-ui/icons/SaveOutlined"
+import { Grid } from "@material-ui/core"
 
 interface Values {
   name: string
@@ -67,21 +68,23 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
                 component={TextField}
                 fullWidth
                 name="name"
-                label="Name"
                 placeholder="Name..."
               />
             </Grid>
             <Grid item container justify="center" xs={2}>
-              <Box top="11px" clone>
-                <FormikColorPicker initialColor={tagColor} name="color" />
-              </Box>
+              <FormikColorPicker
+                // style={{ top: "11px" }}
+                initialColor={tagColor}
+                name="color"
+              />
             </Grid>
             <Grid item container justify="flex-end" xs={4} sm={3}>
-              <SubmitButton
-                style={{ top: "11px", height: "39px" }}
-                text="Save"
+              <IconButton
+                color="#2A953D"
+                icon={<SaveIcon />}
                 disabled={
                   isSubmitting ||
+                  values.name === "" ||
                   (projectTag?.tagName === values.name &&
                     projectTag?.tagColor === values.color)
                 }

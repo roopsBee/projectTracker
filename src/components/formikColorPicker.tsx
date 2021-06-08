@@ -1,13 +1,11 @@
-/** @jsx jsx */
 import React, { useEffect, useState } from "react"
 import { useField } from "formik"
 import { CirclePicker, ColorChangeHandler } from "react-color"
-import { jsx } from "@emotion/react"
 import CenteredPopover, { usePopoverState } from "./centeredPopover"
 import BrushIcon from "@material-ui/icons/BrushOutlined"
 import IconButton from "./iconButton"
 
-interface Props {
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   name: string
   initialColor?: string
 }
