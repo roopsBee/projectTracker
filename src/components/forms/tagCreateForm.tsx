@@ -35,7 +35,7 @@ function TagCreateForm() {
           await dispatch(
             tagCreateThunk({ tagName: name, tagColor: color, projectId })
           )
-          resetForm()
+          resetForm({ values: { name: "", color } })
         } catch (error) {
           console.log(error)
         }

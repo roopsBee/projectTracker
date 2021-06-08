@@ -23,7 +23,10 @@ const FormikColorPicker: React.FC<Props> = ({
   const { setValue } = helpers
 
   useEffect(() => {
-    initialColor && setButtonColor(initialColor)
+    if (initialColor) {
+      setButtonColor(initialColor)
+      setValue(initialColor)
+    }
   }, [])
 
   const handleSelectColor: ColorChangeHandler = color => {

@@ -12,6 +12,8 @@ import tagEditThunk from "../../redux/projectSlice/thunks/tagEditThunk"
 import IconButton from "../iconButton"
 import SaveIcon from "@material-ui/icons/SaveOutlined"
 import { Grid } from "@material-ui/core"
+import DeleteIcon from "@material-ui/icons/DeleteForever"
+import tagDeleteThunk from "../../redux/projectSlice/thunks/tagDeleteThunk"
 
 interface Values {
   name: string
@@ -32,7 +34,10 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
         project => project.projectId === projectId
       )?.projectTags?.[tagIndex]
   )
-  console.log({ projectTag, tagName, tagColor })
+
+  const handleDelete = async () => {
+    await dispatch(tagDeleteThunk({ index: tagIndex, projectId }))
+  }
 
   return (
     <Formik
@@ -72,13 +77,9 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
               />
             </Grid>
             <Grid item container justify="center" xs={2}>
-              <FormikColorPicker
-                // style={{ top: "11px" }}
-                initialColor={tagColor}
-                name="color"
-              />
+              <FormikColorPicker initialColor={tagColor} name="color" />
             </Grid>
-            <Grid item container justify="flex-end" xs={4} sm={3}>
+            <Grid item container justify="flex-start" xs={2}>
               <IconButton
                 color="#2A953D"
                 icon={<SaveIcon />}
@@ -88,6 +89,13 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
                   (projectTag?.tagName === values.name &&
                     projectTag?.tagColor === values.color)
                 }
+              />
+            </Grid>
+            <Grid item container justify="flex-end" xs={2}>
+              <IconButton
+                onClick={handleDelete}
+                color="red"
+                icon={<DeleteIcon />}
               />
             </Grid>
           </Grid>

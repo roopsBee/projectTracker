@@ -10,7 +10,7 @@ interface Props {
   closePopover: () => void
 }
 
-const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
+const EditTagsPopover: React.FC<Props> = () => {
   const projectId = getProjectIdFromUrl()
   const tags = useAppSelector(state =>
     state.projectState.projects?.find(
@@ -23,6 +23,7 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
     transform: "translateX(-10%)",
     margin: "10px 0px",
   }
+
   return (
     <Container maxWidth="xs">
       <Grid container>
@@ -31,7 +32,7 @@ const EditTagsPopover: React.FC<Props> = ({ closePopover }) => {
         </Grid>
         <Divider style={{ ...dividerStyle }} />
         {tags?.map((tag, index) => (
-          <Grid key={index} container item xs={12}>
+          <Grid key={Math.random()} container item xs={12}>
             <TagEditForm
               tagColor={tag.tagColor}
               tagName={tag.tagName}
