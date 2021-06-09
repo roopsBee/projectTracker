@@ -42,6 +42,7 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
       >
         {tags?.map(tag => (
           <TagMenuItem
+            task={task}
             key={Math.random()}
             tag={tag}
             taskId={task.taskId}
