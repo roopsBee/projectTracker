@@ -10,9 +10,8 @@ import {
 } from "@material-ui/core"
 import React, { useState } from "react"
 import ChildTaskList from "./childTaskList"
-import { TaskType } from "../redux/projectSlice/projectSlice"
+import { ProjectType, TaskType } from "../redux/projectSlice/projectSlice"
 import CommentsItem from "./commentsItem"
-import TaskDoneCheckBox from "./taskDoneCheckBox"
 import ExpandIconButton from "./expandIconButton"
 import MenuItemButton from "./menuItems/menuItemButton"
 import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
@@ -24,9 +23,10 @@ import TagBar from "./tagBar"
 interface Props {
   task: TaskType
   groupId: string
+  project: ProjectType
 }
 
-const Task: React.FC<Props> = ({ task, groupId }) => {
+const Task: React.FC<Props> = ({ task, groupId, project }) => {
   const [openChildTasks, setOpenChildTasks] = useState(false)
   const handleExpandClick = () => {
     setOpenChildTasks(!openChildTasks)
@@ -75,8 +75,7 @@ const Task: React.FC<Props> = ({ task, groupId }) => {
           </ListItem>
         </Box>
         <CommentsItem comments={task.comments} />
-        <TagBar />
-        <TaskDoneCheckBox task={task} type="task" />
+        <TagBar tags={project.projectTags || []} task={task} />
       </Box>
       <Collapse in={openChildTasks}>
         {task?.childTasks && (

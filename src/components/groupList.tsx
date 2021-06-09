@@ -1,17 +1,18 @@
 import React from "react"
 import Group from "./group"
-import { TaskGroupType } from "../redux/projectSlice/projectSlice"
+import { ProjectType, TaskGroupType } from "../redux/projectSlice/projectSlice"
 import { AnimatePresence, motion } from "framer-motion"
 
 interface Props {
   taskGroups: TaskGroupType[]
+  project: ProjectType
 }
 
-const GroupList: React.FC<Props> = ({ taskGroups }) => {
+const GroupList: React.FC<Props> = ({ taskGroups, project }) => {
   return (
     <>
       <AnimatePresence>
-        {taskGroups?.map(group => (
+        {taskGroups?.map((group, index) => (
           <motion.div
             key={group.groupId}
             initial={{ height: 0 }}
@@ -20,7 +21,12 @@ const GroupList: React.FC<Props> = ({ taskGroups }) => {
             animate={{ height: "initial" }}
             style={{ overflow: "hidden" }}
           >
-            <Group key={group.groupId} group={group} />
+            <Group
+              groupIndex={index}
+              project={project}
+              key={group.groupId}
+              group={group}
+            />
           </motion.div>
         ))}
       </AnimatePresence>

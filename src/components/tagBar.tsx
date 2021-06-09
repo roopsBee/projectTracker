@@ -1,8 +1,15 @@
-import { ListItem, Chip, Menu, MenuItem } from "@material-ui/core"
+import { ListItem, Chip, Menu } from "@material-ui/core"
 import React, { useState } from "react"
 import AddIcon from "@material-ui/icons/AddCircleOutlined"
+import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
+import TagMenuItem from "./menuItems/tagMenuItem"
 
-const TagBar: React.FC = () => {
+interface Props {
+  tags: ProjectTag[]
+  task: TaskType
+}
+
+const TagBar: React.FC<Props> = ({ tags, task }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -22,6 +29,9 @@ const TagBar: React.FC = () => {
           color="primary"
           onClick={handleClick}
         />
+        {task.tags.map(tag => (
+          <Chip size="small" key={Math.random()} label={tag.tagName} />
+        ))}
       </ListItem>
       <Menu
         id="simple-menu"
@@ -30,7 +40,14 @@ const TagBar: React.FC = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem>Tag</MenuItem>
+        {tags?.map(tag => (
+          <TagMenuItem
+            key={Math.random()}
+            tag={tag}
+            taskId={task.taskId}
+            closeMenu={handleClose}
+          />
+        ))}
       </Menu>
     </>
   )

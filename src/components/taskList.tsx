@@ -1,14 +1,16 @@
 import React from "react"
 import Task from "./task"
-import { TaskType } from "../redux/projectSlice/projectSlice"
+import { ProjectType, TaskType } from "../redux/projectSlice/projectSlice"
 import { AnimatePresence, motion } from "framer-motion"
 
 interface Props {
   tasks: TaskType[]
   groupId: string
+  project: ProjectType
+  groupIndex: number
 }
 
-const TaskList: React.FC<Props> = ({ tasks, groupId }) => {
+const TaskList: React.FC<Props> = ({ tasks, groupId, project }) => {
   return (
     <>
       <AnimatePresence>
@@ -21,7 +23,12 @@ const TaskList: React.FC<Props> = ({ tasks, groupId }) => {
             animate={{ height: "initial" }}
             style={{ overflow: "hidden" }}
           >
-            <Task key={task.taskId} task={task} groupId={groupId} />
+            <Task
+              project={project}
+              key={task.taskId}
+              task={task}
+              groupId={groupId}
+            />
           </motion.div>
         ))}
       </AnimatePresence>

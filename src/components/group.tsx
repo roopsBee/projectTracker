@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@material-ui/core"
 import TaskList from "./taskList"
-import { TaskGroupType } from "../redux/projectSlice/projectSlice"
+import { ProjectType, TaskGroupType } from "../redux/projectSlice/projectSlice"
 import MenuItemButton from "./menuItems/menuItemButton"
 import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
 import ExpandIconButton from "./expandIconButton"
@@ -19,9 +19,11 @@ import { jsx } from "@emotion/react"
 
 interface Props {
   group: TaskGroupType
+  project: ProjectType
+  groupIndex: number
 }
 
-const Group: React.FC<Props> = ({ group }) => {
+const Group: React.FC<Props> = ({ group, project, groupIndex }) => {
   const [openTasks, setOpenTasks] = useState(false)
   const handleExpandClick = () => {
     setOpenTasks(!openTasks)
@@ -66,7 +68,12 @@ const Group: React.FC<Props> = ({ group }) => {
           </Box>
           <Collapse in={openTasks}>
             {group?.tasks && (
-              <TaskList groupId={group.groupId} tasks={group?.tasks} />
+              <TaskList
+                project={project}
+                groupIndex={groupIndex}
+                groupId={group.groupId}
+                tasks={group?.tasks}
+              />
             )}
           </Collapse>
         </List>
