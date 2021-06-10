@@ -15,7 +15,7 @@ const FormikColorPicker: React.FC<Props> = ({
   initialColor,
   ...props
 }) => {
-  const [buttonColor, setButtonColor] = useState("")
+  const [buttonColor, setButtonColor] = useState(initialColor || "")
   const [closePopover, openPopover, pProps] = usePopoverState()
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,7 +24,7 @@ const FormikColorPicker: React.FC<Props> = ({
 
   useEffect(() => {
     if (initialColor) {
-      setButtonColor(initialColor)
+      // setButtonColor(initialColor)
       setValue(initialColor)
     }
   }, [])

@@ -1,5 +1,5 @@
 import { Button, makeStyles } from "@material-ui/core"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import tinycolor from "tinycolor2"
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -34,13 +34,18 @@ const IconButton: React.FC<Props> = ({
   color: tColor,
   ...props
 }) => {
-  const newColor = tinycolor(tColor)
+  const [color, setColor] = useState(tColor)
+  const [darkColor, setDarkColor] = useState("")
+  const [iconColor, setIconColor] = useState("")
 
-  const color = newColor.toString()
-  const darkColor = newColor.darken(15).toString()
-  const iconColor = tinycolor
-    .mostReadable(color, ["black", "white"])
-    .toHexString()
+  useEffect(() => {
+    const newColor = tinycolor(tColor)
+    setColor(newColor.toString())
+    setDarkColor(newColor.darken(15).toString())
+    setIconColor(
+      tinycolor.mostReadable(color, ["black", "white"]).toHexString()
+    )
+  }, [tColor])
 
   const classes = useStyles({ color, darkColor, iconColor })
   return (
