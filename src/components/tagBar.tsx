@@ -4,6 +4,7 @@ import AddIcon from "@material-ui/icons/AddCircleOutlined"
 import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
 import TagMenuItem from "./menuItems/tagMenuItem"
 import TagChip from "./tagChip"
+import { Opacity } from "@material-ui/icons"
 
 interface Props {
   tags: ProjectTag[]
@@ -46,6 +47,10 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
       >
         {tags?.map(tag => {
           const tagIndex = task.tags.indexOf(tag)
