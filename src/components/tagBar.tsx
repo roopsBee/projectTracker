@@ -47,9 +47,10 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {tags?.map(tag => (
+        {tags?.map((tag, index) => (
           <TagMenuItem
             task={task}
+            tagIndex={index}
             key={Math.random()}
             tag={tag}
             taskId={task.taskId}

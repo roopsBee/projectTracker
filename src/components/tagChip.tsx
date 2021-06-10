@@ -38,7 +38,7 @@ const tagChip: React.FC<Props> = ({ tag: { tagColor, tagName }, ...props }) => {
       <AnimatePresence>
         <motion.div
           initial={{ opacity: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+          transition={{ duration: 0.5 }}
           exit={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >

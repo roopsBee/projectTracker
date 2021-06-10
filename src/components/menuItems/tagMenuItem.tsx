@@ -2,6 +2,7 @@ import { MenuItem } from "@material-ui/core"
 import React from "react"
 import { ProjectTag, TaskType } from "../../redux/projectSlice/projectSlice"
 import addTaskTagThunk from "../../redux/projectSlice/thunks/addTaskTagThunk"
+import removeTaskTagThunk from "../../redux/projectSlice/thunks/removeTaskTagThunk"
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
 import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 import isTagInArray from "../../utils/isTagInArray"
@@ -11,9 +12,10 @@ interface Props {
   taskId: string
   task: TaskType
   closeMenu: () => void
+  tagIndex: number
 }
 
-const TagMenuItem: React.FC<Props> = ({ tag, taskId, task }) => {
+const TagMenuItem: React.FC<Props> = ({ tag, taskId, task, tagIndex }) => {
   const isLoading = useAppSelector(state => state.projectState.isLoading)
   const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
@@ -21,7 +23,7 @@ const TagMenuItem: React.FC<Props> = ({ tag, taskId, task }) => {
     if (!isTagInArray(tag, task.tags)) {
       await dispatch(addTaskTagThunk({ tag, taskId, projectId }))
     } else {
-      console.log("tag exits")
+      await dispatch(removeTaskTagThunk({ tag, tagIndex, projectId, taskId }))
     }
   }
 

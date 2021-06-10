@@ -37,7 +37,7 @@
     "gatsby-source-filesystem": "^3.5.0",
     "gatsby-transformer-sharp": "^3.5.0",
     "material-ui-popup-state": "^1.8.3",
-    "netlify-cli": "^3.31.2",
+    "netlify-cli": "^3.37.12",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-color": "^2.19.3",

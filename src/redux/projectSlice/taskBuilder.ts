@@ -7,6 +7,7 @@ import toggleTaskDone from "./thunks/toggleTaskDoneThunk"
 import handleRejected from "../handleRejected"
 import taskDelete from "./thunks/taskdeleteThunk"
 import addTaskTag from "./thunks/addTaskTagThunk"
+import removeTaskTag from "./thunks/removeTaskTagThunk"
 
 const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
   // create task
@@ -137,6 +138,29 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       state.isLoading = false
     })
     .addCase(addTaskTag.rejected, (state, action) => {
+      handleRejected(state, action)
+    })
+    // remove tag from task
+    .addCase(removeTaskTag.pending, state => {
+      handlePending(state, "Removing tag...")
+    })
+    .addCase(removeTaskTag.fulfilled, (state, { payload }) => {
+      const { projectId, taskId, tagIndex } = payload
+
+      state.projects
+        ?.find(project => project.projectId === projectId)
+        ?.taskGroups?.find(group => {
+          group.tasks.find(task => {
+            if (task.taskId === taskId) {
+              task.tags.splice(tagIndex, 1)
+              return true
+            }
+          })
+        })
+      console.log("fulfilled")
+      state.isLoading = false
+    })
+    .addCase(removeTaskTag.rejected, (state, action) => {
       handleRejected(state, action)
     })
 
