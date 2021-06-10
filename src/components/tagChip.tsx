@@ -2,6 +2,8 @@ import { Chip, ChipProps } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import React from "react"
 import tinycolor from "tinycolor2"
+import { AnimatePresence, motion } from "framer-motion"
+
 import { ProjectTag } from "../redux/projectSlice/projectSlice"
 
 type Props = ChipProps & {
@@ -33,7 +35,21 @@ const tagChip: React.FC<Props> = ({ tag: { tagColor, tagName }, ...props }) => {
 
   return (
     <>
-      <Chip {...props} className={classes.root} size="small" label={tagName} />
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+          exit={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          <Chip
+            {...props}
+            className={classes.root}
+            size="small"
+            label={tagName}
+          />
+        </motion.div>
+      </AnimatePresence>
     </>
   )
 }
