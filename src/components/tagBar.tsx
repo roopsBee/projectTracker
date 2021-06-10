@@ -4,7 +4,6 @@ import AddIcon from "@material-ui/icons/AddCircleOutlined"
 import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
 import TagMenuItem from "./menuItems/tagMenuItem"
 import TagChip from "./tagChip"
-import { Opacity } from "@material-ui/icons"
 
 interface Props {
   tags: ProjectTag[]
