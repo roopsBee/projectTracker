@@ -1,11 +1,6 @@
 import { ProjectTag } from "../redux/projectSlice/projectSlice"
 
-type Args = {
-  tag: ProjectTag
-  array: ProjectTag[]
-}
-
-export default ({ tag, array }: Args) => {
+export default (tag: ProjectTag, array: ProjectTag[]): boolean => {
   const foundTag = array.find(arrayTag => {
     if (
       tag.tagName === arrayTag.tagName &&

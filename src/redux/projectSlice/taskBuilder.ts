@@ -134,6 +134,7 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
           })
         })
       console.log("fulfilled")
+      state.isLoading = false
     })
     .addCase(addTaskTag.rejected, (state, action) => {
       handleRejected(state, action)
