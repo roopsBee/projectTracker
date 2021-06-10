@@ -86,6 +86,11 @@ export default (isDarkMode: boolean) =>
             },
           },
         },
+        MuiListItemIcon: {
+          root: {
+            minWidth: "40px",
+          },
+        },
         MuiPaper: {
           root: {
             transition: darkModeTransition,
