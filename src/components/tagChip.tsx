@@ -2,7 +2,7 @@ import { Chip, ChipProps } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
 import React, { useEffect, useState } from "react"
 import tinycolor from "tinycolor2"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 import { ProjectTag } from "../redux/projectSlice/projectSlice"
 
@@ -40,21 +40,19 @@ const tagChip: React.FC<Props> = ({ tag: { tagColor, tagName }, ...props }) => {
 
   return (
     <>
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          exit={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <Chip
-            {...props}
-            className={classes.root}
-            size="small"
-            label={tagName}
-          />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        exit={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <Chip
+          {...props}
+          className={classes.root}
+          size="small"
+          label={tagName}
+        />
+      </motion.div>
     </>
   )
 }

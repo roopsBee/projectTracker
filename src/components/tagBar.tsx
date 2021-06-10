@@ -4,6 +4,7 @@ import AddIcon from "@material-ui/icons/AddCircleOutlined"
 import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
 import TagMenuItem from "./menuItems/tagMenuItem"
 import TagChip from "./tagChip"
+import { AnimatePresence } from "framer-motion"
 
 interface Props {
   tags: ProjectTag[]
@@ -33,11 +34,13 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
               onClick={handleClick}
             />
           </Grid>
-          {task.tags.map(tag => (
-            <Grid item key={tag.tagColor + tag.tagName}>
-              <TagChip tag={tag} />
-            </Grid>
-          ))}
+          <AnimatePresence>
+            {task.tags.map(tag => (
+              <Grid key={tag.tagColor + tag.tagName} item>
+                <TagChip tag={tag} />
+              </Grid>
+            ))}
+          </AnimatePresence>
         </Grid>
       </ListItem>
       <Menu
