@@ -13,7 +13,7 @@ interface Props {
   closeMenu: () => void
 }
 
-const TagMenuItem: React.FC<Props> = ({ tag, taskId, closeMenu, task }) => {
+const TagMenuItem: React.FC<Props> = ({ tag, taskId, task }) => {
   const isLoading = useAppSelector(state => state.projectState.isLoading)
   const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()

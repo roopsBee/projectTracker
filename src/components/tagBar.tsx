@@ -1,8 +1,9 @@
-import { ListItem, Chip, Menu } from "@material-ui/core"
+import { ListItem, Chip, Menu, Grid } from "@material-ui/core"
 import React, { useState } from "react"
 import AddIcon from "@material-ui/icons/AddCircleOutlined"
 import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
 import TagMenuItem from "./menuItems/tagMenuItem"
+import TagChip from "./tagChip"
 
 interface Props {
   tags: ProjectTag[]
@@ -20,18 +21,24 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
   }
   return (
     <>
-      <ListItem>
-        <Chip
-          icon={<AddIcon />}
-          component="button"
-          label="Tags"
-          size="small"
-          color="primary"
-          onClick={handleClick}
-        />
-        {task.tags.map(tag => (
-          <Chip size="small" key={Math.random()} label={tag.tagName} />
-        ))}
+      <ListItem disableGutters>
+        <Grid container spacing={1}>
+          <Grid item>
+            <Chip
+              icon={<AddIcon />}
+              component="button"
+              label="Tags"
+              size="small"
+              color="primary"
+              onClick={handleClick}
+            />
+          </Grid>
+          {task.tags.map(tag => (
+            <Grid item key={Math.random()}>
+              <TagChip tag={tag} />
+            </Grid>
+          ))}
+        </Grid>
       </ListItem>
       <Menu
         id="simple-menu"
