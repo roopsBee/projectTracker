@@ -34,7 +34,7 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
             />
           </Grid>
           {task.tags.map(tag => (
-            <Grid item key={Math.random()}>
+            <Grid item key={tag.tagColor + tag.tagName}>
               <TagChip tag={tag} />
             </Grid>
           ))}
