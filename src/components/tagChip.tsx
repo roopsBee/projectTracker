@@ -45,6 +45,7 @@ const tagChip: React.FC<Props> = ({ tag: { tagColor, tagName }, ...props }) => {
         transition={{ duration: 0.2 }}
         exit={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        layout
       >
         <Chip
           {...props}
