@@ -21,12 +21,7 @@ const GroupList: React.FC<Props> = ({ taskGroups, project }) => {
             animate={{ height: "initial" }}
             style={{ overflow: "hidden" }}
           >
-            <Group
-              groupIndex={index}
-              project={project}
-              key={group.groupId}
-              group={group}
-            />
+            <Group groupIndex={index} project={project} group={group} />
           </motion.div>
         ))}
       </AnimatePresence>

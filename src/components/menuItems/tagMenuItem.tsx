@@ -1,6 +1,10 @@
 import { ListItemIcon, MenuItem } from "@material-ui/core"
 import React, { useMemo } from "react"
-import { ProjectTag, TaskType } from "../../redux/projectSlice/projectSlice"
+import {
+  ChildTaskType,
+  ProjectTag,
+  TaskType,
+} from "../../redux/projectSlice/projectSlice"
 import addTaskTagThunk from "../../redux/projectSlice/thunks/addTaskTagThunk"
 import removeTaskTagThunk from "../../redux/projectSlice/thunks/removeTaskTagThunk"
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks"
@@ -12,7 +16,7 @@ import RemoveIcon from "@material-ui/icons/Remove"
 interface Props {
   tag: ProjectTag
   taskId: string
-  task: TaskType
+  task: TaskType | ChildTaskType
   closeMenu: () => void
   tagIndex: number
 }
@@ -33,12 +37,7 @@ const TagMenuItem: React.FC<Props> = ({ tag, taskId, task, tagIndex }) => {
 
   return (
     <>
-      <MenuItem
-        dense
-        disabled={isLoading}
-        key={Math.random()}
-        onClick={handleClick}
-      >
+      <MenuItem dense disabled={isLoading} onClick={handleClick}>
         <ListItemIcon>
           {!isTag ? (
             <AddIcon fontSize="small" />

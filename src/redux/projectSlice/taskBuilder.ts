@@ -132,6 +132,13 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
               task.tags.push(tag)
               return true
             }
+            task.childTasks.find(childTask => {
+              if (childTask.childTaskId === taskId) {
+                childTask.tags.push(tag)
+                console.log("child tag push")
+                return true
+              }
+            })
           })
         })
       console.log("fulfilled")
@@ -155,6 +162,12 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
               task.tags.splice(tagIndex, 1)
               return true
             }
+            task.childTasks.find(childTask => {
+              if (childTask.childTaskId === taskId) {
+                childTask.tags.splice(tagIndex, 1)
+                return true
+              }
+            })
           })
         })
       console.log("fulfilled")

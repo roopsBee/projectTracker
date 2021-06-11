@@ -1,14 +1,15 @@
 import React from "react"
-import { ChildTaskType } from "../redux/projectSlice/projectSlice"
+import { ChildTaskType, ProjectType } from "../redux/projectSlice/projectSlice"
 import ChildTask from "./childTask"
 import { AnimatePresence, motion } from "framer-motion"
 
 interface Props {
   childTasks: ChildTaskType[]
   groupId: string
+  project: ProjectType
 }
 
-const ChildTaskList: React.FC<Props> = ({ childTasks, groupId }) => {
+const ChildTaskList: React.FC<Props> = ({ childTasks, groupId, project }) => {
   return (
     <>
       {" "}
@@ -23,8 +24,8 @@ const ChildTaskList: React.FC<Props> = ({ childTasks, groupId }) => {
             style={{ overflow: "hidden" }}
           >
             <ChildTask
+              project={project}
               groupId={groupId}
-              key={childTask.childTaskId}
               childTask={childTask}
             />
           </motion.div>

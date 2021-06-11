@@ -1,19 +1,20 @@
 import { ListItem, Box, Divider, ListItemText } from "@material-ui/core"
 import React from "react"
-import { ChildTaskType } from "../redux/projectSlice/projectSlice"
+import { ChildTaskType, ProjectType } from "../redux/projectSlice/projectSlice"
 import CommentsItem from "./commentsItem"
 import MenuItemButton from "./menuItems/menuItemButton"
 import CommentsMenuItem from "./menuItems/commentsMenuItem"
-import TaskDoneCheckBox from "./taskDoneCheckBox"
 import EditChildTaskNameMenuItem from "./menuItems/editChildTaskNameMenuItem"
 import ChildTaskDeleteMenuItem from "./menuItems/childTaskDeleteMenuItem"
+import TagBar from "./tagBar"
 
 interface Props {
   childTask: ChildTaskType
   groupId: string
+  project: ProjectType
 }
 
-const ChildTask: React.FC<Props> = ({ childTask, groupId }) => {
+const ChildTask: React.FC<Props> = ({ childTask, groupId, project }) => {
   return (
     <>
       <Divider />
@@ -47,7 +48,11 @@ const ChildTask: React.FC<Props> = ({ childTask, groupId }) => {
           </ListItem>
         </Box>
         <CommentsItem comments={childTask.comments} />
-        <TaskDoneCheckBox task={childTask} type="childTask" />
+        <TagBar
+          type="childTask"
+          tags={project.projectTags || []}
+          task={childTask}
+        />
       </Box>
     </>
   )

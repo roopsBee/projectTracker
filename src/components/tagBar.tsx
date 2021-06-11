@@ -1,17 +1,30 @@
 import { ListItem, Chip, Menu, Grid } from "@material-ui/core"
 import React, { useState } from "react"
 import AddIcon from "@material-ui/icons/AddCircleOutlined"
-import { ProjectTag, TaskType } from "../redux/projectSlice/projectSlice"
+import {
+  ChildTaskType,
+  ProjectTag,
+  TaskType,
+} from "../redux/projectSlice/projectSlice"
 import TagMenuItem from "./menuItems/tagMenuItem"
 import TagChip from "./tagChip"
 import { AnimatePresence } from "framer-motion"
 
-interface Props {
+type Props = task | childTask
+
+type task = {
+  type: "task"
   tags: ProjectTag[]
   task: TaskType
 }
 
-const TagBar: React.FC<Props> = ({ tags, task }) => {
+type childTask = {
+  type: "childTask"
+  tags: ProjectTag[]
+  task: ChildTaskType
+}
+
+const TagBar: React.FC<Props> = props => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,7 +48,7 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
             />
           </Grid>
           <AnimatePresence>
-            {task.tags.map(tag => (
+            {props.task.tags.map(tag => (
               <Grid key={tag.tagColor + tag.tagName} item>
                 <TagChip tag={tag} />
               </Grid>
@@ -44,6 +57,7 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
         </Grid>
       </ListItem>
       <Menu
+        getContentAnchorEl={null || undefined}
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -54,15 +68,23 @@ const TagBar: React.FC<Props> = ({ tags, task }) => {
           horizontal: "left",
         }}
       >
-        {tags?.map(tag => {
-          const tagIndex = task.tags.indexOf(tag)
+        {props.tags?.map(tag => {
+          const tagIndex = props.task.tags.findIndex(
+            taskTag =>
+              taskTag.tagName === tag.tagName &&
+              taskTag.tagColor === tag.tagColor
+          )
           return (
             <TagMenuItem
-              task={task}
+              task={props.task}
               tagIndex={tagIndex}
-              key={Math.random()}
+              key={tag.tagColor + tag.tagName}
               tag={tag}
-              taskId={task.taskId}
+              taskId={
+                props.type === "task"
+                  ? props.task.taskId
+                  : props.task.childTaskId
+              }
               closeMenu={handleClose}
             />
           )
