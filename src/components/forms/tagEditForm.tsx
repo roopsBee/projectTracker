@@ -81,6 +81,7 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
             </Grid>
             <Grid item container justify="flex-start" xs={2}>
               <IconButton
+                type="submit"
                 color="#2A953D"
                 icon={<SaveIcon />}
                 disabled={
