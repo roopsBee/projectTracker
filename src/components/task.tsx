@@ -76,6 +76,7 @@ const Task: React.FC<Props> = ({ task, groupId, project }) => {
         </Box>
         <CommentsItem comments={task.comments} />
         <TagBar
+          style={{ paddingLeft: "12px" }}
           type="task"
           projectTags={project.projectTags || []}
           task={task}

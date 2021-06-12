@@ -1,5 +1,5 @@
 import { ListItem, Chip, Menu, Grid } from "@material-ui/core"
-import React, { useState } from "react"
+import React, { CSSProperties, useState } from "react"
 import AddIcon from "@material-ui/icons/AddCircleOutlined"
 import {
   ChildTaskType,
@@ -16,12 +16,14 @@ type task = {
   type: "task"
   projectTags: ProjectTag[]
   task: TaskType
+  style?: CSSProperties
 }
 
 type childTask = {
   type: "childTask"
   projectTags: ProjectTag[]
   task: ChildTaskType
+  style?: CSSProperties
 }
 
 const TagBar: React.FC<Props> = props => {
@@ -35,7 +37,7 @@ const TagBar: React.FC<Props> = props => {
   }
   return (
     <>
-      <ListItem disableGutters>
+      <ListItem disableGutters style={props.style}>
         <Grid container spacing={1}>
           <Grid item>
             <Chip

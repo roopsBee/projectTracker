@@ -49,8 +49,9 @@ const ChildTask: React.FC<Props> = ({ childTask, groupId, project }) => {
         </Box>
         <CommentsItem comments={childTask.comments} />
         <TagBar
+          style={{ paddingLeft: "12px" }}
           type="childTask"
-          tags={project.projectTags || []}
+          projectTags={project.projectTags || []}
           task={childTask}
         />
       </Box>
