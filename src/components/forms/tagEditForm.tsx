@@ -52,12 +52,15 @@ const TagEditForm: React.FC<Props> = ({
       validateOnChange={false}
       onSubmit={async ({ name, color }: Values) => {
         try {
+          const tag: ProjectTag = {
+            tagName: name,
+            tagColor: color,
+            tagId,
+          }
           await dispatch(
             tagEditThunk({
-              tagName: name,
-              tagColor: color,
+              tag,
               projectId,
-              index: tagIndex,
             })
           )
         } catch (error) {

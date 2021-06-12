@@ -283,12 +283,19 @@ export const projectSlice = createSlice({
         handlePending(state, "Editing tag...")
       })
       .addCase(tagEdit.fulfilled, (state, { payload }) => {
-        const { projectId, tag, index } = payload
+        const { projectId, tag } = payload
 
         const project = state.projects?.find(
           project => project.projectId === projectId
         )
-        project?.projectTags && (project.projectTags[index] = tag)
+        const tagIndex = project?.projectTags?.findIndex(
+          tag => tag.tagId === tag.tagId
+        )
+        console.log(tagIndex)
+
+        tagIndex !== undefined &&
+          project?.projectTags &&
+          (project.projectTags[tagIndex] = tag)
         state.isLoading = false
         console.log("fulfilled")
       })
@@ -308,7 +315,6 @@ export const projectSlice = createSlice({
         const tagIndex = project?.projectTags?.findIndex(
           tag => tag.tagId === tagId
         )
-        console.log(tagIndex)
 
         tagIndex !== undefined &&
           project?.projectTags &&
