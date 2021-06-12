@@ -114,6 +114,13 @@ export default (isDarkMode: boolean) =>
             },
           },
         },
+        MuiBadge: {
+          badge: {
+            "&.MuiBadge-anchorOriginTopRightRectangle": {
+              transform: "translate(35%,-35%)",
+            },
+          },
+        },
       },
     })
   )

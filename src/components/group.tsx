@@ -33,7 +33,7 @@ const Group: React.FC<Props> = ({ group, project, groupIndex }) => {
 
   return (
     <>
-      <Paper css={{ marginTop: 8 }}>
+      <Paper css={{ marginTop: 8, paddingRight: 10 }}>
         <List disablePadding>
           <Box margin={0} clone>
             <ListItem
