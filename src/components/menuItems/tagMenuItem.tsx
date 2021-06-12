@@ -1,5 +1,5 @@
-import { ListItemIcon, MenuItem } from "@material-ui/core"
-import React, { useMemo } from "react"
+import { ListItemIcon, MenuItem, MenuItemProps } from "@material-ui/core"
+import React, { useMemo, forwardRef } from "react"
 import {
   ChildTaskType,
   ProjectTag,
@@ -13,7 +13,7 @@ import isTagInArray from "../../utils/isTagInArray"
 import AddIcon from "@material-ui/icons/Add"
 import RemoveIcon from "@material-ui/icons/Remove"
 
-interface Props {
+type Props = MenuItemProps & {
   tag: ProjectTag
   taskId: string
   task: TaskType | ChildTaskType
@@ -21,34 +21,43 @@ interface Props {
   tagIndex: number
 }
 
-const TagMenuItem: React.FC<Props> = ({ tag, taskId, task, tagIndex }) => {
-  const isLoading = useAppSelector(state => state.projectState.isLoading)
-  const projectId = getProjectIdFromUrl()
-  const dispatch = useAppDispatch()
+const TagMenuItem: React.FC<Props> = forwardRef(
+  ({ tag, taskId, task, tagIndex }, ref) => {
+    const isLoading = useAppSelector(state => state.projectState.isLoading)
+    const projectId = getProjectIdFromUrl()
+    const dispatch = useAppDispatch()
 
-  const isTag = useMemo(() => isTagInArray(tag, task.tags), [tag, task])
-  const handleClick = async () => {
-    if (!isTag) {
-      await dispatch(addTaskTagThunk({ tag, taskId, projectId }))
-    } else {
-      await dispatch(removeTaskTagThunk({ tag, tagIndex, projectId, taskId }))
+    const isTag = useMemo(() => isTagInArray(tag, task.tags), [tag, task])
+    const handleClick = async () => {
+      if (!isTag) {
+        await dispatch(addTaskTagThunk({ tag, taskId, projectId }))
+      } else {
+        await dispatch(removeTaskTagThunk({ tag, tagIndex, projectId, taskId }))
+      }
     }
-  }
 
-  return (
-    <>
-      <MenuItem dense disabled={isLoading} onClick={handleClick}>
-        <ListItemIcon>
-          {!isTag ? (
-            <AddIcon fontSize="small" />
-          ) : (
-            <RemoveIcon fontSize="small" />
-          )}
-        </ListItemIcon>
-        {tag.tagName}
-      </MenuItem>
-    </>
-  )
-}
+    return (
+      <>
+        <MenuItem
+          innerRef={ref}
+          dense
+          disabled={isLoading}
+          onClick={handleClick}
+        >
+          <ListItemIcon>
+            {!isTag ? (
+              <AddIcon fontSize="small" />
+            ) : (
+              <RemoveIcon fontSize="small" />
+            )}
+          </ListItemIcon>
+          {tag.tagName}
+        </MenuItem>
+      </>
+    )
+  }
+)
+
+TagMenuItem.displayName = "TagMenuItem"
 
 export default TagMenuItem
