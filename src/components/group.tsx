@@ -35,8 +35,13 @@ const Group: React.FC<Props> = ({ group, project, groupIndex }) => {
     <>
       <Paper css={{ marginTop: 8 }}>
         <List disablePadding>
-          <Box margin={0} height={59} clone>
-            <ListItem dense key={group.groupId} disableGutters>
+          <Box margin={0} clone>
+            <ListItem
+              dense
+              style={{ padding: 0 }}
+              key={group.groupId}
+              disableGutters
+            >
               <MenuItemButton>
                 {handleClose => (
                   <div>

@@ -38,8 +38,13 @@ const Task: React.FC<Props> = ({ task, groupId, project }) => {
     <>
       <Divider />
       <Box paddingLeft={2}>
-        <Box marginBottom={0} height={59} clone>
-          <ListItem dense key={task?.taskId} disableGutters>
+        <Box marginBottom={0} clone>
+          <ListItem
+            dense
+            style={{ padding: 0 }}
+            key={task?.taskId}
+            disableGutters
+          >
             <MenuItemButton>
               {handleClose => (
                 <div>
@@ -76,7 +81,7 @@ const Task: React.FC<Props> = ({ task, groupId, project }) => {
         </Box>
         <CommentsItem comments={task.comments} />
         <TagBar
-          style={{ paddingLeft: "12px" }}
+          style={{ paddingLeft: "12px", margin: 0 }}
           type="task"
           projectTags={project.projectTags || []}
           task={task}

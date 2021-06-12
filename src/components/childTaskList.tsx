@@ -21,7 +21,6 @@ const ChildTaskList: React.FC<Props> = ({ childTasks, groupId, project }) => {
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
             exit={{ height: 0 }}
             animate={{ height: "initial" }}
-            style={{ overflow: "hidden" }}
           >
             <ChildTask
               project={project}

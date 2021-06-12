@@ -60,6 +60,7 @@ export default (isDarkMode: boolean) =>
         MuiIconButton: {
           root: {
             color: "white",
+            padding: "8px",
           },
         },
         MuiSwitch: {

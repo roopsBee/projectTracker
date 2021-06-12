@@ -19,8 +19,12 @@ const ChildTask: React.FC<Props> = ({ childTask, groupId, project }) => {
     <>
       <Divider />
       <Box paddingLeft={4}>
-        <Box marginBottom={0} height={59} clone>
-          <ListItem key={childTask.childTaskId} disableGutters>
+        <Box marginBottom={0} clone>
+          <ListItem
+            key={childTask.childTaskId}
+            style={{ padding: 0 }}
+            disableGutters
+          >
             <MenuItemButton>
               {handleClose => (
                 <div>
@@ -49,7 +53,7 @@ const ChildTask: React.FC<Props> = ({ childTask, groupId, project }) => {
         </Box>
         <CommentsItem comments={childTask.comments} />
         <TagBar
-          style={{ paddingLeft: "12px" }}
+          style={{ paddingLeft: "12px", margin: 0 }}
           type="childTask"
           projectTags={project.projectTags || []}
           task={childTask}

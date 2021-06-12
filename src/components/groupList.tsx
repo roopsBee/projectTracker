@@ -19,7 +19,6 @@ const GroupList: React.FC<Props> = ({ taskGroups, project }) => {
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
             exit={{ height: 0 }}
             animate={{ height: "initial" }}
-            style={{ overflow: "hidden" }}
           >
             <Group groupIndex={index} project={project} group={group} />
           </motion.div>
