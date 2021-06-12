@@ -1,33 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "../../store"
 import faunaClient from "../../../utils/faunaClient"
-import { ProjectTag } from "../projectSlice"
 
 // type AddTaskTagReturnType = {
 //   taskId:string
-//  tag:ProjectTag
+//  tagId:string
 // }
 
 const addTaskTagThunk = createAsyncThunk<
-  { projectId: string; tag: ProjectTag; taskId: string },
+  { projectId: string; tagId: string; taskId: string },
   {
     projectId: string
-    tag: ProjectTag
+    tagId: string
     taskId: string
   },
   { state: RootState }
 >(
   "project/addTaskTagThunk",
-  async ({ projectId, tag, taskId }, { getState, rejectWithValue }) => {
+  async ({ projectId, tagId, taskId }, { getState, rejectWithValue }) => {
     const { secret } = getState().user
     if (secret) {
       const { client, q } = faunaClient(secret)
 
-      await client.query(
-        q.Call("addTaskTag", [taskId, tag.tagName, tag.tagColor])
-      )
+      await client.query(q.Call("addTaskTag", [taskId, tagId]))
 
-      return { projectId, taskId, tag }
+      return { projectId, taskId, tagId }
     } else {
       return rejectWithValue(secret)
     }

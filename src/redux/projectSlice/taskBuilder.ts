@@ -122,19 +122,19 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       handlePending(state, "Adding tag...")
     })
     .addCase(addTaskTag.fulfilled, (state, { payload }) => {
-      const { projectId, taskId, tag } = payload
+      const { projectId, taskId, tagId } = payload
 
       state.projects
         ?.find(project => project.projectId === projectId)
         ?.taskGroups?.find(group => {
           group.tasks.find(task => {
             if (task.taskId === taskId) {
-              task.tags.push(tag)
+              task.tags.push(tagId)
               return true
             }
             task.childTasks.find(childTask => {
               if (childTask.childTaskId === taskId) {
-                childTask.tags.push(tag)
+                childTask.tags.push(tagId)
                 console.log("child tag push")
                 return true
               }
@@ -152,18 +152,20 @@ const taskBuilder = (builder: ActionReducerMapBuilder<ProjectState>) =>
       handlePending(state, "Removing tag...")
     })
     .addCase(removeTaskTag.fulfilled, (state, { payload }) => {
-      const { projectId, taskId, tagIndex } = payload
+      const { projectId, taskId, tagId } = payload
 
       state.projects
         ?.find(project => project.projectId === projectId)
         ?.taskGroups?.find(group => {
           group.tasks.find(task => {
             if (task.taskId === taskId) {
+              const tagIndex = task.tags.indexOf(tagId)
               task.tags.splice(tagIndex, 1)
               return true
             }
             task.childTasks.find(childTask => {
               if (childTask.childTaskId === taskId) {
+                const tagIndex = childTask.tags.indexOf(tagId)
                 childTask.tags.splice(tagIndex, 1)
                 return true
               }

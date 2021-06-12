@@ -14,13 +14,13 @@ type Props = task | childTask
 
 type task = {
   type: "task"
-  tags: ProjectTag[]
+  projectTags: ProjectTag[]
   task: TaskType
 }
 
 type childTask = {
   type: "childTask"
-  tags: ProjectTag[]
+  projectTags: ProjectTag[]
   task: ChildTaskType
 }
 
@@ -48,11 +48,16 @@ const TagBar: React.FC<Props> = props => {
             />
           </Grid>
           <AnimatePresence>
-            {props.task.tags.map(tag => (
-              <Grid key={tag.tagColor + tag.tagName} item>
-                <TagChip tag={tag} />
-              </Grid>
-            ))}
+            {props.task.tags.map(tagId => {
+              const tag = props.projectTags.find(tag => tag.tagId === tagId)
+              if (tag) {
+                return (
+                  <Grid key={tag.tagId} item>
+                    <TagChip tag={tag} />
+                  </Grid>
+                )
+              }
+            })}
           </AnimatePresence>
         </Grid>
       </ListItem>
@@ -68,17 +73,11 @@ const TagBar: React.FC<Props> = props => {
           horizontal: "left",
         }}
       >
-        {props.tags?.map(tag => {
-          const tagIndex = props.task.tags.findIndex(
-            taskTag =>
-              taskTag.tagName === tag.tagName &&
-              taskTag.tagColor === tag.tagColor
-          )
+        {props.projectTags?.map(tag => {
           return (
             <TagMenuItem
               task={props.task}
-              tagIndex={tagIndex}
-              key={tag.tagColor + tag.tagName}
+              key={tag.tagId}
               tag={tag}
               taskId={
                 props.type === "task"

@@ -101,7 +101,7 @@ const TagEditForm: React.FC<Props> = ({
               <IconButton
                 disabled={isLoading}
                 onClick={handleDelete}
-                color="red"
+                color="#f24"
                 icon={<DeleteIcon />}
               />
             </Grid>

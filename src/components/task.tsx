@@ -75,7 +75,11 @@ const Task: React.FC<Props> = ({ task, groupId, project }) => {
           </ListItem>
         </Box>
         <CommentsItem comments={task.comments} />
-        <TagBar type="task" tags={project.projectTags || []} task={task} />
+        <TagBar
+          type="task"
+          projectTags={project.projectTags || []}
+          task={task}
+        />
       </Box>
       <Collapse in={openChildTasks}>
         {task?.childTasks && (

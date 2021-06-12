@@ -44,7 +44,7 @@ export type TaskType = {
   taskId: string
   taskName: string
   completed: boolean
-  tags: ProjectTag[]
+  tags: string[]
   comments: CommentType[]
   childTasks: ChildTaskType[]
 }
@@ -53,7 +53,7 @@ export type ChildTaskType = {
   childTaskId: string
   childTaskName: string
   completed: boolean
-  tags: ProjectTag[]
+  tags: string[]
   comments: CommentType[]
 }
 
@@ -289,7 +289,7 @@ export const projectSlice = createSlice({
           project => project.projectId === projectId
         )
         const tagIndex = project?.projectTags?.findIndex(
-          tag => tag.tagId === tag.tagId
+          projectTag => projectTag.tagId === tag.tagId
         )
         console.log(tagIndex)
 
