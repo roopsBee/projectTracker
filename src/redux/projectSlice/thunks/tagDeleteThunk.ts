@@ -7,19 +7,19 @@ import faunaClient from "../../../utils/faunaClient"
 // }
 
 const tagDeleteThunk = createAsyncThunk<
-  { projectId: string; index: number },
-  { projectId: string; index: number },
+  { projectId: string; tagId: string },
+  { projectId: string; tagId: string },
   { state: RootState }
 >(
   "project/tagDeleteThunk",
-  async ({ index, projectId }, { getState, rejectWithValue }) => {
+  async ({ tagId, projectId }, { getState, rejectWithValue }) => {
     const { secret } = getState().user
     if (secret) {
       const { client, q } = faunaClient(secret)
 
-      await client.query(q.Call("tagDelete", [index, projectId]))
+      await client.query(q.Call("tagDelete", [tagId, projectId]))
 
-      return { projectId, index }
+      return { projectId, tagId }
     } else {
       return rejectWithValue(secret)
     }

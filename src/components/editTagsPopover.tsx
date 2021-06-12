@@ -33,11 +33,7 @@ const EditTagsPopover: React.FC<Props> = () => {
         <Divider style={{ ...dividerStyle }} />
         {tags?.map((tag, index) => (
           <Grid key={Math.random()} container item xs={12}>
-            <TagEditForm
-              tagColor={tag.tagColor}
-              tagName={tag.tagName}
-              tagIndex={index}
-            />
+            <TagEditForm tag={tag} />
           </Grid>
         ))}
         <Divider style={dividerStyle} />

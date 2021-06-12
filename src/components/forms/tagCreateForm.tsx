@@ -8,6 +8,8 @@ import SubmitButton from "./submitButton"
 import tagSchema from "./yupSchemas/tagSchema"
 import FormikColorPicker from "../formikColorPicker"
 import tagCreateThunk from "../../redux/projectSlice/thunks/tagCreateThunk"
+import { ProjectTag } from "../../redux/projectSlice/projectSlice"
+import { v4 as uuid } from "uuid"
 
 interface Values {
   name: string
@@ -32,9 +34,12 @@ function TagCreateForm() {
         { resetForm }: FormikHelpers<Values>
       ) => {
         try {
-          await dispatch(
-            tagCreateThunk({ tagName: name, tagColor: color, projectId })
-          )
+          const tag: ProjectTag = {
+            tagName: name,
+            tagColor: color,
+            tagId: uuid(),
+          }
+          await dispatch(tagCreateThunk({ tag, projectId }))
           resetForm({ values: { name: "", color } })
         } catch (error) {
           console.log(error)

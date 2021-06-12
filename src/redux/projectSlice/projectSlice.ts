@@ -31,6 +31,7 @@ export type ProjectType = {
 export type ProjectTag = {
   tagName: string
   tagColor: string
+  tagId: string
 }
 
 export type TaskGroupType = {
@@ -299,12 +300,19 @@ export const projectSlice = createSlice({
         handlePending(state, "Deleting tag...")
       })
       .addCase(tagDelete.fulfilled, (state, { payload }) => {
-        const { projectId, index } = payload
+        const { projectId, tagId } = payload
 
         const project = state.projects?.find(
           project => project.projectId === projectId
         )
-        project?.projectTags && project.projectTags.splice(index, 1)
+        const tagIndex = project?.projectTags?.findIndex(
+          tag => tag.tagId === tagId
+        )
+        console.log(tagIndex)
+
+        tagIndex !== undefined &&
+          project?.projectTags &&
+          project.projectTags.splice(tagIndex, 1)
         state.isLoading = false
         console.log("fulfilled")
       })

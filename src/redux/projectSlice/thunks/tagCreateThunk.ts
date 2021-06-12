@@ -9,18 +9,20 @@ import { ProjectTag } from "../projectSlice"
 
 const tagCreateThunk = createAsyncThunk<
   { projectId: string; tag: ProjectTag },
-  { projectId: string; tagName: string; tagColor: string },
+  { projectId: string; tag: ProjectTag },
   { state: RootState }
 >(
   "project/tagCreateThunk",
-  async ({ tagName, tagColor, projectId }, { getState, rejectWithValue }) => {
+  async ({ tag, projectId }, { getState, rejectWithValue }) => {
     const { secret } = getState().user
     if (secret) {
       const { client, q } = faunaClient(secret)
 
-      await client.query(q.Call("tagCreate", [tagName, tagColor, projectId]))
+      await client.query(
+        q.Call("tagCreate", [tag.tagName, tag.tagColor, tag.tagId, projectId])
+      )
 
-      return { projectId, tag: { tagColor, tagName } }
+      return { projectId, tag }
     } else {
       return rejectWithValue(secret)
     }

@@ -21,22 +21,24 @@ interface Values {
   tagIndex?: number
 }
 
-type Props = ProjectTag & {
-  tagIndex: number
+type Props = {
+  tag: ProjectTag
 }
 
-const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
+const TagEditForm: React.FC<Props> = ({
+  tag: { tagColor, tagId, tagName },
+}) => {
   const projectId = getProjectIdFromUrl()
   const dispatch = useAppDispatch()
-  const projectTag = useAppSelector(
-    state =>
-      state.projectState.projects?.find(
-        project => project.projectId === projectId
-      )?.projectTags?.[tagIndex]
+  const projectTag = useAppSelector(state =>
+    state.projectState.projects
+      ?.find(project => project.projectId === projectId)
+      ?.projectTags?.find(tag => tag.tagId === tagId)
   )
+  const isLoading = useAppSelector(state => state.projectState.isLoading)
 
   const handleDelete = async () => {
-    await dispatch(tagDeleteThunk({ index: tagIndex, projectId }))
+    await dispatch(tagDeleteThunk({ tagId, projectId }))
   }
 
   return (
@@ -94,6 +96,7 @@ const TagEditForm: React.FC<Props> = ({ tagColor, tagName, tagIndex }) => {
             </Grid>
             <Grid item container justify="flex-end" xs={2}>
               <IconButton
+                disabled={isLoading}
                 onClick={handleDelete}
                 color="red"
                 icon={<DeleteIcon />}
