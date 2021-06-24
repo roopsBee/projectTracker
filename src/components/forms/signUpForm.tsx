@@ -7,6 +7,8 @@ import { useAppDispatch } from "../../redux/reduxHooks"
 import signUpThunk from "../../redux/userSlice/signUpThunk"
 import FormHeader from "./formHeader"
 import SubmitButton from "./submitButton"
+import { unwrapResult } from "@reduxjs/toolkit"
+import { useSnackbar } from "notistack"
 
 interface Values {
   password: string
@@ -17,7 +19,7 @@ interface Values {
 
 function SignUp() {
   const dispatch = useAppDispatch()
-
+  const { enqueueSnackbar } = useSnackbar()
   return (
     <Container maxWidth="xs">
       <FormHeader title="Sign Up" />
@@ -31,9 +33,17 @@ function SignUp() {
         validationSchema={signupSchema}
         onSubmit={async ({ email, password, userName }: Values) => {
           try {
-            await dispatch(signUpThunk({ email, password, userName }))
+            const res = await dispatch(
+              signUpThunk({ email, password, userName })
+            )
+            const result = unwrapResult(res)
+            console.log({ result })
           } catch (error) {
-            console.log(error)
+            if (error.code === "auth/email-already-in-use") {
+              enqueueSnackbar("Email already in use. Please use another.", {
+                variant: "error",
+              })
+            }
           }
         }}
       >

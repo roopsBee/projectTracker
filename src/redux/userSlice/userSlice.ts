@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import logOut from "./logOutThunk"
 import login from "./loginThunk"
 import signUp from "./signUpThunk"
+import { useSnackbar } from "notistack"
 
 export interface UserState {
   secret?: string | null
