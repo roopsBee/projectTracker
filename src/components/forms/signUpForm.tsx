@@ -36,8 +36,7 @@ function SignUp() {
             const res = await dispatch(
               signUpThunk({ email, password, userName })
             )
-            const result = unwrapResult(res)
-            console.log({ result })
+            unwrapResult(res)
           } catch (error) {
             if (error.code === "auth/email-already-in-use") {
               enqueueSnackbar("Email already in use. Please use another.", {

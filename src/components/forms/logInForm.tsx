@@ -10,6 +10,8 @@ import FormHeader from "./formHeader"
 import SubmitButton from "./submitButton"
 import { navigate } from "gatsby"
 import { jsx } from "@emotion/react"
+import { unwrapResult } from "@reduxjs/toolkit"
+import { useSnackbar } from "notistack"
 
 interface Values {
   password: string
@@ -18,6 +20,7 @@ interface Values {
 
 function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
   const dispatch = useAppDispatch()
+  const { enqueueSnackbar } = useSnackbar()
 
   return (
     <Container maxWidth="xs">
@@ -30,11 +33,21 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
         validationSchema={loginSchema}
         onSubmit={async ({ password, email }: Values) => {
           try {
-            await dispatch(loginThunk({ email, password }))
+            const res = await dispatch(loginThunk({ email, password }))
+            const unWrappedResult = unwrapResult(res)
             navigate("/app")
             handleClosePopover()
           } catch (error) {
-            console.log(error)
+            if (error.code === "auth/user-not-found") {
+              enqueueSnackbar("That email, does not exist.", {
+                variant: "error",
+              })
+            }
+            if (error.code === "auth/wrong-password") {
+              enqueueSnackbar("Password is incorrect", {
+                variant: "error",
+              })
+            }
           }
         }}
       >
@@ -72,3 +85,6 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
 }
 
 export default LogIn
+function enqueueSnackbar(arg0: string, arg1: { variant: string }) {
+  throw new Error("Function not implemented.")
+}
