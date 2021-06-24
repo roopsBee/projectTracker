@@ -34,7 +34,7 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
         onSubmit={async ({ password, email }: Values) => {
           try {
             const res = await dispatch(loginThunk({ email, password }))
-            const unWrappedResult = unwrapResult(res)
+            unwrapResult(res)
             navigate("/app")
             handleClosePopover()
           } catch (error) {
@@ -85,6 +85,3 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
 }
 
 export default LogIn
-function enqueueSnackbar(arg0: string, arg1: { variant: string }) {
-  throw new Error("Function not implemented.")
-}
