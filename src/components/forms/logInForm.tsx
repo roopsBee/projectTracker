@@ -71,6 +71,7 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
                   name="password"
                   label="Password"
                   placeholder="Password"
+                  type="password"
                 />
               </Grid>
               <Grid item container justify="center">

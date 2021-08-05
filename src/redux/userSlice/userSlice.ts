@@ -68,6 +68,7 @@ export const userSlice = createSlice({
         console.log("logging out")
       })
       .addCase(logOut.rejected, (state, action) => {
+        Object.assign(state, initialState)
         state.isLoggingOut = false
         console.log("log out rejected", action.error)
       })
