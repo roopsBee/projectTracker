@@ -37,7 +37,7 @@ function LogIn({ handleClosePopover }: { handleClosePopover: () => void }) {
             unwrapResult(res)
             navigate("/app")
             handleClosePopover()
-          } catch (error) {
+          } catch (error: any) {
             if (error.code === "auth/user-not-found") {
               enqueueSnackbar("That email, does not exist.", {
                 variant: "error",

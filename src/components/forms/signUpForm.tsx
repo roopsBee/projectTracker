@@ -37,7 +37,7 @@ function SignUp() {
               signUpThunk({ email, password, userName })
             )
             unwrapResult(res)
-          } catch (error) {
+          } catch (error: any) {
             if (error.code === "auth/email-already-in-use") {
               enqueueSnackbar("Email already in use. Please use another.", {
                 variant: "error",
