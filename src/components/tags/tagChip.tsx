@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import tinycolor from "tinycolor2"
 import { motion } from "framer-motion"
 
-import { ProjectTag } from "../redux/projectSlice/projectSlice"
+import { ProjectTag } from "../../redux/projectSlice/projectSlice"
 
 type Props = ChipProps & {
   tag: ProjectTag

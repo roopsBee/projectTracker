@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/react"
 import { ListItem, Typography, Grid } from "@material-ui/core"
 import React from "react"
-import { CommentType } from "../redux/projectSlice/projectSlice"
+import { CommentType } from "../../redux/projectSlice/projectSlice"
 import { motion } from "framer-motion"
 
 interface Props {

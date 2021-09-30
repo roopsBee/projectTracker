@@ -5,8 +5,8 @@ import {
   ChildTaskType,
   ProjectTag,
   TaskType,
-} from "../redux/projectSlice/projectSlice"
-import TagMenuItem from "./menuItems/tagMenuItem"
+} from "../../redux/projectSlice/projectSlice"
+import TagMenuItem from "../menuItems/tagMenuItem"
 import TagChip from "./tagChip"
 import { AnimatePresence } from "framer-motion"
 

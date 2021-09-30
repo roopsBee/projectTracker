@@ -8,13 +8,16 @@ import {
   Box,
   Paper,
 } from "@material-ui/core"
-import TaskList from "./taskList"
-import { ProjectType, TaskGroupType } from "../redux/projectSlice/projectSlice"
-import MenuItemButton from "./menuItems/menuItemButton"
-import AddTaskMenuItem from "./menuItems/addTaskMenuItem"
-import ExpandIconButton from "./expandIconButton"
-import EditGroupNameMenuItem from "./menuItems/editGroupNameMenuItem"
-import GroupDeleteMenuItem from "./menuItems/groupDeleteMenuItem"
+import TaskList from "../tasks/taskList"
+import {
+  ProjectType,
+  TaskGroupType,
+} from "../../redux/projectSlice/projectSlice"
+import MenuItemButton from "../menuItems/menuItemButton"
+import AddTaskMenuItem from "../menuItems/addTaskMenuItem"
+import ExpandIconButton from "../expandIconButton"
+import EditGroupNameMenuItem from "../menuItems/editGroupNameMenuItem"
+import GroupDeleteMenuItem from "../menuItems/groupDeleteMenuItem"
 import { jsx } from "@emotion/react"
 
 interface Props {

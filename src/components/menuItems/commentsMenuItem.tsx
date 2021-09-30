@@ -2,7 +2,7 @@
 import { jsx } from "@emotion/react"
 import React, { useState } from "react"
 import { TaskType, ChildTaskType } from "../../redux/projectSlice/projectSlice"
-import CommentsPopover from "../commentsPopover"
+import CommentsPopover from "../comments/commentsPopover"
 import MenuItemPopover from "./menuItemPopover"
 
 type Props = (task | childTask) & { handleClose: () => void }

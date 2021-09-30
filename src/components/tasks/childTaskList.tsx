@@ -1,5 +1,8 @@
 import React from "react"
-import { ChildTaskType, ProjectType } from "../redux/projectSlice/projectSlice"
+import {
+  ChildTaskType,
+  ProjectType,
+} from "../../redux/projectSlice/projectSlice"
 import ChildTask from "./childTask"
 import { AnimatePresence, motion } from "framer-motion"
 

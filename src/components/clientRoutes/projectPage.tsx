@@ -4,7 +4,7 @@ import getProjectThunk from "../../redux/projectSlice/thunks/getProjectThunk"
 import { Container } from "@material-ui/core"
 import { PageProps } from "gatsby"
 
-import GroupList from "../groupList"
+import GroupList from "../groups/groupList"
 
 type Props = PageProps<null, null, { prevURL: string | null }> & {
   projectId: string

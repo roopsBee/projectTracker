@@ -15,7 +15,7 @@ interface childTask {
   groupId: string
 }
 
-const AddTaskButton: React.FC<Props> = props => {
+const AddTaskMenuItem: React.FC<Props> = props => {
   const [isPopoverOpen, setPopoverOpen] = useState(false)
 
   const closePopover = () => {
@@ -50,4 +50,4 @@ const AddTaskButton: React.FC<Props> = props => {
   )
 }
 
-export default AddTaskButton
+export default AddTaskMenuItem

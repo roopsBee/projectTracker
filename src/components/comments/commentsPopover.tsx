@@ -9,8 +9,8 @@ import {
   Grid,
 } from "@material-ui/core"
 import React from "react"
-import { CommentType } from "../redux/projectSlice/projectSlice"
-import CreateCommentForm from "./forms/createCommentForm"
+import { CommentType } from "../../redux/projectSlice/projectSlice"
+import CreateCommentForm from "../forms/createCommentForm"
 
 interface Props {
   comments: CommentType[]

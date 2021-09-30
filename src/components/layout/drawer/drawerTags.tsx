@@ -1,7 +1,7 @@
 import { ListItem, ListItemText, ListItemIcon } from "@material-ui/core"
 import React from "react"
 import TagIcon from "@material-ui/icons/LocalOfferOutlined"
-import EditTagsPopover from "../../editTagsPopover"
+import EditTagsPopover from "../../tags/editTagsPopover"
 import CenteredPopover, { usePopoverState } from "../../centeredPopover"
 
 const DrawerTags: React.FC = () => {

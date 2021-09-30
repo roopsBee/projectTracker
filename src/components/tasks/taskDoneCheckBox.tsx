@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { Checkbox } from "@material-ui/core"
-import { TaskType, ChildTaskType } from "../redux/projectSlice/projectSlice"
-import { useAppDispatch } from "../redux/reduxHooks"
-import toggleTaskDoneThunk from "../redux/projectSlice/thunks/toggleTaskDoneThunk"
-import getProjectIdFromUrl from "../utils/getProjectIdFromUrl"
+import { TaskType, ChildTaskType } from "../../redux/projectSlice/projectSlice"
+import { useAppDispatch } from "../../redux/reduxHooks"
+import toggleTaskDoneThunk from "../../redux/projectSlice/thunks/toggleTaskDoneThunk"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
 
 type Props = task | childTask
 

@@ -1,10 +1,10 @@
 import { Container, Divider, Grid } from "@material-ui/core"
 import React from "react"
-import { useAppSelector } from "../redux/reduxHooks"
-import getProjectIdFromUrl from "../utils/getProjectIdFromUrl"
-import FormHeader from "./forms/formHeader"
-import TagCreateForm from "./forms/tagCreateForm"
-import TagEditForm from "./forms/tagEditForm"
+import { useAppSelector } from "../../redux/reduxHooks"
+import getProjectIdFromUrl from "../../utils/getProjectIdFromUrl"
+import FormHeader from "../forms/formHeader"
+import TagCreateForm from "../forms/tagCreateForm"
+import TagEditForm from "../forms/tagEditForm"
 
 interface Props {
   closePopover: () => void

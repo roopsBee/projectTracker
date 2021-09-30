@@ -1,12 +1,15 @@
 import { ListItem, Box, Divider, ListItemText } from "@material-ui/core"
 import React from "react"
-import { ChildTaskType, ProjectType } from "../redux/projectSlice/projectSlice"
-import CommentsItem from "./commentsItem"
-import MenuItemButton from "./menuItems/menuItemButton"
-import CommentsMenuItem from "./menuItems/commentsMenuItem"
-import EditChildTaskNameMenuItem from "./menuItems/editChildTaskNameMenuItem"
-import ChildTaskDeleteMenuItem from "./menuItems/childTaskDeleteMenuItem"
-import TagBar from "./tagBar"
+import {
+  ChildTaskType,
+  ProjectType,
+} from "../../redux/projectSlice/projectSlice"
+import CommentsItem from "../comments/commentsItem"
+import MenuItemButton from "../menuItems/menuItemButton"
+import CommentsMenuItem from "../menuItems/commentsMenuItem"
+import EditChildTaskNameMenuItem from "../menuItems/editChildTaskNameMenuItem"
+import ChildTaskDeleteMenuItem from "../menuItems/childTaskDeleteMenuItem"
+import TagBar from "../tags/tagBar"
 
 interface Props {
   childTask: ChildTaskType
