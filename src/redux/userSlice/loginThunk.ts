@@ -18,7 +18,6 @@ const login = createAsyncThunk<
 
   const { secret, userName, userId } = data
   const user = { userName, secret, userId, email }
-  localStorage.setItem("user", JSON.stringify(user))
   await dispatch(getProjectListThunk({ userId, secret }))
   return user
 })

@@ -5,12 +5,18 @@ import projectPage from "../components/clientRoutes/projectPage"
 import useIsMounted from "../utils/useIsMounted"
 import ProjectSettingsPage from "../components/clientRoutes/projectSettingsPage"
 import appHomePage from "../components/clientRoutes/appHomePage"
+import { useAppSelector } from "../redux/reduxHooks"
 
 const App = () => {
   const isMounted = useIsMounted()
+  const isLoading = useAppSelector(state => state.user.isLoading)
 
   if (!isMounted) {
     return null
+  }
+
+  if (isLoading) {
+    return <h1>Loading</h1>
   }
 
   return (

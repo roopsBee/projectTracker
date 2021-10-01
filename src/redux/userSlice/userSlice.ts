@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import logOut from "./logOutThunk"
 import login from "./loginThunk"
 import signUp from "./signUpThunk"
+import checkIsAuthenticated from "./checkIsAuthenticatedThunk"
 
 export interface UserState {
   secret?: string | null
@@ -11,6 +12,7 @@ export interface UserState {
   isLoggingIn?: boolean
   isLoggedIn?: boolean
   isLoggingOut?: boolean
+  isLoading?: boolean
 }
 
 export const initialState: UserState = {
@@ -21,6 +23,7 @@ export const initialState: UserState = {
   isLoggingIn: false,
   isLoggedIn: false,
   isLoggingOut: false,
+  isLoading: true,
 }
 
 export const userSlice = createSlice({
@@ -59,18 +62,30 @@ export const userSlice = createSlice({
         state.isLoggingIn = false
         console.log("rejected", action.error)
       })
-      .addCase(logOut.fulfilled, state => {
-        Object.assign(state, initialState)
+      .addCase(logOut.fulfilled, () => {
         console.log("log out fulfilled")
+        return { ...initialState, isLoading: false }
       })
       .addCase(logOut.pending, state => {
         state.isLoggingOut = true
         console.log("logging out")
       })
       .addCase(logOut.rejected, (state, action) => {
-        Object.assign(state, initialState)
+        Object.assign(state, { ...initialState, isLoading: false })
         state.isLoggingOut = false
         console.log("log out rejected", action.error)
+      })
+      // check if user is authenticated
+      .addCase(checkIsAuthenticated.fulfilled, state => {
+        state.isLoading = false
+        console.log("authenticated")
+      })
+      .addCase(checkIsAuthenticated.pending, () => {
+        console.log("authenticating")
+      })
+      .addCase(checkIsAuthenticated.rejected, (state, action) => {
+        Object.assign(state, { ...initialState, isLoading: false })
+        console.log("not authenticated", action.error)
       })
   },
 })
