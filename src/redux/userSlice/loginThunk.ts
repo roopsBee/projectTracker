@@ -19,7 +19,7 @@ const login = createAsyncThunk<
   const { secret, userName, userId } = data
   const user = { userName, secret, userId, email }
   await dispatch(getProjectListThunk({ userId, secret }))
-  return user
+  return { ...user, userIdToken }
 })
 
 export default login

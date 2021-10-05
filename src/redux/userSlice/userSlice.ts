@@ -9,6 +9,7 @@ export interface UserState {
   userId?: string | null
   email?: string | null
   userName?: string | null
+  userIdToken?: string | null
   isLoggingIn?: boolean
   isLoggedIn?: boolean
   isLoggingOut?: boolean
@@ -20,6 +21,7 @@ export const initialState: UserState = {
   userId: null,
   email: null,
   userName: null,
+  userIdToken: null,
   isLoggingIn: false,
   isLoggedIn: false,
   isLoggingOut: false,

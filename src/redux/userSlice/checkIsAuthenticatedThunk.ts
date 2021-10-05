@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "../store"
 import faunaClient from "../../utils/faunaClient"
+import axios from "axios"
 
 const checkIsAuthenticated = createAsyncThunk<
   void,
@@ -14,10 +15,15 @@ const checkIsAuthenticated = createAsyncThunk<
   }
 
   const { secret } = getState().user
-  if (secret) {
+  const userIdToken = getState().user.userIdToken
+  if (secret && userIdToken) {
     const { client, q } = faunaClient(secret)
-    const identity = await client.query(q.CurrentIdentity())
-    if (!identity) return rejectWithValue(false)
+    await Promise.all([
+      client.query(q.CurrentIdentity()),
+      axios.post("/.netlify/functions/verify-user-id-token", {
+        userIdToken,
+      }),
+    ])
   } else {
     return rejectWithValue(false)
   }
