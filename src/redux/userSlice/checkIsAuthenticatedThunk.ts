@@ -11,11 +11,7 @@ const checkIsAuthenticated = createAsyncThunk<
   }
 >("users/checkIsAuthenticated", async (arg, { getState, rejectWithValue }) => {
   const { isLoggedIn, userIdToken, secret } = getState().user
-  if (!isLoggedIn || !userIdToken) {
-    return rejectWithValue(false)
-  }
-
-  if (secret) {
+  if (isLoggedIn && userIdToken && secret) {
     const { client, q } = faunaClient(secret)
     await Promise.all([
       client.query(q.CurrentIdentity()),
